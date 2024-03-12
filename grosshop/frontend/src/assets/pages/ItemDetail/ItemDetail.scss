@@ -1,0 +1,73 @@
+.item-details{
+    font-family: "poppins-regular";
+    text-align: center;
+    img{
+        margin: auto;
+        margin-top: 1.25rem;
+        width: 333px;
+        height: 222px;
+        margin-bottom: 1.25rem;
+    }
+    .unit-highlight{
+        font-size: .75rem;
+        color: #ffffff;
+        background: #40AA54;
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+    h1{
+        font-size: 2.625rem;
+        color: #2C3066;
+        margin-top: 10px;
+    }
+    h3{
+        color: #2C3066;
+        font-size: 1rem;
+        margin-bottom: 9px;
+    }
+    img.star{
+        width: 9px;
+        height: 9px;
+        display: inline;
+        margin: 0
+        ;
+    }
+    h2{
+        font-family: "poppins-medium";
+        color: #777777;
+        font-size: 1rem;
+    }
+    .divider{
+        height: 1px;
+        width: 391px;
+background-color: #707070;
+        margin:  37.5px auto 21px auto;
+    }
+    .quantity{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        margin: 14px auto 41px auto;
+        button{
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            margin: auto;
+            border: 1px solid #2C3066;
+            background: none;
+        }
+    }
+    .cart-icon{
+        width: 30px;
+        height: 25px;
+    }
+    .add-to-cart{
+        font-size: 1.125rem;
+        color: #2C3066;
+        background-color: #D8EEDC;
+        border: none;
+        border-radius: .5rem;
+        width: 343px;
+        height: 50px;
+    }
+}
