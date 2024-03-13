@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Counter from "../../components/counter/Counter";
+
 import "./ProductDetail.scss";
+import Counter from "../../components/counter/Counter";
 
 const ProductDetail = () => {
     const [product, setProduct] = useState({
@@ -29,10 +30,7 @@ const ProductDetail = () => {
                 <h2><img src="/star.svg" alt="Star" className="star"/>{product.rating}/5</h2>
                 <div className="divider"></div>
                 <h2>Quantity</h2>
-                
-                {/* Verwende die Counter-Komponente */}
                 <Counter count={count} setCount={setCount} />
-
                 <h2>Total Price: $ {totalPrice}</h2>
                 <img src="/cart.svg" alt="Cart icon" className="cart-icon" />
                 <button className="add-to-cart">Add to Cart</button>
