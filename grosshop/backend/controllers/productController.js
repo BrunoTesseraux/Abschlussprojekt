@@ -1,7 +1,7 @@
 import { catchAsync } from "../utils/catchAsync.js";
 
 const getAllProductsCtrl = catchAsync(async (req, res, next) => {
-
+    
 });
 
 const getOneProductCtrl = catchAsync(async (req, res, next) => {
