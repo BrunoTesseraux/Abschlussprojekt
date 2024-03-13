@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./ProducrCardLarge.scss"
 import Counter from "../counter/Counter";
 
+
 const ProducrCardLarge = () => {
 
     const [product, setProduct] = useState({
@@ -21,14 +22,18 @@ const ProducrCardLarge = () => {
 
     return ( 
         <article className="product-card-large">
-        <input type="checkbox" name="" id="" />
+        <input type="checkbox" className="checkbox-round" name="" id="" />
         <img src={product.productImage} alt="Produktbild" />
-        <div>
+        <section className="product-card-background">
+        <div className="product-info">
         <h2>{product.productName}</h2>
-        <h3>{product.price}$</h3>
-        <p><img src="./star.svg" alt="" />{product.rating}</p>
+        <p> {product.ratio.map((item, index) => (
+              <span key={index}>{item.amount}{item.unit}</span>
+            ))}<img src="./star.svg" alt="" />{product.rating}</p>
+        <h3>${product.price}</h3>
         </div>
         <Counter count={count} setCount={setCount} />
+        </section>
     </article>);
 }
  
