@@ -7,10 +7,12 @@ const orderSchema = new Schema({
         productId: { type: mongoose.Types.ObjectId, ref: 'Product', required: true },
         quantity: { type: Number, required: true }
     }],
-    totalAmount: { type: Number, required: true },
-    shopId: { type: mongoose.Types.ObjectId }, // Shop, dem die Bestellung zugeordnet ist
-    status: { type: String, enum: ['pending', 'completed', 'cancelled'], default: 'pending' },
-    // Weitere Felder wie Lieferadresse, Zahlungsinformationen usw. können hier hinzugefügt werden
+    shopId: { type: mongoose.Types.ObjectId }, 
+    orderStatus: { type: String, enum: ['pending', 'shipped', 'cancelled', 'processing', 'picked'], default: 'pending' },
+    paymentStatus: { type: String, enum: ['pending', 'paid', 'refunded'], default: 'peding' },
+    orderNumber: { type: String, required: true },
+    orderTimestamp: { type: Date, required: true },
+    shippingAdress: { type: String, required: true },
 }, { collection: "Order", timestamps: true });
 
 const Order = mongoose.model('Order', orderSchema);

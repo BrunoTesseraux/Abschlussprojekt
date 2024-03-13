@@ -1,13 +1,18 @@
 import './App.scss'
-import ItemDetail from './assets/pages/ItemDetail/ItemDetail'
-import Welcome from './assets/pages/Welcome/Welcome'
+import ProducrCardLarge from './components/ProducrCardLarge/ProducrCardLarge'
+import ProductCardSmall from './components/ProductCardSmall/ProductCardSmall'
+import ProductDetail from './pages/ProductDetail/ProductDetail'
+import Welcome from './pages/Welcome/Welcome'
+
 
 function App() {
 
   return (
     <>
-      {/* <Welcome/> */}
-      <ItemDetail/>
+      <Welcome/>
+      <ProducrCardLarge/>
+      <ProductDetail/>
+      <ProductCardSmall/>
     </>
   )
 }

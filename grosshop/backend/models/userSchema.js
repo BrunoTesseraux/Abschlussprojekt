@@ -8,7 +8,17 @@ const userSchema = new Schema({
     address: { type: String },
     phoneNumber: { type: String },
     profilePicture: { type: String },
-    member: { type: Boolean }
+    member: { type: Boolean }.type,
+    wishlist: [{ type: mongoose.Types.ObjectId, ref: 'Product' }],
+    cart: [{
+        product: { type: mongoose.Types.ObjectId, ref: 'Product' },
+        quantity: { type: Number, required: true, min: 1 }
+    }],
+    orderHistory: [{
+    orders: { type: mongoose.Types.ObjectId, ref: 'Order' },
+    orderDate: { type: Date, default: Date.now }
+    }]
+    
 },
 { collection: "User", timestamps: true });
 
