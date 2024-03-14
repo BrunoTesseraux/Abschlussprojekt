@@ -1,6 +1,14 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import {
+  orderRouter,
+  productRouter,
+  promotionRouter,
+  shopRouter,
+  userRouter,
+} from "./src/routes/index.js";
+import ErrorController from "./src/controllers/errorController.js";
 
 const app = express();
 
@@ -20,13 +28,11 @@ app.use((req, res, next) => {
 app.use("api/v1/users", userRouter);
 app.use("api/v1/products", productRouter);
 app.use("api/v1/shops", shopRouter);
-app.use("api/v1/wishlist", wishlistRouter);
-app.use("api/v1/cart", cartRouter);
-app.use("api/v1/order-history", orderHistoryRouter);
+app.use("api/v1/order", orderRouter);
 app.use("api/v1/promotions", promotionRouter);
 
 app.all("*", (req, res, next) => {
-  next(new AppError(`Can't finde Route ${req.originURL} on this server`));
+  next(new AppError(`Can't finde Route ${req.originalUrl} on this server`));
 });
 
 app.use(ErrorController.globalErrorCtrl);
