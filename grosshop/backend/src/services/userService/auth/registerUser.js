@@ -1,6 +1,6 @@
 import User from "../../../models/userSchema.js";
 
-export async function registerUser(newUserInfo) {
+export const registerUser = async (newUserInfo) => {
 
   const foundUser = await User.create(newUserInfo);
   console.log(foundUser);
