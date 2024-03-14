@@ -16,7 +16,7 @@ const shopAddressSchema = new mongoose.Schema(
   { collection: "Shop", timestamps: true }
 );
 
-const shopSchema = new Schema(
+const shopSchema = new mongoose.Schema(
   {
     shopName: { type: String, required: true },
     shopAddress: shopAddressSchema,
