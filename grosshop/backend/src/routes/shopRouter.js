@@ -4,6 +4,6 @@ import { ShopController } from "../controllers/index.js";
 const router = express.Router();
 
 router.get("/", ShopController.getAllShopsCtrl);
-router.get("/:id", ShopController.getOneShopCtrl);
+router.get("/:sid", ShopController.getOneShopCtrl);
 
 export default router;

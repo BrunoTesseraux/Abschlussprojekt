@@ -14,10 +14,10 @@ const productSchema = new mongoose.Schema(
         unit: { type: String, required: true },
       },
     ],
-    cuisine: { type: String, required: true },
-    productType: { type: String, required: true },
+    cuisine: { type: String },
+    category: { type: String, required: true },
   },
-  { collection: "Product", timestamps: true }
+  { collection: "Products", timestamps: true }
 );
 
 const Product = mongoose.model("Product", productSchema);
