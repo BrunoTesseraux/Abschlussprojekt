@@ -13,13 +13,13 @@ function App() {
 
   return (
     <Router>
-      <Welcome/>
+      {/* <Welcome/> */}
       <Nav/>
-      <OrderCard/>
-      <CategoryCard/>
-      <ProducrCardLarge/>
-      <ProductCardSmall/>
-      <ProductDetail/>
+      {/* <OrderCard/> */}
+      {/* <CategoryCard/> */}
+      {/* <ProducrCardLarge/> */}
+      {/* <ProductCardSmall/> */}
+      {/* <ProductDetail/> */}
     </Router>
   )
 }
