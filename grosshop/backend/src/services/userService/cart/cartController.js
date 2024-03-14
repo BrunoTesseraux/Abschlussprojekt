@@ -1,4 +1,4 @@
-import { catchAsync } from "../utils/catchAsync.js";
+import { catchAsync } from "../../../utils/catchAsync.js";
 
 const getCartCtrl = catchAsync(async (req, res, next) => {});
 
@@ -12,4 +12,4 @@ const CartController = {
   deleteCartItemCtrl,
 };
 
-export default CartController
+export default CartController;
