@@ -1,34 +1,35 @@
 .item-details{
     font-family: "poppins-regular";
     text-align: center;
+    margin-bottom: 6.25rem;
     img{
         margin: auto;
-        margin-top: 1.25rem;
-        width: 333px;
-        height: 222px;
+        margin-top: 20px;
+        width: 20.8125rem;
+        height: 13.875rem;
         margin-bottom: 1.25rem;
         object-fit: contain;
     }
     .unit-highlight{
-        font-size: .75rem;
+        font-size: 12px;
         color: #ffffff;
         background: #40AA54;
-        padding: 5px 15px;
-        border-radius: 5px;
+        padding: .3125rem .9375rem;
+        border-radius: .3125rem;
     }
     h1{
         font-size: 2.625rem;
         color: #2C3066;
-        margin-top: 10px;
+        margin-top: .625rem;
     }
     h3{
         color: #2C3066;
-        font-size: 1rem;
-        margin-bottom: 9px;
+        font-size: 16px;
+        margin-bottom: .5625rem;
     }
     img.star{
-        width: 9px;
-        height: 9px;
+        width: .5625rem;
+        height: .5625rem;
         display: inline;
         margin: 0
         ;
@@ -36,39 +37,39 @@
     h2{
         font-family: "poppins-medium";
         color: #777777;
-        font-size: 1rem;
+        font-size: 16px;
     }
     .divider{
-        height: 1px;
-        width: 391px;
+        height: .0625rem;
+        width: 24.4375rem;
 background-color: #707070;
-        margin:  37.5px auto 21px auto;
+        margin:  2.3438rem auto 1.3125rem auto;
     }
     .quantity{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        margin: 14px auto 41px auto;
+        margin: .875rem auto 2.5625rem auto;
         button{
-            width: 52px;
-            height: 52px;
+            width: 3.25rem;
+            height: 3.25rem;
             border-radius: 50%;
             margin: auto;
-            border: 1px solid #2C3066;
+            border: .0625rem solid #2C3066;
             background: none;
         }
     }
     .cart-icon{
-        width: 30px;
-        height: 25px;
+        width: 1.875rem;
+        height: 1.5625rem;
     }
     .add-to-cart{
-        font-size: 1.125rem;
+        font-size: 18px;
         color: #2C3066;
         background-color: #D8EEDC;
         border: none;
         border-radius: .5rem;
-        width: 343px;
-        height: 50px;
+        width: 21.4375rem;
+        height: 3.125rem;
     }
 }
