@@ -7,6 +7,8 @@ import Welcome from './pages/Welcome/Welcome'
 import Nav from './components/Nav/Nav'
 import { BrowserRouter as Router } from 'react-router-dom';
 import OrderCard from './components/OrderCard/OrderCard'
+import Profile from './pages/Profile/Profile'
+import EditProfile from './pages/Profile/EditProfile'
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
     <Router>
       {/* <Welcome/> */}
       <Nav/>
+      <Profile/>
+      <EditProfile/>
       {/* <OrderCard/> */}
       {/* <CategoryCard/> */}
       {/* <ProducrCardLarge/> */}
