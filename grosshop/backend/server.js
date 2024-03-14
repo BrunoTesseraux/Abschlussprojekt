@@ -6,11 +6,11 @@ dotenv.config({ path: "./config.env" });
 import app from "./app.js";
 
 const DB = process.env.MONGODB_URL.replace(
-  "<USERNAME",
+  "<USERNAME>",
   process.env.USERNAME
-).replace("PASSWORD", process.env.PASSWORD);
+).replace("<PASSWORD>", process.env.PASSWORD);
 
-PORT = process.env.PORT || 5004;
+const PORT = process.env.PORT || 5004;
 
 const serverListenToPort = () => {
   app.listen(PORT, () => console.log(`Server runs on Port ${PORT}`));

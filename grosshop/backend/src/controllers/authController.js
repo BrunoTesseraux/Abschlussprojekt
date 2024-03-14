@@ -10,10 +10,12 @@ const postForgotPasswordCtrl = catchAsync(async (req, res, next) => {});
 
 const patchResetPasswordCtrl = catchAsync(async (req, res, next) => {});
 
-export const AuthController = {
+const AuthController = {
   postSignupCtrl,
   postLoginCtrl,
   patchUpdatePasswordCtrl,
   postForgotPasswordCtrl,
   patchResetPasswordCtrl,
 };
+
+export default AuthController;

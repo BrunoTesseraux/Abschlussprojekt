@@ -1,5 +1,8 @@
-import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../helpers/httpStatusCodes";
-import AppError from "../utiles/AppError";
+import {
+  BAD_REQUEST,
+  INTERNAL_SERVER_ERROR,
+} from "../helpers/httpStatusCodes.js";
+// import AppError from "../utils/AppError";
 
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
