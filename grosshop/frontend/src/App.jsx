@@ -6,18 +6,20 @@ import ProductDetail from './pages/ProductDetail/ProductDetail'
 import Welcome from './pages/Welcome/Welcome'
 import Nav from './components/Nav/Nav'
 import { BrowserRouter as Router } from 'react-router-dom';
+import OrderCard from './components/OrderCard/OrderCard'
 
 
 function App() {
 
   return (
     <Router>
-      {/* <Welcome/> */}
+      <Welcome/>
       <Nav/>
-      {/* <CategoryCard/> */}
-      {/* <ProducrCardLarge/> */}
-      {/* <ProductDetail/> */}
-      {/* <ProductCardSmall/> */}
+      <OrderCard/>
+      <CategoryCard/>
+      <ProducrCardLarge/>
+      <ProductCardSmall/>
+      <ProductDetail/>
     </Router>
   )
 }
