@@ -11,7 +11,6 @@ import {
 import ErrorController from "./src/controllers/errorController.js";
 import AppError from "./src/utils/AppError.js";
 
-
 const app = express();
 
 app.use(cors());

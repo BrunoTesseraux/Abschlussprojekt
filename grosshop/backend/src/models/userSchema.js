@@ -63,7 +63,7 @@ const userSchema = new mongoose.Schema(
     member: { type: Boolean }.type,
     wishlist: [
       {
-        product: { type: mongoose.Types.ObjectId, ref: "Product" },
+        productId: { type: mongoose.Types.ObjectId, ref: "Product" },
         quantity: {
           type: Number,
           required: [true, "A user must have a wishlist"],
@@ -73,7 +73,7 @@ const userSchema = new mongoose.Schema(
     ],
     cart: [
       {
-        product: { type: mongoose.Types.ObjectId, ref: "Product" },
+        productId: { type: mongoose.Types.ObjectId, ref: "Product" },
         quantity: {
           type: Number,
           required: [true, "A user must have a cart"],
@@ -83,7 +83,7 @@ const userSchema = new mongoose.Schema(
     ],
     orderHistory: [
       {
-        orders: { type: mongoose.Types.ObjectId, ref: "Order" },
+        orderId: { type: mongoose.Types.ObjectId, ref: "Order" },
         orderDate: { type: Date, default: Date.now },
       },
     ],
