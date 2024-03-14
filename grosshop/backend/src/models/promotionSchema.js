@@ -17,7 +17,7 @@ const promotionSchema = new mongoose.Schema(
     shopId: { type: mongoose.Types.ObjectId, ref: "Shop", required: true }, // Shop, dem die Promotion zugeordnet ist
     // Weitere Felder wie Bedingungen, usw. können hier hinzugefügt werden
   },
-  { collection: "Promotion", timestamps: true }
+  { collection: "Promotions", timestamps: true }
 );
 
 const Promotion = mongoose.model("Promotion", promotionSchema);

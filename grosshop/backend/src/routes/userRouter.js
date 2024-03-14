@@ -11,7 +11,7 @@ const router = express.Router();
 
 // general user routes
 router
-  .route("/:id")
+  .route("/:uid")
   .get(UserController.getOneUserCtrl)
   .patch(UserController.patchUpdateProfileCtrl)
   .delete(UserController.deleteUserCtrl);
@@ -22,30 +22,38 @@ router.delete("/removeItem", UserController.deleteUserCtrl);
 
 // wishlist routes
 
-router.get("/wishlist", WishlistController.getWishlistCtrl);
-
 router
-  .route("/wishlist/:id")
+  .route("/:uid/wishlist")
+  .get(WishlistController.getWishlistCtrl)
   .patch(WishlistController.patchOneWishlistItemCtrl)
-  .delete(WishlistController.deleteWishlistItemCtrl);
+  .patch(WishlistController.patchManyWishlistItemsCtrl);
+
+// router
+//   .route("/wishlist/:id")
+//   .patch(WishlistController.patchOneWishlistItemCtrl)
+//   .delete(WishlistController.deleteWishlistItemCtrl);
 
 // cart routes
 
-router.get("/cart", CartController.getCartCtrl);
-
 router
-  .route("/cart/:id")
-  .patch(CartController.patchCartItemCtrl)
-  .delete(CartController.deleteCartItemCtrl);
+  .route("/:uid/cart")
+  .get(CartController.getCartCtrl)
+  .patch(CartController.patchOneCartItemCtrl)
+  .patch(CartController.patchManyCartItemCtrl);
+
+// router
+//   .route("/cart/:id")
+//   .patch(CartController.patchCartItemCtrl)
+//   .delete(CartController.deleteCartItemCtrl);
 
 // history routes
 
 router
-  .route("/orderHistory")
+  .route("/:uid/orderHistory")
   .get(HistoryController.getAllHistoriesCtrl)
-  .post(HistoryController.postHistoryCtrl);
+  .patch(HistoryController.patchHistoryCtrl);
 
-router.patch("/orderHistory/:id", HistoryController.patchHistoryCtrl);
+// router.patch("/orderHistory/:id", HistoryController.patchHistoryCtrl);
 
 // auth routes
 router.post("/login", AuthController.postLoginCtrl);

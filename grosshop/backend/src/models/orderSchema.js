@@ -15,7 +15,10 @@ const orderSchema = new mongoose.Schema(
         quantity: { type: Number, required: true },
       },
     ],
-    shopId: { type: mongoose.Types.ObjectId },
+    shopId: {
+      type: mongoose.Types.ObjectId,
+      required: [true, "Order musst have a shop id"],
+    },
     orderStatus: {
       type: String,
       enum: ["pending", "shipped", "cancelled", "processing", "picked"],
@@ -30,7 +33,7 @@ const orderSchema = new mongoose.Schema(
     orderTimestamp: { type: Date, required: true },
     shippingAdress: { type: String, required: true },
   },
-  { collection: "Order", timestamps: true }
+  { collection: "Orders", timestamps: true }
 );
 
 const Order = mongoose.model("Order", orderSchema);
