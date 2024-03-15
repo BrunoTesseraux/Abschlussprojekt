@@ -1,12 +1,15 @@
-const Counter = ({ count, setCount }) => {
-    
+import React from "react";
+
+const Counter = ({ count, setCount, onQuantityChange }) => {
     const addOne = () => {
         setCount(count + 1);
+        onQuantityChange(count + 1);
     };
 
     const minusOne = () => {
         if (count > 1) {
             setCount(count - 1);
+            onQuantityChange(count - 1);
         }
     };
 

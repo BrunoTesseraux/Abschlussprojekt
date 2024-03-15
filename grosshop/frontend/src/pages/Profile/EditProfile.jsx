@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TopNav from "../../components/TopNav/TopNav";
 
 const EditProfile = () => {
     const [user, setUser] = useState({
@@ -35,6 +36,7 @@ const EditProfile = () => {
     return (
         <section className="profile">
             <div className="gradient-background">
+            <TopNav location="Edit Profile"/>
                 <div className="profile-picture-container">
                     <img src={user.profilePicture} className="profile-picture" alt="" />
                     <div className="camera-border"><img src="./camera-icon.svg" alt="" /></div>
