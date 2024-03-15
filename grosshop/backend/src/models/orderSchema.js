@@ -30,7 +30,7 @@ const orderSchema = new mongoose.Schema(
     orderTimestamp: { type: Date, required: true },
     shippingAdress: { type: String, required: true },
   },
-  { collection: "Order", timestamps: true }
+  { collection: "Orders", timestamps: true }
 );
 
 const Order = mongoose.model("Order", orderSchema);

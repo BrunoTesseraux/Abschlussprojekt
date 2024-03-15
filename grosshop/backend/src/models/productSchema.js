@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema(
     cuisine: { type: String, required: true },
     productType: { type: String, required: true },
   },
-  { collection: "Product", timestamps: true }
+  { collection: "Products", timestamps: true }
 );
 
 const Product = mongoose.model("Product", productSchema);
