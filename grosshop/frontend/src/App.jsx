@@ -10,6 +10,9 @@ import EditProfile from './pages/Profile/EditProfile'
 import Cart from './pages/Lists/Cart'
 import Wishlist from './pages/Lists/Wishlist'
 import OrderList from './pages/Lists/OrderList'
+import Register from './pages/Registry/Register'
+import SignIn from './pages/Registry/SignIn'
+import SuccessNotification from './components/SuccessNotification/SuccessNotification'
 
 
 function App() {
@@ -17,7 +20,10 @@ function App() {
   return (
     <Router>
       {/* <Welcome/> */}
-      <Nav/>
+      {/* <Register/> */}
+      {/* <SuccessNotification/> */}
+      {/* <SignIn/> */}
+      {/* <Nav/> */}
       {/* <OrderList/> */}
       {/* <Cart/> */}
       {/* <Profile/> */}
