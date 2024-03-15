@@ -4,18 +4,24 @@ import validator from "validator";
 // User Schema
 const userSchema = new mongoose.Schema(
   {
-    firstname: {
+    name: {
       type: String,
       trim: true,
-      minlength: [2, "A user username must have more or equal 2 charcters"],
-      maxlength: [200, "A user username must have less or equal 200 charcters"],
+      minlength: [2, "A user name must have more or equal 2 charcters"],
+      maxlength: [200, "A user name must have less or equal 200 charcters"],
     },
-    lastname: {
-      type: String,
-      trim: true,
-      minlength: [2, "A user username must have more or equal 2 charcters"],
-      maxlength: [200, "A user username must have less or equal 200 charcters"],
-    },
+    // firstname: {
+    //   type: String,
+    //   trim: true,
+    //   minlength: [2, "A user username must have more or equal 2 charcters"],
+    //   maxlength: [200, "A user username must have less or equal 200 charcters"],
+    // },
+    // lastname: {
+    //   type: String,
+    //   trim: true,
+    //   minlength: [2, "A user username must have more or equal 2 charcters"],
+    //   maxlength: [200, "A user username must have less or equal 200 charcters"],
+    // },
     email: {
       type: String,
       required: [true, "A user must have an email"],

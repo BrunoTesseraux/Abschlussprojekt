@@ -32,7 +32,7 @@ const shopSchema = new mongoose.Schema(
     ],
     promotions: [{ type: mongoose.Types.ObjectId, ref: "Promotion" }], // Promotions, die dem Shop zugeordnet sind
   },
-  { collection: "Shop", timestamps: true }
+  { collection: "Shops", timestamps: true }
 );
 
 shopSchema.index({ "shopAddress.location": "2dsphere" });
