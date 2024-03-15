@@ -1,5 +1,3 @@
-import { User } from "../../../model/index.js"
+import { User } from "../../../models/index.js";
 
-export const updateUserProfil = async () => {
-    
-}
+export const updateUserProfil = async () => {};
