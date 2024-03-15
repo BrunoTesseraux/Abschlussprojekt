@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Profile.scss";
+import TopNav from "../../components/TopNav/TopNav";
 
 const Profile = () => {
     const formatDate = (date) => {
@@ -21,7 +22,7 @@ const Profile = () => {
             city: 'München',
             zip: '80339'
         },
-        phoneNumber: '089 519940',
+        phoneNumber: '',
         profilePicture: './profilbild.png',
         member: true
     });
@@ -29,6 +30,7 @@ const Profile = () => {
     return (
         <section className="profile">
             <div className="gradient-background">
+            <TopNav location="Profile"/>
                 <div className="profile-picture-container">
                     <img src={user.profilePicture} className="profile-picture" alt="" />
                     <div className="camera-border"><img src="./camera-icon.svg" alt="" /></div>
