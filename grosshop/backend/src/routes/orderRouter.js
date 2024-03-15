@@ -8,6 +8,6 @@ router
   .get(OrderController.getAllOrdersCtrl)
   .post(OrderController.postUserOrder);
 
-router.patch("/id");
+router.patch("/:id");
 
 export default router;

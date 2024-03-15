@@ -13,7 +13,7 @@ const shopAddressSchema = new mongoose.Schema(
       coordinates: { type: [Number], default: [0, 0] },
     },
   },
-  { collection: "Shop", timestamps: true }
+  { collection: "Shops", timestamps: true }
 );
 
 const shopSchema = new mongoose.Schema(
