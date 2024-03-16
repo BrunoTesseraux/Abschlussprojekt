@@ -26,7 +26,7 @@ router
   .route("/:uid/wishlist")
   .get(WishlistController.getWishlistCtrl)
   .patch(WishlistController.patchOneWishlistItemCtrl)
-  .patch(WishlistController.patchManyWishlistItemsCtrl);
+  // .patch(WishlistController.patchManyWishlistItemsCtrl);
 
 // router
 //   .route("/wishlist/:id")

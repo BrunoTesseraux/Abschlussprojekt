@@ -71,4 +71,4 @@ const ProductService = {
     getProductDetail,
 }
 
-export { UserService, ShopService, PromotionService };
+export { UserService, ShopService, PromotionService, ProductService };

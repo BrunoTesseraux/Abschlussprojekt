@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema(
     },
     passwordConfirm: {
       type: String,
-      required: [true, "Please confirm your password"],
+      // required: [true, "Please confirm your password"],
       validate: {
         // This only works on CREATE and SAVE!!!
         validator: function (el) {
@@ -75,7 +75,7 @@ const userSchema = new mongoose.Schema(
         productId: { type: mongoose.Types.ObjectId, ref: "Product" },
         quantity: {
           type: Number,
-          required: [true, "A user must have a wishlist"],
+          // required: [true, "A user must have a wishlist"],
           min: 1,
         },
       },
