@@ -13,6 +13,10 @@ import OrderList from './pages/Lists/OrderList'
 import Register from './pages/Registry/Register'
 import SignIn from './pages/Registry/SignIn'
 import SuccessNotification from './components/SuccessNotification/SuccessNotification'
+import Filter from './components/Filter/Filter'
+import CategoryList from './components/CategoryList/CategoryList'
+import ProductListSmall from './pages/ProductListSmall/ProductListSmall'
+import CategoryPage from './pages/CategoryPage/CategoryPage'
 
 
 function App() {
@@ -23,12 +27,16 @@ function App() {
       {/* <Register/> */}
       {/* <SuccessNotification/> */}
       {/* <SignIn/> */}
-      {/* <Nav/> */}
+      <Nav/>
       {/* <OrderList/> */}
+      <CategoryPage/>
+      {/* <Filter/> */}
       {/* <Cart/> */}
+      {/* <ProductListSmall/> */}
       {/* <Profile/> */}
       {/* <EditProfile/> */}
       {/* <CategoryCard/> */}
+      {/* <CategoryList/> */}
       {/* <ProductDetail/> */}
       {/* <Wishlist/> */}
     </Router>

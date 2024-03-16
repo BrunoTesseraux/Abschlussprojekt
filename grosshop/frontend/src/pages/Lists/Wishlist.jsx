@@ -40,7 +40,7 @@ const Wishlist = () => {
     return ( 
 
         <section className="list">
-        <TopNav location="Wishlist" withBinIcon={true}/>
+        <TopNav location="Wishlist" actionType="bin"/>
         {cartItems.length === 0 ? (
 
             <div className="empty-list">
