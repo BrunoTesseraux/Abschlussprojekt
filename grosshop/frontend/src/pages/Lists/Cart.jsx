@@ -53,7 +53,7 @@ const Cart = () => {
 
     return (
         <section className="list">
-            <TopNav location="My Cart" withBinIcon={true}/>
+            <TopNav location="My Cart" actionType="bin"/>
             {cartItems.length === 0 ? (
 
                 <div className="empty-list">

@@ -10,11 +10,11 @@ const OrderCard = ({ order }) => {
 
     return (
         <div className="order-card">
-            <section className="left">
+            <section className="order-section left">
                 <div className='order-number'>{order.orders.orderNumber}</div>
                 <div className='total-price'>${totalPrice.toFixed(2)}</div>
             </section>
-            <section className="right">
+            <section className="order-section right">
                 <div>
                     <span className={`status ${order.orders.orderStatus.toLowerCase()}`}>{order.orders.orderStatus}</span>
                     <span className={`status ${order.orders.paymentStatus.toLowerCase()}`}>{order.orders.paymentStatus}</span>

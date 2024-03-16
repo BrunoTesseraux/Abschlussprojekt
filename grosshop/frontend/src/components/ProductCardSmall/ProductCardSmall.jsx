@@ -1,30 +1,38 @@
 import { useState } from "react";
-import "./ProductCardSmall.scss"
+import "./ProductCardSmall.scss";
 
-const ProductCardSmall  = () => {
+const ProductCardSmall = ({ product }) => {
+    const [likeSrc, setLikeSrc] = useState("/like.svg");
 
-    const [product, setProduct] = useState({
-        productName: "Bavarian Beer",
-        productImage: "/bier.jpg",
-        price: 11.00,
-        rating: 6,
-        ratio: [{
-            amount: 1,
-            unit: "L"
-        }],
-        cuisine: "German",
-        productType: "Beer"
-    });
+    const handleLikeClick = () => {
+        if (likeSrc === "/like.svg") {
+            setLikeSrc("/like2.svg");
+        } else {
+            setLikeSrc("/like.svg");
+        }
+    };
 
-    return ( 
+    return (
         <article className="product-card-small">
-            <img src={product.productImage} alt="Produktbild" />
-            <h2>{product.productName}</h2>
-            <div>
-            <h3>{product.price}$</h3>
-            <p><img src="./star.svg" alt="" />{product.rating}</p>
+            <div className="pictures">
+                <img src={product.productImage} alt="Produktbild" />
+                <img
+                    src={likeSrc}
+                    className="like"
+                    alt=""
+                    onClick={handleLikeClick}
+                />
             </div>
-        </article> );
-}
- 
+            <h2>{product.productName}</h2>
+            <div className="price-rating">
+                <h3>{product.price}$</h3>
+                <p>
+                    <img src="./star.svg" alt="" />
+                    {product.rating}
+                </p>
+            </div>
+        </article>
+    );
+};
+
 export default ProductCardSmall;
