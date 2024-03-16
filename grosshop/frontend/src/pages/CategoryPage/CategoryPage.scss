@@ -1,0 +1,27 @@
+.category-page{
+    .category-select{
+        margin-top: 20px;
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none; /* Breite des Scrollbalkens auf 0 setzen */
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar { /* Für Webkit-basierte Browser (Chrome, Safari) */
+            width: 0;
+            background-color: transparent; /* Farbe des Scrollbalkens transparent setzen */
+        }
+        .category-select-button{
+            width: fit-content;
+            border: none;
+            border-bottom: 1px solid #70707029;
+            border-top: 1px solid #70707029;
+            background-color: white;
+            font-family: "poppins-regular";
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: #777777;
+            &.active{
+                border-bottom: 2px solid #40AA54;
+            }
+        }
+    }
+}
