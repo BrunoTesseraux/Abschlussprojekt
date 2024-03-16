@@ -1,0 +1,40 @@
+.success-notification{
+    background-color: #9E9E9E;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 60%;
+    .notification{
+        background-color: white;
+        width: 80%;
+        margin: auto; 
+        padding: 30px;
+        text-align: center;
+        border-radius: 25px;
+        font-family: "poppins-regular";
+        color: #777777;
+        h1{
+            color: #2C3066;
+            font-family: "poppins-medium";
+            margin-top: 25px;
+        }
+        p{
+            width: 200px;
+            display: block;
+            margin: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        img{
+            margin: auto;
+            margin-top: 30px;
+        }
+        .shadow{
+            background-color: rgba(56, 60, 60, 0.3);
+            border-radius: 50%;
+            width: 60px;
+            margin: auto;
+            margin-top: 25px;
+            height: 10px;
+        }
+    }
+}
