@@ -1,76 +1,76 @@
 .welcome-page {
-    text-align: center;
+  text-align: center;
+  img {
+    margin-inline: auto;
+    margin-top: 5rem;
+  }
+  h1 {
+    font-family: "poppins-regular";
+    color: #40aa54;
+    font-size: 3.1875rem;
+    margin-top: 10px;
+    span {
+      font-family: "poppins-bold";
+    }
+  }
+  h2 {
+    font-family: "poppins-medium";
+    font-size: 1.375rem;
+    color: #2c3066;
+    margin-top: 2rem;
+  }
+  p {
+    font-family: "poppins-regular";
+    font-size: 1rem;
+    color: #555555;
+    margin: 1rem 0 1rem 0;
+    width: 80%;
+    margin-inline: auto;
+    background-color: #55555519;
+    padding: 5px;
+    border-radius: 25px;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    align-items: center;
+    button {
+      width: 80%;
+      padding: 1rem;
+      font-family: "poppins-regular";
+      font-size: 1.125rem;
+      border: none;
+      border-radius: 8px;
+      &:nth-of-type(1) {
+        background-color: #d8eedc;
+        color: #2c3066;
+      }
+      &:nth-of-type(2) {
+        background-color: #777777;
+        color: #ffffff;
+      }
+    }
+  }
+  .start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #40aa54;
+    transition: 0.1s;
+    &.hide-overlay {
+      opacity: 0;
+      pointer-events: none; // Ensure clicks don't interact with hidden overlay
+      display: none;
+    }
+
     img {
-        margin-inline: auto;
-        margin-top: 5rem;
+      margin-top: 15rem;
     }
     h1 {
-        font-family: "poppins-regular";
-        color: #40AA54;
-        font-size: 3.1875rem;
-        margin-top: 10px;
-        span {
-            font-family: "poppins-bold";
-        }
+      color: white;
     }
-    h2 {
-        font-family: "poppins-medium";
-        font-size: 1.375rem;
-        color: #2C3066;
-        margin-top: 2rem;
-    }
-    p {
-        font-family: "poppins-regular";
-        font-size: 1rem;
-        color: #555555;
-        margin: 1rem 0 1rem 0;
-        width: 80%;
-        margin-inline: auto;
-        background-color: #55555519;
-        padding: 5px;
-        border-radius: 25px;
-    }
-    div {
-
-        display: flex;
-        flex-direction: column;
-        gap: 0.625rem;
-        align-items: center;
-        button {
-            width: 80%;
-            padding: 1rem;
-            font-family: "poppins-regular";
-            font-size: 1.125rem;
-            border: none;
-            border-radius: 8px;
-            &:nth-of-type(1) {
-                background-color: #D8EEDC;
-                color: #2C3066;
-            }
-            &:nth-of-type(2) {
-                background-color: #777777;
-                color: #ffffff;
-            }
-        }
-    }
-    .start-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #40AA54;
-        transition: 0.1s;
-        &.hide-overlay {
-            opacity: 0;
-            pointer-events: none; // Ensure clicks don't interact with hidden overlay
-        }
-
-        img{
-            margin-top: 15rem;
-        }
-        h1 {
-            color: white;
-        }
-    }
+  }
 }

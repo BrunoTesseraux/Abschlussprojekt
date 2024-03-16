@@ -13,20 +13,34 @@ import {
 import ErrorController from "./src/controllers/errorController.js";
 import AppError from "./src/utils/AppError.js";
 
-dotenv.config();
+dotenv.config({ path: "./config.env" });
+
+// Defines the session cookie expiration date
+const tenDaysInMs = 10 * 24 * 60 * 60 * 1000;
+
+const isFrontendLocalhost =
+  process.env.FRONTEND_URL.startsWith("http://localhost");
+const cookieSessionSecret = process.env.COOKIE_SESSION_SECRET;
 
 const app = express();
 
+// re-configure cors middleware
 app.use(cors());
+// add parser for cookies
+app.set("trust proxy", 1); // trust first proxy
+const cookieSessionOptions = {
+  name: "session",
+  secret: cookieSessionSecret, // frei wählbar
+  httpOnly: true,
+  expires: new Date(Date.now() + tenDaysInMs),
+  sameSite: isFrontendLocalhost ? "lax" : "none",
+  secure: isFrontendLocalhost ? false : true,
+};
+app.use(cookieSession(cookieSessionOptions));
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-
-// Defines the session cookie expiration date
-const tenDaysInMs = 10 * 24 * 60 * 60 * 1000;
-// const isFrontendLocalhost =
-//   process.env.FRONTEND_URL.startsWith("http://localhost");
 
 app.use(express.json());
 app.use(express.static(`./public`));

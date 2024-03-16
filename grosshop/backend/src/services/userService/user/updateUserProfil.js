@@ -3,6 +3,7 @@ import { User } from "../../../models/index.js";
 import AppError from "../../../utils/AppError.js";
 
 export const updateUserProfil = async (userId, updatedProfileData, next) => {
+  
     const updatedUser = await User.findByIdAndUpdate(
         userId,
         updatedProfileData,
