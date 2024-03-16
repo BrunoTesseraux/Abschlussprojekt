@@ -18,18 +18,19 @@ import CategoryList from './components/CategoryList/CategoryList'
 import ProductListSmall from './pages/ProductListSmall/ProductListSmall'
 import CategoryPage from './pages/CategoryPage/CategoryPage'
 
-
 function App() {
-
   return (
     <Router>
-      {/* <Welcome/> */}
-      {/* <Register/> */}
-      {/* <SuccessNotification/> */}
-      {/* <SignIn/> */}
-      <Nav/>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/register-success" element={<SuccessNotification />} />
+      </Routes>
+
+      {/* <Nav/> */}
       {/* <OrderList/> */}
-      <CategoryPage/>
+      {/*<CategoryPage/>*/}
       {/* <Filter/> */}
       {/* <Cart/> */}
       {/* <ProductListSmall/> */}
@@ -40,7 +41,7 @@ function App() {
       {/* <ProductDetail/> */}
       {/* <Wishlist/> */}
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

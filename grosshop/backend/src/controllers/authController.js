@@ -29,7 +29,7 @@ const createSendToken = (user, statusCode, res) => {
 const postSignupCtrl = catchAsync(async (req, res, next) => {
   console.log("================", req.body);
   const newUser = await UserService.registerUser(req.body, next);
-  createSendToken(newUser, OK, res);
+  createSendToken(newUser, CREATED, res);
 });
 
 const postLoginCtrl = catchAsync(async (req, res, next) => {
