@@ -1,25 +1,11 @@
 import mongoose from "mongoose";
 import validator from "validator";
-
-// Shop Schema
-const shopAddressSchema = new mongoose.Schema(
-  {
-    street: { type: String },
-    streetNumber: { type: String },
-    city: { type: String },
-    zip: { type: String },
-    location: {
-      type: { type: String, enum: ["Point"], default: "Point" },
-      coordinates: { type: [Number], default: [0, 0] },
-    },
-  },
-  { collection: "Shops", timestamps: true }
-);
+import { addressSchema } from "./adressSchema.js";
 
 const shopSchema = new mongoose.Schema(
   {
     shopName: { type: String, required: true },
-    shopAddress: shopAddressSchema,
+    shopAddress: addressSchema,
     products: [
       {
         productId: {
