@@ -16,6 +16,7 @@ const productSchema = new mongoose.Schema(
     ],
     cuisine: { type: String },
     category: { type: String, required: true },
+    deals: { type: String, enum: ["today", "member", "product"] },
   },
   { collection: "Products", timestamps: true }
 );

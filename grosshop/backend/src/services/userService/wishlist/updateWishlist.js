@@ -1,49 +1,40 @@
-import { User } from '../../../models/index.js'; // Annahme: Pfad zur Benutzermodell-Datei
+import mongoose from "mongoose";
+import { Product, User } from "../../../models/index.js"; // Annahme: Pfad zur Benutzermodell-Datei
+import AppError from "../../../utils/AppError.js";
 
-export const updateWishlist = async (userId, wishlistData) => {
-    console.log(wishlistData);
-    try {
-        // Finde den Benutzer anhand der Benutzer-ID
-        const user = await User.findById(userId);
+export const updateWishlist = async (userId, wishlistData, next) => {
+  try {
+    // Finde den Benutzer anhand der Benutzer-ID
+    const user = await User.findById(userId);
 
-        if (!user) {
-            throw new Error('User not found');
-        }
+    if (!user) return next(new AppError("No User Found", 404));
 
-        // Überprüfe, ob wishlistData ein einzelnes Wishlist-Element oder eine Liste von Wishlist-Elementen ist
-        if (Array.isArray(wishlistData)) {
-            // Wenn wishlistData eine Liste ist, iteriere durch die Liste und aktualisiere jedes Wishlist-Element
-            wishlistData.forEach(async item => {
-                const { productId, quantity } = item;
-                const existingItem = user.wishlist.find(wishlistItem => wishlistItem.productId.toString() === productId.toString());
-                
-                if (existingItem) {
-                    // Wenn das Produkt bereits auf der Wishlist ist, aktualisiere die Menge
-                    existingItem.quantity = quantity;
-                } else {
-                    // Wenn das Produkt nicht auf der Wishlist ist, füge es hinzu
-                    user.wishlist.push({ productId, quantity });
-                }
-            });
-        } else {
-            // Wenn wishlistData ein einzelnes Wishlist-Element ist, aktualisiere es
-            const { productId, quantity } = wishlistData;
-            const existingItem = user.wishlist.find(item => item.productId.toString() === productId.toString());
+    // Verwende for...of für asynchrone Operationen innerhalb der Schleife
+    for (const item of wishlistData) {
+      const { productId, quantity } = item;
+      const existingItemIndex = user.wishlist.findIndex((wishlistItem) =>
+        wishlistItem?.productId?.equals(
+          mongoose.Types.ObjectId.createFromHexString(productId)
+        )
+      );
 
-            if (existingItem) {
-                // Wenn das Produkt bereits auf der Wishlist ist, aktualisiere die Menge
-                existingItem.quantity = quantity;
-            } else {
-                // Wenn das Produkt nicht auf der Wishlist ist, füge es hinzu
-                user.wishlist.push({ productId, quantity });
-            }
-        }
-
-        // Speichere die Änderungen im Benutzerobjekt
-        await user.save();
-
-        return user.wishlist; // Gib die aktualisierte Wishlist zurück
-    } catch (error) {
-        throw error; // Werfe den Fehler weiter, um ihn im Aufrufer zu behandeln
+      if (existingItemIndex > -1) {
+        // Produkt existiert bereits in der Wishlist, aktualisiere die Menge
+        user.wishlist[existingItemIndex].quantity = quantity;
+      } else {
+        // Produkt existiert nicht in der Wishlist, füge es hinzu
+        user.wishlist.push({
+          productId: mongoose.Types.ObjectId.createFromHexString(productId),
+          quantity,
+        });
+      }
     }
+
+    // Speichere die Änderungen im Benutzerobjekt
+    await user.save();
+
+    return user.wishlist; // Gib die aktualisierte Wishlist zurück
+  } catch (error) {
+    throw error; // Werfe den Fehler weiter, um ihn im Aufrufer zu behandeln
+  }
 };

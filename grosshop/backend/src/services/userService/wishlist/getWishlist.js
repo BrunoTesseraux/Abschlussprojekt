@@ -1,17 +1,16 @@
-import { User } from '../../../models/index.js'; // Annahme: Pfad zur Benutzermodell-Datei
+import { User } from "../../../models/index.js";
+import AppError from "../../../utils/AppError.js";
 
-export const getWishlist = async (userId) => {
-    try {
-        // Finde den Benutzer anhand der Benutzer-ID
-        const user = await User.findById(userId);
+export const getWishlist = async (userId, next) => {
+  try {
+    // Finde den Benutzer anhand der Benutzer-ID
+    const user = await User.findById(userId);
 
-        if (!user) {
-            throw new Error('User not found');
-        }
+    if (!user) return next(new AppError("No user found", 404));
 
-        // Gib die Wishlist des Benutzers zurück
-        return user.wishlist;
-    } catch (error) {
-        throw error; // Werfe den Fehler weiter, um ihn im Aufrufer zu behandeln
-    }
+    // Gib die Wishlist des Benutzers zurück
+    return user.wishlist;
+  } catch (error) {
+    throw error; // Werfe den Fehler weiter, um ihn im Aufrufer zu behandeln
+  }
 };

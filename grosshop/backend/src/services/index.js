@@ -13,9 +13,9 @@ import { getHistories } from "./userService/orderHistory/getHistories.js";
 import { updateHistory } from "./userService/orderHistory/updateHistory.js";
 import { deleteRemoveItem } from "./userService/user/deleteRemoveItem.js";
 import { deleteUser } from "./userService/user/deleteUser.js";
-import { getOneUser } from './userService/user/getOneUser.js'
+import { getOneUser } from "./userService/user/getOneUser.js";
 import { updateUserProfil } from "./userService/user/updateUserProfil.js";
-import { deleteWishlistItem } from "./userService/wishlist/deleteWishlistItem.js";
+import { removeWishlistItem } from "./userService/wishlist/removeWishlistItem.js";
 import { getWishlist } from "./userService/wishlist/getWishlist.js";
 import { updateWishlist } from "./userService/wishlist/updateWishlist.js";
 import { getShop } from "./shopService/getShop.js";
@@ -28,47 +28,45 @@ import { addNewProduct } from "./productService/addNewProduct.js";
 import { getProduct } from "./productService/getProduct.js";
 import { getProductDetail } from "./productService/getProductDetail.js";
 
-
-
 const UserService = {
-    registerUser,
-    getOneUser,
-    updateUserProfil,
-    deleteUser,
-    deleteRemoveItem,
-    deleteWishlistItem,
-    getWishlist,
-    updateWishlist,
-    forgotPassword,
-    loginUser,
-    refreshUserToken,
-    resetPassword,
-    updatePassword,
-    verifyEmail,
-    deleteCartItem,
-    getCart,
-    updateCartItem,
-    addHistory,
-    getHistories,
-    updateHistory,
-}
+  registerUser,
+  getOneUser,
+  updateUserProfil,
+  deleteUser,
+  deleteRemoveItem,
+  removeWishlistItem,
+  getWishlist,
+  updateWishlist,
+  forgotPassword,
+  loginUser,
+  refreshUserToken,
+  resetPassword,
+  updatePassword,
+  verifyEmail,
+  deleteCartItem,
+  getCart,
+  updateCartItem,
+  addHistory,
+  getHistories,
+  updateHistory,
+};
 
 const ShopService = {
-    getShop,
-    getShops,
-}
+  getShop,
+  getShops,
+};
 
 const PromotionService = {
-    getMemberDeals,
-    getProductDeals,
-    getPromotion,
-    getTodayDeals,
-}
+  getMemberDeals,
+  getProductDeals,
+  getPromotion,
+  getTodayDeals,
+};
 
 const ProductService = {
-    addNewProduct,
-    getProduct,
-    getProductDetail,
-}
+  addNewProduct,
+  getProduct,
+  getProductDetail,
+};
 
 export { UserService, ShopService, PromotionService, ProductService };
