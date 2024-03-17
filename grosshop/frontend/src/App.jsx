@@ -4,7 +4,7 @@ import CategoryCard from './components/CategoryCard/CategoryCard'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import Welcome from './pages/Welcome/Welcome'
 import Nav from './components/Nav/Nav'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Profile from './pages/Profile/Profile'
 import EditProfile from './pages/Profile/EditProfile'
 import Cart from './pages/Lists/Cart'
@@ -28,10 +28,10 @@ function App() {
         <Route path="/register-success" element={<SuccessNotification />} />
       </Routes>
 
-      {/* <Nav/> */}
-      {/* <OrderList/> */}
-      {/*<CategoryPage/>*/}
-      {/* <Filter/> */}
+      {/* <Nav/>
+      <OrderList/>
+      <CategoryPage/>
+      <Filter/> */}
       {/* <Cart/> */}
       {/* <ProductListSmall/> */}
       {/* <Profile/> */}

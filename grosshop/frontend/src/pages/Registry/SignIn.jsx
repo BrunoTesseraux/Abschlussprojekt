@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
 import "./Registry.scss";
+import { useEffect, useState } from "react";
 
 const SignIn = () => {
+
+  const [formActive, setFormActive] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFormActive(true);
+    }, 50); 
+  }, []);
+
   return (
     <section className="registry">
-      <article className="form-container">
+      <article className={`form-container ${formActive ? 'active' : ''}`}>
         <TopNav />
         <div className="grosshop">
           <img src="/grocery.svg" alt="" />

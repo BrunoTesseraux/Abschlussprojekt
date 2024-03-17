@@ -1,7 +1,7 @@
 import { Link, Navigate } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
 import "./Registry.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { backendUrl } from "../../api/api.js";
 
 const Register = () => {
@@ -9,6 +9,14 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [registered, setRegistered] = useState(null);
+
+  const [formActive, setFormActive] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFormActive(true);
+    }, 50); 
+  }, []);
 
   const fetchRegistrationData = async () => {
     try {
@@ -37,7 +45,7 @@ const Register = () => {
 
   return (
     <section className="registry">
-      <article className="form-container">
+      <article className={`form-container ${formActive ? 'active' : ''}`}>
         <TopNav />
         <div className="create-account">
           <h1>Create new Account</h1>
