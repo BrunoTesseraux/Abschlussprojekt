@@ -3,16 +3,23 @@ import { User } from "../../../models/index.js";
 import AppError from "../../../utils/AppError.js";
 
 export const updateUserProfil = async (userId, updatedProfileData, next) => {
-  
-    const updatedUser = await User.findByIdAndUpdate(
-        userId,
-        updatedProfileData,
-        { new: true }
-      );
+  // const newUser = {
+  //   name: updatedProfileData.name,
+  //   dateOfBirth: updatedProfileData.dateOfBirth,
+  //   address: updatedProfileData.address,
+  //   phoneNumber: updatedProfileData.phoneNumber,
+  //   profilePicture: updatedProfileData.profilePicture,
+  //   member: updatedProfileData.member,
+  // };
 
-    if (!updatedUser) return  next(new AppError("No User found with that ID", BAD_REQUEST));
+  const updatedUser = await User.findByIdAndUpdate(userId, updatedProfileData, {
+    new: true,
+  });
 
-    console.log(updatedUser);
+  if (!updatedUser)
+    return next(new AppError("No User found with that ID", BAD_REQUEST));
 
-    return updatedUser;
+  console.log(updatedUser);
+
+  return updatedUser;
 };
