@@ -17,7 +17,7 @@ const Register = () => {
       setFormActive(true);
     }, 50); 
   }, []);
-
+console.log({ email, password, passwordConfirm });
   const fetchRegistrationData = async () => {
     try {
       const res = await fetch(backendUrl + "/api/v1/users/signup", {
