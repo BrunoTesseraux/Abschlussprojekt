@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import TopNav from "../../components/TopNav/TopNav";
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
 
 const EditProfile = () => {
+    
     const [user, setUser] = useState({
         firstname: 'Karl',
         lastname: 'August',
@@ -18,7 +20,7 @@ const EditProfile = () => {
         profilePicture: './profilbild.png',
         member: true
     });
-
+    
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
         setUser(prevUser => ({
@@ -29,6 +31,8 @@ const EditProfile = () => {
             }
         }));
     };
+    
+    const [isImageUploadActive, setImageUploadActive] = useState(false);
 
     const handleCameraBorderClick = () => {
         setImageUploadActive(true);
