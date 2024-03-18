@@ -19,24 +19,28 @@ import CategoryList from "./components/CategoryList/CategoryList";
 import ProductListSmall from "./pages/ProductListSmall/ProductListSmall";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import { useState } from "react";
+import { UserContextProvider } from "./contextes/UserContext";
+
 
 function App() {
   const [login, setLogin] = useState(null);
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route
-          path="/login"
-          element={<SignIn login={login} onLogin={setLogin} />}
-        />
-        <Route path="/signup" element={<Register/>} />
-        <Route path="/register-success" element={<SuccessNotification />} />
-        <Route path="/orders" element={<OrderList />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
+      <UserContextProvider>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route
+            path="/login"
+            element={<SignIn login={login} onLogin={setLogin} />}
+          />
+          <Route path="/signup" element={<Register onLogin={setLogin} />} />
+          <Route path="/register-success" element={<SuccessNotification />} />
+          <Route path="/orders" element={<OrderList />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist/" element={<Wishlist />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </UserContextProvider>
       {login ? <Nav /> : null}
 
       {/*<CategoryPage/>*/}
