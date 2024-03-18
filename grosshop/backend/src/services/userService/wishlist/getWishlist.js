@@ -3,14 +3,31 @@ import AppError from "../../../utils/AppError.js";
 
 export const getWishlist = async (userId, next) => {
   try {
-    // Finde den Benutzer anhand der Benutzer-ID
-    const user = await User.findById(userId);
+    const userWithWishlist = await User.findById(userId)
+      .populate("wishlist.productId")
+      .exec();
 
-    if (!user) return next(new AppError("No user found", 404));
+    if (!userWithWishlist) {
+      return next(new AppError("No user found", 404));
+    }
 
-    // Gib die Wishlist des Benutzers zurück
-    return user.wishlist;
+    const wishlistProducts = userWithWishlist.wishlist.map((item) => {
+      const { productName, productImage, price, rating, cuisine, category } =
+        item.productId;
+      return {
+        productId: item.productId._id,
+        productName,
+        productImage,
+        price,
+        rating,
+        cuisine,
+        category,
+        quantity: item.quantity,
+      };
+    });
+
+    return wishlistProducts;
   } catch (error) {
-    throw error; // Werfe den Fehler weiter, um ihn im Aufrufer zu behandeln
+    throw error;
   }
 };
