@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import {
   AuthController,
   CartController,
@@ -9,11 +10,21 @@ import {
 
 const router = express.Router();
 
+// Multer
+const attachmentStorage = multer.diskStorage({
+  destination: "./uploads/",
+  filename: (_, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+
+const uploadMiddleware = multer({ storage: attachmentStorage });
+
 // general user routes
 router
   .route("/:uid")
   .get(UserController.getOneUserCtrl)
-  .patch(UserController.patchUpdateProfileCtrl)
+  .patch(uploadMiddleware.single("attachment"), UserController.patchUpdateProfileCtrl)
   .delete(UserController.deleteUserCtrl);
 
 // remove Item from wishlist or cart route
