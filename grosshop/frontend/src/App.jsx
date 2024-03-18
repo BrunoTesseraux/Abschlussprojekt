@@ -30,7 +30,7 @@ function App() {
           path="/login"
           element={<SignIn login={login} onLogin={setLogin} />}
         />
-        <Route path="/signup" element={<Register onLogin={setLogin} />} />
+        <Route path="/signup" element={<Register/>} />
         <Route path="/register-success" element={<SuccessNotification />} />
         <Route path="/orders" element={<OrderList />} />
         <Route path="/cart" element={<Cart />} />

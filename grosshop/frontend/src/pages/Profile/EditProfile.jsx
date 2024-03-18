@@ -30,6 +30,13 @@ const EditProfile = () => {
         }));
     };
 
+    const handleCameraBorderClick = () => {
+        setImageUploadActive(true);
+      };
+      const handleImageUploadClose = () => {
+          setImageUploadActive(false);
+      };
+
     const handleSave = () => {};
     
 
@@ -38,8 +45,11 @@ const EditProfile = () => {
             <div className="gradient-background">
             <TopNav location="Edit Profile"/>
                 <div className="profile-picture-container">
-                    <img src={user.profilePicture} className="profile-picture" alt="" />
-                    <div className="camera-border"><img src="./camera-icon.svg" alt="" /></div>
+                <img src={user.profilePicture} className="profile-picture" alt="" />
+                    <div className={`camera-border ${isImageUploadActive ? "active" : ""}`} onClick={handleCameraBorderClick}>
+                    <img src="./camera-icon.svg" alt="" />
+                    </div>
+                    {isImageUploadActive && <ImageUpload onClose={handleImageUploadClose}/>}
                 </div>
             </div>
             <div className="detail-wrapper">

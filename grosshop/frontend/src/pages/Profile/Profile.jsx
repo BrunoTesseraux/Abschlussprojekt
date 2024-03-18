@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Profile.scss";
 import TopNav from "../../components/TopNav/TopNav";
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
 
 const Profile = () => {
     const formatDate = (date) => {
@@ -27,13 +28,25 @@ const Profile = () => {
         member: true
     });
 
+    const [isImageUploadActive, setImageUploadActive] = useState(false);
+
+    const handleCameraBorderClick = () => {
+      setImageUploadActive(true);
+    };
+    const handleImageUploadClose = () => {
+        setImageUploadActive(false);
+    };
+
     return (
         <section className="profile">
             <div className="gradient-background">
             <TopNav location="Profile"/>
                 <div className="profile-picture-container">
                     <img src={user.profilePicture} className="profile-picture" alt="" />
-                    <div className="camera-border"><img src="./camera-icon.svg" alt="" /></div>
+                    <div className={`camera-border ${isImageUploadActive ? "active" : ""}`} onClick={handleCameraBorderClick}>
+                    <img src="./camera-icon.svg" alt="" />
+                    </div>
+                    {isImageUploadActive && <ImageUpload onClose={handleImageUploadClose}/>}
                 </div>
             </div>
             <div className="detail-wrapper">

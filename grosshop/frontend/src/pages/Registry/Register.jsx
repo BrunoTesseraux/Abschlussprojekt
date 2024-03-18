@@ -4,7 +4,7 @@ import "./Registry.scss";
 import { useEffect, useState } from "react";
 import { backendUrl } from "../../api/api.js";
 
-const Register = ({ onLogin }) => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -33,7 +33,6 @@ const Register = ({ onLogin }) => {
       setPassword("");
       setPasswordConfirm("");
       setRegistered(true);
-      onLogin(true);
     } catch (error) {
       setRegistered(false);
       console.error("Registration error: User with this email exists");
