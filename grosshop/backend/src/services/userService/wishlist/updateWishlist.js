@@ -11,7 +11,7 @@ export const updateWishlist = async (userId, wishlistData, next) => {
 
     // Verwende for...of für asynchrone Operationen innerhalb der Schleife
     for (const item of wishlistData) {
-      const { productId, quantity } = item;
+      const { productId, quantity, inWishlist } = item;
       const existingItemIndex = user.wishlist.findIndex((wishlistItem) =>
         wishlistItem?.productId?.equals(
           mongoose.Types.ObjectId.createFromHexString(productId)
@@ -21,11 +21,13 @@ export const updateWishlist = async (userId, wishlistData, next) => {
       if (existingItemIndex > -1) {
         // Produkt existiert bereits in der Wishlist, aktualisiere die Menge
         user.wishlist[existingItemIndex].quantity = quantity;
+        user.wishlist[existingItemIndex].inWishlist = inWishlist;
       } else {
         // Produkt existiert nicht in der Wishlist, füge es hinzu
         user.wishlist.push({
           productId: mongoose.Types.ObjectId.createFromHexString(productId),
           quantity,
+          inWishlist,
         });
       }
     }
