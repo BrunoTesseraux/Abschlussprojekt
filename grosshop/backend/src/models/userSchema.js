@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      minlength: [2, "A user name must have more or equal 2 charcters"],
+      minlength: [0, "A user name must have more or equal 2 charcters"],
       maxlength: [200, "A user name must have less or equal 200 charcters"],
       default: "",
     },
@@ -56,13 +56,16 @@ const userSchema = new mongoose.Schema(
       },
     },
     dateOfBirth: { type: String, default: "" },
-    address: addressSchema,
+    address: {
+      type: addressSchema,
+      default: {}
+    },    
     phoneNumber: { type: String, default: "" },
     profilePicture: {
       type: String,
       trim: true,
       minlength: [
-        3,
+        0,
         "A user profile photo must have more or equal 3 charcters",
       ],
       maxlength: [
