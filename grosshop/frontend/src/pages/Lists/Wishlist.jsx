@@ -11,10 +11,9 @@ const Wishlist = () => {
     const { user } = useContext(UserContext);
 
     const [wishlistItems, setWishlistItems] = useState([]);
-    const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchUserWishlist = async () => {
           try {
             const response = await fetch(backendUrl + `/api/v1/users/${user._id}/wishlist`);
             if (!response.ok) {
@@ -28,24 +27,8 @@ const Wishlist = () => {
             console.error('Error fetching data:', error);
           }
         };
-
-        const fetchProducts = async () => {
-            try {
-              const response = await fetch(backendUrl + "/api/v1/products");
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              const { status, data, error } = await response.json();
-              if (status !== "success") throw new Error(error);
-              else console.log("Whishlistdata incomming", data.wishlist);
-              setWishlistItems(data.wishlist);
-            } catch (error) {
-              console.error('Error fetching data:', error);
-            }
-          };
     
-        fetchUser();
-        fetchProducts();
+        fetchUserWishlist();
     
         // Cleanup function (optional)
         return () => {
@@ -57,7 +40,7 @@ const Wishlist = () => {
 
         <section className="list">
         <TopNav location="Wishlist" actionType="bin"/>
-        {cartItems.length === 0 ? (
+        {wishlistItems.length === 0 ? (
 
             <div className="empty-list">
                 <img src="/empty-wishlist.svg" alt="heart icon" />
@@ -67,8 +50,8 @@ const Wishlist = () => {
 
         ) : (
             <>
-                {cartItems.map((cartItem, index) => (
-                    <ProductCardLarge key={index} cartItem={cartItem} />
+                {wishlistItems.map((wishlistItem, index) => (
+                    <ProductCardLarge key={index} wishlistItem={wishlistItem} />
                 ))}
                 <button className="total">Add to Cart</button>
             </>
