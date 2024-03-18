@@ -27,7 +27,11 @@ router
   .get(WishlistController.getWishlistCtrl)
   .patch(WishlistController.patchOneWishlistItemCtrl)
   .delete(WishlistController.removeProductsFromWishlistCtrl);
-// .patch(WishlistController.patchManyWishlistItemsCtrl);
+
+router.patch(
+  "/:uid/wishlist/moveToCart",
+  WishlistController.moveItemsToCartCtrl
+);
 
 // router
 //   .route("/wishlist/:id")

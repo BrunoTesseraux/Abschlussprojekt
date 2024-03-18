@@ -1,47 +1,46 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./List.scss"
 import TopNav from "../../components/TopNav/TopNav";
 import ProductCardLarge from "../../components/ProductCardLarge/ProductCardLarge";
+import { backendUrl } from "../../api/api";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../contextes/UserContext";
 
 const Wishlist = () => {
 
-    const [cartItems, setCartItems] = useState([
-        {
-            "_id": "60953e3b0b02ff3a44e96104", // Beispiel-Objekt-ID des Eintrags im Warenkorb
-            "product": {
-                "_id": "60953e3b0b02ff3a44e96105", // Beispiel-Objekt-ID des Produkts
-                "name": "Bavarian Beer",
-                "image": "/bier.jpg",
-                "price": 11.00,
-                "rating": 6,
-                "cuisine": "German",
-                "productType": "Beer"
-                // Weitere Produktinformationen...
-            },
-            "quantity": 2 // Beispielanzahl im Warenkorb
-        },
-        {
-            "_id": "60953e3b0b02ff3a44e96104", // Beispiel-Objekt-ID des Eintrags im Warenkorb
-            "product": {
-                "_id": "60953e3b0b02ff3a44e96106", // Beispiel-Objekt-ID des Produkts
-                "name": "Another Product",
-                "image": "/bier.jpg",
-                "price": 15.00,
-                "rating": 8,
-                "cuisine": "Italian",
-                "productType": "Food"
-                // Weitere Produktinformationen...
-            },
-            "quantity": 3 // Beispielanzahl im Warenkorb
-        },
-        // Weitere Einträge im Warenkorb...
-    ]);
+    const { user } = useContext(UserContext);
+
+    const [wishlistItems, setWishlistItems] = useState([]);
+
+    useEffect(() => {
+        const fetchUserWishlist = async () => {
+          try {
+            const response = await fetch(backendUrl + `/api/v1/users/${user._id}/wishlist`);
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const { status, data, error } = await response.json();
+            if (status !== "success") throw new Error(error);
+            else console.log("Whishlistdata incomming", data.wishlist);
+            setWishlistItems(data.wishlist);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchUserWishlist();
+    
+        // Cleanup function (optional)
+        return () => {
+          // Perform cleanup, if necessary
+        };
+      }, []);
 
     return ( 
 
         <section className="list">
         <TopNav location="Wishlist" actionType="bin"/>
-        {cartItems.length === 0 ? (
+        {wishlistItems.length === 0 ? (
 
             <div className="empty-list">
                 <img src="/empty-wishlist.svg" alt="heart icon" />
@@ -51,8 +50,8 @@ const Wishlist = () => {
 
         ) : (
             <>
-                {cartItems.map((cartItem, index) => (
-                    <ProductCardLarge key={index} cartItem={cartItem} />
+                {wishlistItems.map((wishlistItem, index) => (
+                    <ProductCardLarge key={index} wishlistItem={wishlistItem} />
                 ))}
                 <button className="total">Add to Cart</button>
             </>

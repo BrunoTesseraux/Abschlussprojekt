@@ -22,6 +22,7 @@ import { updateUserProfil } from "./userService/user/updateUserProfil.js";
 import { removeWishlistItem } from "./userService/wishlist/removeWishlistItem.js";
 import { getWishlist } from "./userService/wishlist/getWishlist.js";
 import { updateWishlist } from "./userService/wishlist/updateWishlist.js";
+import { moveItemsToCart } from "./userService/wishlist/moveItemsToCart.js";
 
 import { getShop } from "./shopService/getShop.js";
 import { getShops } from "./shopService/getShops.js";
@@ -46,6 +47,7 @@ const UserService = {
   removeWishlistItem,
   getWishlist,
   updateWishlist,
+  moveItemsToCart,
   forgotPassword,
   loginUser,
   refreshUserToken,

@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 export const addressSchema = new mongoose.Schema(
   {
     street: { type: String },
-    streetNumber: { type: String },
     city: { type: String },
     zip: { type: String },
     location: {

@@ -28,19 +28,6 @@ const patchOneWishlistItemCtrl = catchAsync(async (req, res, next) => {
   });
 });
 
-// const patchManyWishlistItemsCtrl = catchAsync(async (req, res, next) => {
-//   const userId = req.params.uid; // Annahme: Benutzer-ID wird aus dem Auth-Token abgerufen
-//   const wishlistItems = req.body; // Annahme: Ein Array von Objekten mit productId und quantity
-
-//   // Annahme: updateWishlist erhält die Benutzer-ID und ein Array von Objekten mit productId und quantity als Argument
-//   const updatedWishlist = await UserService.updateWishlist(userId, wishlistItems);
-
-//   res.status(OK).json({
-//     status: "success",
-//     data: { wishlist: updatedWishlist }
-//   });
-// });
-
 const removeProductsFromWishlistCtrl = catchAsync(async (req, res, next) => {
   const userId = req.params.uid; // Annahme: Benutzer-ID wird aus dem Auth-Token abgerufen
   const wishlistItemIds = req.body;
@@ -62,10 +49,23 @@ const removeProductsFromWishlistCtrl = catchAsync(async (req, res, next) => {
   });
 });
 
+export const moveItemsToCartCtrl = catchAsync(async (req, res, next) => {
+  const userId = req.params.uid;
+  const { itemIds } = req.body; // Die IDs der Artikel, die verschoben werden sollen
+  console.log("================", itemIds);
+  const result = await UserService.moveItemsToCart(userId, itemIds, next);
+
+  res.status(200).json({
+    status: "success",
+    message: "Items successfully moved to cart",
+    data: result,
+  });
+});
+
 export const WishlistController = {
   getWishlistCtrl,
   patchOneWishlistItemCtrl,
-  // patchManyWishlistItemsCtrl,
+  moveItemsToCartCtrl,
   removeProductsFromWishlistCtrl,
 };
 
