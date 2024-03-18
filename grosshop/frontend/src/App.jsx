@@ -43,7 +43,7 @@ function App() {
       {/* <Filter/> */}
       {/* <ProductListSmall/> */}
 
-      {/* <EditProfile/> */}
+      <EditProfile/>
       {/* <CategoryCard/> */}
       {/* <CategoryList/> */}
       {/* <ProductDetail/> */}
