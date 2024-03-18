@@ -3,7 +3,7 @@ import ProductCardSmall from "../../components/ProductCardSmall/ProductCardSmall
 import "./ProductListSmall.scss";
 import TopNav from "../../components/TopNav/TopNav";
 
-const ProductListSmall = () => {
+const ProductListSmall = ({ maxProducts }) => {
     const [products, setProducts] = useState([
         {
             _id: "60953e3b0b02ff3a44e96101",
@@ -335,20 +335,19 @@ const ProductListSmall = () => {
 
     return (
         <section className="product-list-small">
-             {products.map((product, index) => {
-                index++; // Zähler inkrementieren
+        {products.slice(0, maxProducts).map((product, index) => {
+            index++; // Zähler inkrementieren
 
-                // Überprüfen, ob der Index durch 7 teilbar ist und ob es nicht das letzte Produkt ist
-                if (index % 10 === 0 && index !== products.length) {
-                    return (
-                        <img key={`img-${index}`} src="/bread.png" className="separation-picture" alt="Additional Image" />
-                    );
-                }  
-                else {
-                    return <ProductCardSmall key={product._id} product={product} />;
-                }
-            })}
-        </section>
+            // Überprüfen, ob der Index durch 10 teilbar ist und ob es nicht das letzte Produkt ist
+            if (index % 10 === 0 && index !== maxProducts) {
+                return (
+                    <img key={`img-${index}`} src="/bread.png" className="separation-picture" alt="Additional Image" />
+                );
+            } else {
+                return <ProductCardSmall key={product._id} product={product} />;
+            }
+        })}
+    </section>
     );
 };
 
