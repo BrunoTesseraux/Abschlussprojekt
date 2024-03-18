@@ -2,25 +2,24 @@ import { Link, useNavigate } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
 import "./Registry.scss";
 import { useEffect, useState } from "react";
-
-const SignIn = () => {
-
-  const [formActive, setFormActive] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFormActive(true);
-    }, 50); 
-  }, []);
-
 import { backendUrl } from "../../api/api";
 
-const SignIn = ({ login, onLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  useEffect(() => {
+  
+  
+  const SignIn = ({ login, onLogin }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const [formActive, setFormActive] = useState(false);
+    
+    
+    useEffect(() => {
+      setTimeout(() => {
+        setFormActive(true);
+      }, 50); 
+    }, []);
+    
+    useEffect(() => {
     if (login) {
       navigate("/home");
     }
@@ -85,5 +84,6 @@ const SignIn = ({ login, onLogin }) => {
     </section>
   );
 };
+
 
 export default SignIn;
