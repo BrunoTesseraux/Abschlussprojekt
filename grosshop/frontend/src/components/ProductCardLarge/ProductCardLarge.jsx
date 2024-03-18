@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./ProductCardLarge.scss";
 import Counter from "../counter/Counter";
 
-const ProductCardLarge = ({ cartItem, onUpdateQuantity }) => {
-    const { product, quantity } = cartItem;
+const ProductCardLarge = ({ wishlistItem, onUpdateQuantity }) => {
+    const { productName, quantity, productImage, price, rating, ratio } = wishlistItem;
     const [count, setCount] = useState(quantity);
 
     const handleQuantityChange = (newQuantity) => {
@@ -14,14 +14,14 @@ const ProductCardLarge = ({ cartItem, onUpdateQuantity }) => {
     return (
         <article className="product-card-large">
             <input type="checkbox" className="checkbox-round" name="" id="" />
-            <img src={product.image} alt="Produktbild" /> 
+            <img src={productImage} alt="Produktbild" /> 
             <section className="product-card-background">
                 <div className="product-info">
-                    <h2>{product.name}</h2> 
+                    <h2>{productName}</h2>
                     <p>
-                        {product.rating} <img src="./star.svg" alt="" /> 
+                        {rating} <img src="./star.svg" alt="" /> 
                     </p>
-                    <h3>${product.price}</h3> 
+                    <h3>${price}</h3> 
                 </div>
                 <Counter count={count} setCount={setCount} onQuantityChange={handleQuantityChange} />
             </section>
