@@ -1,13 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
 import "./Registry.scss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
+import { UserContext } from "../../contextes/UserContext";
 
 const SignIn = ({ login, onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
     if (login) {
@@ -23,9 +26,11 @@ const SignIn = ({ login, onLogin }) => {
         body: JSON.stringify({ email, password }),
       });
 
-      const { status, token, error } = await res.json();
+      const { status, token, error, data } = await res.json();
       if (status !== "success") throw new Error(error);
       else console.log("Login success: ", status, token);
+      setUser(data.user);
+      console.log(data.user);
       setEmail("");
       setPassword("");
       onLogin(true);
