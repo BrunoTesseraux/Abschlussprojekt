@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { catchAsync } from "../utils/catchAsync";
+import { catchAsync } from "../utils/catchAsync.js";
 
 dotenv.config();
 

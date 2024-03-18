@@ -71,7 +71,7 @@
                 background-color: #40AA54;
                 color: white;
                 border: none;
-                padding: 10px 0;
+                padding: 18px 0;
                 width: 90%;
                 border-radius: 50px;
                 display: block;
@@ -88,4 +88,42 @@
             }
         }
     }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .registry {
+
+        .form-container{
+
+            .registry-form {
+
+                margin-inline: 100px;
+            }
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .registry {
+
+        .form-container{
+
+            .registry-form {
+
+                margin-inline: 150px;
+            }
+        }
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
 }

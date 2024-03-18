@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import MenuItem from './MenuItem';
-import './Nav.scss';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import MenuItem from "./MenuItem";
+import "./Nav.scss";
 
 const Navigation = () => {
-  const [activePage, setActivePage] = useState('');
+  const [activePage, setActivePage] = useState("Home");
 
   const handlePageClick = (pageName) => {
     setActivePage(pageName);
   };
 
   return (
-    <nav className='nav'>
-      <Link to="/">
+    <nav className="nav">
+      <Link to="/home">
         <MenuItem
           pageName="Home"
           isActive={activePage === "Home"}
@@ -26,7 +26,7 @@ const Navigation = () => {
           handleClick={handlePageClick}
         />
       </Link>
-      <Link to="/cart" className='cart-link'>
+      <Link to="/cart" className="cart-link">
         <img src="/Cart-green.svg" alt="Cart" />
       </Link>
       <Link to="/wishlist">

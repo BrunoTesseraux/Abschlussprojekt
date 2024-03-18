@@ -1,16 +1,25 @@
-import { NOT_FOUND } from "../../../helpers/httpStatusCodes.js";
+import { BAD_REQUEST, NOT_FOUND } from "../../../helpers/httpStatusCodes.js";
 import { User } from "../../../models/index.js";
 import AppError from "../../../utils/AppError.js";
 
 export const updateUserProfil = async (userId, updatedProfileData, next) => {
-  const existingUser = await User.findById(userId);
+  // const newUser = {
+  //   name: updatedProfileData.name,
+  //   dateOfBirth: updatedProfileData.dateOfBirth,
+  //   address: updatedProfileData.address,
+  //   phoneNumber: updatedProfileData.phoneNumber,
+  //   profilePicture: updatedProfileData.profilePicture,
+  //   member: updatedProfileData.member,
+  // };
 
-  if (!existingUser) return next(new AppError("User not found", NOT_FOUND));
+  const updatedUser = await User.findByIdAndUpdate(userId, updatedProfileData, {
+    new: true,
+  });
 
-  if (updatedProfileData.name) {
-    existingUser.name = updatedProfileData.name;
-  }
-  if (updatedProfileData.email) {
-    existingUser.email = updatedProfileData.email;
-  }
+  if (!updatedUser)
+    return next(new AppError("No User found with that ID", BAD_REQUEST));
+
+  console.log(updatedUser);
+
+  return updatedUser;
 };

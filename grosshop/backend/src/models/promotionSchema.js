@@ -9,11 +9,16 @@ const promotionSchema = new mongoose.Schema(
     discount: { type: Number, required: true }, // Discount in Prozent
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
-    productId: {
-      type: mongoose.Types.ObjectId,
-      ref: "Product",
-      required: true,
-    }, // Produkt, dem die Promotion zugeordnet ist
+    products: [
+      {
+        productId: {
+          type: mongoose.Types.ObjectId,
+          ref: "Product",
+        },
+        _id: false,
+      },
+    ], // Produkte, dem die Promotion zugeordnet ist
+    deal: { type: String, enum: ["today", "member", "product"] },
     shopId: { type: mongoose.Types.ObjectId, ref: "Shop", required: true }, // Shop, dem die Promotion zugeordnet ist
     // Weitere Felder wie Bedingungen, usw. können hier hinzugefügt werden
   },

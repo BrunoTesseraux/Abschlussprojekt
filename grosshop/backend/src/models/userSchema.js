@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema(
     },
     passwordConfirm: {
       type: String,
-      required: [true, "Please confirm your password"],
+      // required: [true, "Please confirm your password"],
       validate: {
         // This only works on CREATE and SAVE!!!
         validator: function (el) {
@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema(
         message: "Password are not the same!",
       },
     },
-    dateOfBirth: { type: Date },
+    dateOfBirth: { type: String },
     address: addressSchema,
     phoneNumber: { type: String },
     profilePicture: {
@@ -69,15 +69,16 @@ const userSchema = new mongoose.Schema(
         "A user profile photo must have less or equal 200 charcters",
       ],
     },
-    member: { type: Boolean }.type,
+    member: { type: Boolean },
     wishlist: [
       {
         productId: { type: mongoose.Types.ObjectId, ref: "Product" },
         quantity: {
           type: Number,
-          required: [true, "A user must have a wishlist"],
+          required: [true, "A wishlist must have a quantity of a product"],
           min: 1,
         },
+        _id: false,
       },
     ],
     cart: [
@@ -85,15 +86,17 @@ const userSchema = new mongoose.Schema(
         productId: { type: mongoose.Types.ObjectId, ref: "Product" },
         quantity: {
           type: Number,
-          required: [true, "A user must have a cart"],
+          required: [true, "A cart must have a quantity of a product"],
           min: 1,
         },
+        _id: false,
       },
     ],
     orderHistory: [
       {
         orderId: { type: mongoose.Types.ObjectId, ref: "Order" },
         orderDate: { type: Date, default: Date.now },
+        _id: false,
       },
     ],
   },
