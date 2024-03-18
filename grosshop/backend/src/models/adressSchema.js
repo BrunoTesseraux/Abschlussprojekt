@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 // Shop Schema
 export const addressSchema = new mongoose.Schema(
   {
-    street: { type: String },
-    city: { type: String },
-    zip: { type: String },
+    street: { type: String, default: "" },
+    city: { type: String, default: "" },
+    zip: { type: String, default: "" },
     location: {
       type: { type: String, enum: ["Point"], default: "Point" },
       coordinates: { type: [Number], default: [0, 0] },

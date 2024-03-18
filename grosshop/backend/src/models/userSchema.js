@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
       minlength: [2, "A user name must have more or equal 2 charcters"],
       maxlength: [200, "A user name must have less or equal 200 charcters"],
+      default: "",
     },
     // firstname: {
     //   type: String,
@@ -54,9 +55,9 @@ const userSchema = new mongoose.Schema(
         message: "Password are not the same!",
       },
     },
-    dateOfBirth: { type: String },
+    dateOfBirth: { type: String, default: "" },
     address: addressSchema,
-    phoneNumber: { type: String },
+    phoneNumber: { type: String, default: "" },
     profilePicture: {
       type: String,
       trim: true,
@@ -68,6 +69,7 @@ const userSchema = new mongoose.Schema(
         200,
         "A user profile photo must have less or equal 200 charcters",
       ],
+      default: "",
     },
     member: { type: Boolean },
     wishlist: [
@@ -78,6 +80,7 @@ const userSchema = new mongoose.Schema(
           required: [true, "A wishlist must have a quantity of a product"],
           min: 1,
         },
+        inWishlist: { type: Boolean },
         _id: false,
       },
     ],
