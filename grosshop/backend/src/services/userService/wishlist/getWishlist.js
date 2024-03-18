@@ -12,8 +12,15 @@ export const getWishlist = async (userId, next) => {
     }
 
     const wishlistProducts = userWithWishlist.wishlist.map((item) => {
-      const { productName, productImage, price, rating, cuisine, category } =
-        item.productId;
+      const {
+        productName,
+        productImage,
+        price,
+        rating,
+        cuisine,
+        category,
+        ratio,
+      } = item.productId;
       return {
         productId: item.productId._id,
         productName,
@@ -22,7 +29,9 @@ export const getWishlist = async (userId, next) => {
         rating,
         cuisine,
         category,
+        ratio,
         quantity: item.quantity,
+        wishlist,
       };
     });
 

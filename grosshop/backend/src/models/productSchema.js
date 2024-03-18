@@ -7,7 +7,10 @@ const productSchema = new mongoose.Schema(
     productName: { type: String, required: true },
     productImage: { type: String },
     price: { type: Number, required: true },
-    rating: { type: Number },
+    rating: {
+      reviews: { type: Number },
+      rate: { type: Number },
+    },
     ratio: [
       {
         amount: { type: Number, required: true },

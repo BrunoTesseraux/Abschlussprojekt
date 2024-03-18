@@ -1,48 +1,59 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TopNav from "../../components/TopNav/TopNav";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
+import { UserContext } from "../../contextes/UserContext";
+import { backendUrl } from "../../api/api";
 
 const EditProfile = () => {
     
-    const [user, setUser] = useState({
-        firstname: 'Karl',
-        lastname: 'August',
-        email: 'karl.august@augustiner.de',
-        password: 'password123',
-        passwordConfirm: 'password123',
-        dateOfBirth: new Date('1993-01-01'),
-        address: {
-            street: 'Landshuter Straße 31-35',
-            city: 'München',
-            zip: '80339'
-        },
-        phoneNumber: '089 519940',
-        profilePicture: './profilbild.png',
-        member: true
-    });
-    
-    const handleChange = (event) => {
-        const { name, value, type, checked } = event.target;
-        setUser(prevUser => ({
-            ...prevUser,
-            address: {
-                ...prevUser.address,
-                [name]: type === 'checkbox' ? checked : value
-            }
-        }));
-    };
-    
+    const { user, setUser } = useContext(UserContext);
     const [isImageUploadActive, setImageUploadActive] = useState(false);
 
     const handleCameraBorderClick = () => {
         setImageUploadActive(true);
-      };
-      const handleImageUploadClose = () => {
-          setImageUploadActive(false);
-      };
+    };
 
-    const handleSave = () => {};
+    const handleImageUploadClose = () => {
+        setImageUploadActive(false);
+    };
+
+    const handleChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        setUser(prevUser => ({
+            ...prevUser,
+            [name]: type === 'checkbox' ? checked : value,
+            name: (name === 'firstname' || name === 'lastname') 
+                ? `${name === 'firstname' ? value : prevUser.firstname || ''} ${name === 'lastname' ? value : prevUser.lastname || ''}`.trim() 
+                : prevUser.name,
+            address: {
+                ...prevUser.address,
+                [name]: value
+            }
+        }));
+    };
+
+    const handleSave = async () => {
+        try {
+            const response = await fetch(backendUrl + `/api/v1/users/${user._id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to update user data');
+            }
     
+            // Handle successful response
+            console.log('User data updated successfully');
+        } catch (error) {
+            // Handle error
+            console.error('Error updating user data:', error.message);
+        }
+    };
+
 
     return (
         <section className="profile">
@@ -57,7 +68,10 @@ const EditProfile = () => {
                 </div>
             </div>
             <div className="detail-wrapper">
-                <p className="username">{user.firstname} {user.lastname}</p>
+                <div className="name-wrapper">
+                    <input type="text" name="firstname" value={user.firstname} placeholder="First Name" onChange={handleChange} />
+                    <input type="text" name="lastname" value={user.lastname} placeholder="Last Name" onChange={handleChange} />
+                </div>
                 <div className="divider"></div>
                 <input type="email" name="email" value={user.email} placeholder="Email adress" onChange={handleChange} />
                 <div className="divider"></div>

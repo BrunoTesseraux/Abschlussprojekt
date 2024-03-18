@@ -19,6 +19,7 @@ import CategoryList from "./components/CategoryList/CategoryList";
 import ProductListSmall from "./pages/ProductListSmall/ProductListSmall";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import { useState } from "react";
+import Home from "./pages/Home/Home";
 import { UserContextProvider } from "./contextes/UserContext";
 
 
@@ -34,20 +35,21 @@ function App() {
             element={<SignIn login={login} onLogin={setLogin} />}
           />
           <Route path="/signup" element={<Register onLogin={setLogin} />} />
+          <Route path="/home" element={<Home/>}/>
           <Route path="/register-success" element={<SuccessNotification />} />
           <Route path="/orders" element={<OrderList />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/edituser" element={<EditProfile/>} />
+      
         </Routes>
       </UserContextProvider>
       {login ? <Nav /> : null}
-
       {/*<CategoryPage/>*/}
       {/* <Filter/> */}
+      {/* <Home/> */}
       {/* <ProductListSmall/> */}
-
-      {/* <EditProfile/> */}
       {/* <CategoryCard/> */}
       {/* <CategoryList/> */}
       {/* <ProductDetail/> */}
