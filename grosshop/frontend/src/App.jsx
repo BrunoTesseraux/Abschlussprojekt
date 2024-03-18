@@ -19,6 +19,7 @@ import CategoryList from "./components/CategoryList/CategoryList";
 import ProductListSmall from "./pages/ProductListSmall/ProductListSmall";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import { useState } from "react";
+import Home from "./pages/Home/Home";
 
 function App() {
   const [login, setLogin] = useState(null);
@@ -30,6 +31,7 @@ function App() {
           path="/login"
           element={<SignIn login={login} onLogin={setLogin} />}
         />
+        <Route path="/home" element={<Home/>}/>
         <Route path="/signup" element={<Register/>} />
         <Route path="/register-success" element={<SuccessNotification />} />
         <Route path="/orders" element={<OrderList />} />
@@ -38,12 +40,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
       </Routes>
       {login ? <Nav /> : null}
-
       {/*<CategoryPage/>*/}
       {/* <Filter/> */}
+      {/* <Home/> */}
       {/* <ProductListSmall/> */}
-
-      <EditProfile/>
+      {/* <EditProfile/> */}
       {/* <CategoryCard/> */}
       {/* <CategoryList/> */}
       {/* <ProductDetail/> */}

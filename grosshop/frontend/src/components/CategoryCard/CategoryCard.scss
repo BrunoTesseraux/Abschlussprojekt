@@ -1,5 +1,7 @@
 .category-card{
     width: 100px;
+    flex-shrink: 0;
+
     img{
         width: 85px;
         height: 85px;

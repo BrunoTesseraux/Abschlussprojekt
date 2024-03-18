@@ -1,3 +1,8 @@
 .category-list{
     display: flex;
+    flex-shrink: 0;
+    gap: 10px;
+    overflow: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
