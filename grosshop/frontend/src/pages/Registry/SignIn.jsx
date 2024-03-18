@@ -2,6 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
 import "./Registry.scss";
 import { useEffect, useState } from "react";
+
+const SignIn = () => {
+
+  const [formActive, setFormActive] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFormActive(true);
+    }, 50); 
+  }, []);
+
 import { backendUrl } from "../../api/api";
 
 const SignIn = ({ login, onLogin }) => {
@@ -41,7 +52,7 @@ const SignIn = ({ login, onLogin }) => {
 
   return (
     <section className="registry">
-      <article className="form-container">
+      <article className={`form-container ${formActive ? 'active' : ''}`}>
         <TopNav />
         <div className="grosshop">
           <img src="/grocery.svg" alt="" />

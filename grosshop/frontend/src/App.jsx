@@ -1,5 +1,6 @@
 import "./App.scss";
 
+
 import CategoryCard from "./components/CategoryCard/CategoryCard";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Welcome from "./pages/Welcome/Welcome";
@@ -40,7 +41,6 @@ function App() {
 
       {/*<CategoryPage/>*/}
       {/* <Filter/> */}
-
       {/* <ProductListSmall/> */}
 
       {/* <EditProfile/> */}
