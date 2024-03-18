@@ -17,8 +17,13 @@
         padding-top: 20px;
         font-family: "poppins-medium";
         height: 670px;
-        border-radius: 0 0 30px 30px;
+        border-radius: 0 0 50px 50px;
         box-shadow: 0px 18px 9.5px 0px rgba(0, 0, 0, 0.04);
+        transform: translateY(-100%); /* Verschiebt das Formular um 100% seiner eigenen Höhe nach oben */
+        transition: transform 1s; /* Animation für das Bewegen des Formulars */
+        &.active{
+            transform: translateY(0); /* Bewegt das Formular zurück in die Anzeigeposition */
+        }
         .create-account{
             font-size: 1.5rem;
             color: #2C3066;

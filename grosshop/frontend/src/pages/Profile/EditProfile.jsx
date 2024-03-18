@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import TopNav from "../../components/TopNav/TopNav";
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
 
 const EditProfile = () => {
+    
     const [user, setUser] = useState({
         firstname: 'Karl',
         lastname: 'August',
@@ -18,7 +20,7 @@ const EditProfile = () => {
         profilePicture: './profilbild.png',
         member: true
     });
-
+    
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
         setUser(prevUser => ({
@@ -29,6 +31,15 @@ const EditProfile = () => {
             }
         }));
     };
+    
+    const [isImageUploadActive, setImageUploadActive] = useState(false);
+
+    const handleCameraBorderClick = () => {
+        setImageUploadActive(true);
+      };
+      const handleImageUploadClose = () => {
+          setImageUploadActive(false);
+      };
 
     const handleSave = () => {};
     
@@ -38,8 +49,11 @@ const EditProfile = () => {
             <div className="gradient-background">
             <TopNav location="Edit Profile"/>
                 <div className="profile-picture-container">
-                    <img src={user.profilePicture} className="profile-picture" alt="" />
-                    <div className="camera-border"><img src="./camera-icon.svg" alt="" /></div>
+                <img src={user.profilePicture} className="profile-picture" alt="" />
+                    <div className={`camera-border ${isImageUploadActive ? "active" : ""}`} onClick={handleCameraBorderClick}>
+                    <img src="./camera-icon.svg" alt="" />
+                    </div>
+                    {isImageUploadActive && <ImageUpload onClose={handleImageUploadClose}/>}
                 </div>
             </div>
             <div className="detail-wrapper">

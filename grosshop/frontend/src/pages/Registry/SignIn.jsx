@@ -4,15 +4,23 @@ import "./Registry.scss";
 import { useContext, useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
 import { UserContext } from "../../contextes/UserContext";
-
-const SignIn = ({ login, onLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const { setUser } = useContext(UserContext);
-
-  useEffect(() => {
+  
+  
+  const SignIn = ({ login, onLogin }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const [formActive, setFormActive] = useState(false);
+    const { setUser } = useContext(UserContext);
+    
+    useEffect(() => {
+      setTimeout(() => {
+        setFormActive(true);
+      }, 50); 
+    }, []);
+    
+    useEffect(() => {
+      
     if (login) {
       navigate("/home");
     }
@@ -46,7 +54,7 @@ const SignIn = ({ login, onLogin }) => {
 
   return (
     <section className="registry">
-      <article className="form-container">
+      <article className={`form-container ${formActive ? 'active' : ''}`}>
         <TopNav />
         <div className="grosshop">
           <img src="/grocery.svg" alt="" />
@@ -79,5 +87,6 @@ const SignIn = ({ login, onLogin }) => {
     </section>
   );
 };
+
 
 export default SignIn;

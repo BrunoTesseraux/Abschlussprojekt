@@ -14,7 +14,7 @@ const SuccessNotification = () => {
   }, []);
 
   if (redirectNow) {
-    return <Navigate to="/home" />;
+    return <Navigate to="/login" />;
   }
   return (
     <section className="success-notification">

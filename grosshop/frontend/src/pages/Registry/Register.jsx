@@ -1,14 +1,22 @@
 import { Link, Navigate } from "react-router-dom";
 import TopNav from "../../components/TopNav/TopNav";
 import "./Registry.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { backendUrl } from "../../api/api.js";
 
-const Register = ({ onLogin }) => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [registered, setRegistered] = useState(null);
+
+  const [formActive, setFormActive] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFormActive(true);
+    }, 50); 
+  }, []);
 
   const fetchRegistrationData = async () => {
     try {
@@ -25,7 +33,6 @@ const Register = ({ onLogin }) => {
       setPassword("");
       setPasswordConfirm("");
       setRegistered(true);
-      onLogin(true);
     } catch (error) {
       setRegistered(false);
       console.error("Registration error: User with this email exists");
@@ -38,7 +45,7 @@ const Register = ({ onLogin }) => {
 
   return (
     <section className="registry">
-      <article className="form-container">
+      <article className={`form-container ${formActive ? 'active' : ''}`}>
         <TopNav />
         <div className="create-account">
           <h1>Create new Account</h1>

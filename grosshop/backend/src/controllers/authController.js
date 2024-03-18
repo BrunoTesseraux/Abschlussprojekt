@@ -27,7 +27,6 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 const postSignupCtrl = catchAsync(async (req, res, next) => {
-  console.log("================", req.body);
   const newUser = await UserService.registerUser(req.body, next);
   createSendToken(newUser, CREATED, res);
 });
@@ -82,7 +81,6 @@ const postForgotPasswordCtrl = catchAsync(async (req, res, next) => {
   const resetURL = `${req.protocol}://${req.get(
     "host"
   )}/api/v1/users/resetPassword/${resetToken}`;
-  console.log("===================", resetURL);
   const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL} .\nIf you didn't forget your password, please ignore this email!`;
 
   try {
