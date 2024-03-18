@@ -14,6 +14,7 @@ const shopSchema = new mongoose.Schema(
           required: true,
         },
         stock: { type: Number, default: 0 },
+        _id: false,
       },
     ],
     promotions: [{ type: mongoose.Types.ObjectId, ref: "Promotion" }], // Promotions, die dem Shop zugeordnet sind
