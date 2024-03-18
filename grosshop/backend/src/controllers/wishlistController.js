@@ -21,7 +21,6 @@ const patchOneWishlistItemCtrl = catchAsync(async (req, res, next) => {
     wishlistData,
     next
   );
-  console.log("===================", updatedWishlist);
 
   res.status(OK).json({
     status: "success",
