@@ -1,25 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TopNav from "../../components/TopNav/TopNav";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
+import { UserContext } from "../../contextes/UserContext";
 
 const EditProfile = () => {
     
-    const [user, setUser] = useState({
-        firstname: 'Karl',
-        lastname: 'August',
-        email: 'karl.august@augustiner.de',
-        password: 'password123',
-        passwordConfirm: 'password123',
-        dateOfBirth: new Date('1993-01-01'),
-        address: {
-            street: 'Landshuter Straße 31-35',
-            city: 'München',
-            zip: '80339'
-        },
-        phoneNumber: '089 519940',
-        profilePicture: './profilbild.png',
-        member: true
-    });
+    const { user } = useContext(UserContext);
     
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;

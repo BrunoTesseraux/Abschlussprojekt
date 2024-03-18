@@ -41,6 +41,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist/" element={<Wishlist />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/edituser" element={<EditProfile/>} />
+      
         </Routes>
       </UserContextProvider>
       {login ? <Nav /> : null}
@@ -48,7 +50,6 @@ function App() {
       {/* <Filter/> */}
       {/* <Home/> */}
       {/* <ProductListSmall/> */}
-      {/* <EditProfile/> */}
       {/* <CategoryCard/> */}
       {/* <CategoryList/> */}
       {/* <ProductDetail/> */}
