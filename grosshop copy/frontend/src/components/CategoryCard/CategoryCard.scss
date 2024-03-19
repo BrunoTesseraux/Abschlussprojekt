@@ -1,0 +1,28 @@
+.category-card{
+    width: 100px;
+    flex-shrink: 0;
+
+    img{
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: auto;
+        background-color: #C2C2C2;
+    }
+    .shadow{
+        background-color: rgba(56, 60, 60, 0.3);
+        border-radius: 50%;
+        width: 60px;
+        margin: auto;
+        margin-top: 5px;
+        height: 10px;
+    }
+    h1{
+        text-align: center;
+        font-family: "poppins-medium";
+        color: #2C3066;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+}

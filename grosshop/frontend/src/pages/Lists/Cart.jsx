@@ -11,7 +11,7 @@ const Cart = () => {
     const [selectedItems, setSelectedItems] = useState([]); // Zustand für ausgewählte Produkte
     const [selectedProducts, setSelectedProducts] = useState({}); // Objekt für ausgewählte Produkte mit Mengen
 
-   
+
 
     useEffect(() => {
         const fetchUserCart = async () => {
@@ -52,12 +52,12 @@ const Cart = () => {
         const selectedProducts = {};
         cartItems.forEach((cartItem, index) => {
             if (selectedItems[index]) {
-              selectedProducts[cartItem.productId] = {                    quantity: cartItem.quantity
-                };
+            selectedProducts[cartItem.productId] = {quantity: cartItem.quantity};
             }
         });
         return selectedProducts;
     };
+
     const calculateTotalPrice = () => {
         return cartItems.reduce((total, cartItem, index) => {
             // Überprüfen, ob cartItem ein vollständiges Produktobjekt hat
@@ -76,46 +76,93 @@ const Cart = () => {
     }, [cartItems, selectedItems]); // Überwachen von `selectedItems` für Preisaktualisierungen
 
     const handleUpdateQuantity = async (index, newQuantity) => {
-      try {
-          const updatedCartItems = [...cartItems];
-          updatedCartItems[index].quantity = newQuantity;
-          setCartItems(updatedCartItems);
-          setTotalPrice(calculateTotalPrice());
-  
-          // Erstellen Sie das aktualisierte Objekt für den Patch-Request
-          const updatedCartItem = updatedCartItems[index];
-  
-          const requestBody = {
-              cart: [
-                  {
-                      productId: updatedCartItem.productId,
-                      quantity: newQuantity,
-                      inCart: true
-                  }
-              ]
-          };
-  
-          console.log('Sending request with body:', requestBody);
-  
-          const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
-              method: 'PATCH',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(requestBody),
-          });
-  
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-  
-          // Wenn die Antwort erfolgreich ist, können Sie den Zustand aktualisieren oder andere Aktionen ausführen
-  
-      } catch (error) {
-          console.error('Error updating quantity:', error);
-          // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
-      }
-  };
+    try {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[index].quantity = newQuantity;
+        setCartItems(updatedCartItems);
+        setTotalPrice(calculateTotalPrice());
+
+        // Erstellen Sie das aktualisierte Objekt für den Patch-Request
+        const updatedCartItem = updatedCartItems[index];
+        console.log('Sending request with body:', requestBody);
+        const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    } catch (error) {
+        console.error('Error updating quantity:', error);
+        // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
+    }
+};
+
+const handleDeleteSelectedProducts = async () => {
+    // Filtern der ausgewählten Produkte aus dem Warenkorb
+    const updatedCartItems = cartItems.filter((item, index) => !selectedItems[index]);
+
+    // Senden eines PATCH-Requests, um den Warenkorb im Backend zu aktualisieren
+    try {
+        const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cart: updatedCartItems }),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        // Aktualisieren des lokalen Zustands mit den aktualisierten Warenkorbartikeln
+        setCartItems(updatedCartItems);
+    } catch (error) {
+        console.error('Error deleting selected products:', error);
+        // Fehlerbehandlung
+    }
+};
+
+const handlePaySelectedProducts = async () => {
+    // Erstellen einer Bestellung mit den ausgewählten Produkten
+    const order = {
+        userId: user._id,
+        products: cartItems.filter((item, index) => selectedItems[index]).map(item => ({
+            productId: item.productId,
+            quantity: item.quantity,
+        })),
+        shopId: 54353534533, // Ihre Shop-ID hier einfügen
+        orderStatus: "pending",
+        paymentStatus: "pending",
+        orderNumber: "ORD123456", // Ihre Bestellnummer hier einfügen
+        orderTimestamp: "2019-03-11", // Das Bestelldatum hier einfügen
+        shippingAdress: "123 Example Street, City, Country" // Die Lieferadresse hier einfügen
+    };
+
+    // Senden eines POST-Requests, um die Bestellung zu erstellen
+    try {
+        const response = await fetch(`${backendUrl}/api/v1/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(order),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        // Nach erfolgreicher Bestellung die ausgewählten Artikel aus dem Warenkorb entfernen
+        setSelectedItems(selectedItems.map(() => false));
+        setCartItems(cartItems.filter((item, index) => !selectedItems[index]));
+    } catch (error) {
+        console.error('Error creating order:', error);
+        // Fehlerbehandlung
+    }
+};
 
     return (
         <section className="list">
@@ -137,7 +184,8 @@ const Cart = () => {
                             isSelected={selectedItems[index]} // Übergeben des Auswahlstatus
                         />
                     ))}
-                    <button className="total">Total: ${totalPrice.toFixed(2)}</button>
+                    <button className="total" onClick={handlePaySelectedProducts}>Total: ${totalPrice.toFixed(2)}</button>
+                    <button onClick={handleDeleteSelectedProducts}>blub</button>
                 </>
             )}
         </section>
