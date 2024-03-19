@@ -4,7 +4,7 @@ import { OrderController } from "../controllers/index.js";
 const router = express.Router();
 
 router
-  .route("/")
+  .route("/order")
   .get(OrderController.getAllOrdersCtrl)
   .post(OrderController.postUserOrder);
 

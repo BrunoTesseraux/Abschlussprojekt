@@ -2,74 +2,139 @@ import { useContext, useEffect, useState } from "react";
 import "./List.scss";
 import ProductCardLarge from "../../components/ProductCardLarge/ProductCardLarge";
 import TopNav from "../../components/TopNav/TopNav";
-import { backendUrl } from "../../api/api";
 import { UserContext } from "../../contextes/UserContext";
+import { backendUrl } from "../../api/api";
 
 const Cart = () => {
-    const [cartItems, setCartItems] = useState([]);
     const { user } = useContext(UserContext);
+    const [cartItems, setCartItems] = useState([]);
+    const [selectedItems, setSelectedItems] = useState([]); // Zustand für ausgewählte Produkte
+    const [selectedProducts, setSelectedProducts] = useState({}); // Objekt für ausgewählte Produkte mit Mengen
 
-console.log(user);
-    const calculateTotalPrice = () => {
-        return cartItems.reduce((total, cartItem) => {
-            return total + (cartItem.product.price * cartItem.quantity);
-        }, 0);
-    };
 
-    const [totalPrice, setTotalPrice] = useState(calculateTotalPrice());
-
-    const handleUpdateQuantity = (index, newQuantity) => {
-        const updatedCartItems = [...cartItems];
-        updatedCartItems[index].quantity = newQuantity;
-        setCartItems(updatedCartItems);
-        setTotalPrice(calculateTotalPrice());
-    };
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchUserCart = async () => {
             try {
-                const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`);
+                const response = await fetch(
+                    backendUrl + `/api/v1/users/${user._id}/cart`
+                );
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error("Network response was not ok");
                 }
                 const { status, data, error } = await response.json();
                 if (status !== "success") throw new Error(error);
-                else setCartItems(data);
+                else console.log("Cartdata incomming", data.cart);
+                setCartItems(data.cart);
+                setSelectedItems(new Array(data.cart.length).fill(false)); // Initialisierung der Auswahl mit `false`
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error("Error fetching data:", error);
             }
         };
 
-        fetchData();
+        fetchUserCart();
 
         // Cleanup function (optional)
         return () => {
             // Perform cleanup, if necessary
         };
-    }, [user._id]);
+    }, []);
 
+    const handleToggleSelection = (index) => {
+        const updatedSelectedItems = [...selectedItems];
+        updatedSelectedItems[index] = !selectedItems[index];
+        setSelectedItems(updatedSelectedItems);
+        const updatedSelectedProducts = createSelectedProductsObject(cartItems, updatedSelectedItems);
+        setSelectedProducts(updatedSelectedProducts);
+    };
+
+    const createSelectedProductsObject = (cartItems, selectedItems) => {
+        const selectedProducts = {};
+        cartItems.forEach((cartItem, index) => {
+            if (selectedItems[index]) {
+            selectedProducts[cartItem.productId] = {quantity: cartItem.quantity};
+            }
+        });
+        return selectedProducts;
+    };
+
+    const calculateTotalPrice = () => {
+        return cartItems.reduce((total, cartItem, index) => {
+            // Überprüfen, ob cartItem ein vollständiges Produktobjekt hat
+            if (cartItem.product && cartItem.product.price) {
+                return selectedItems[index] ? total + (cartItem.product.price * cartItem.quantity) : total;
+            }
+            // Wenn kein vollständiges Produktobjekt vorhanden ist, direkt auf den Preis zugreifen
+            return selectedItems[index] ? total + (cartItem.price * cartItem.quantity) : total;
+        }, 0);
+    };
+
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        setTotalPrice(calculateTotalPrice());
+    }, [cartItems, selectedItems]); // Überwachen von `selectedItems` für Preisaktualisierungen
+
+    const handleUpdateQuantity = async (index, newQuantity) => {
+    try {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[index].quantity = newQuantity;
+        setCartItems(updatedCartItems);
+        setTotalPrice(calculateTotalPrice());
+
+        // Erstellen Sie das aktualisierte Objekt für den Patch-Request
+        const updatedCartItem = updatedCartItems[index];
+
+        const requestBody = {
+            cart: [
+                {
+                    productId: updatedCartItem.productId,
+                    quantity: newQuantity,
+                    inCart: true
+                }
+            ]
+        };
+        console.log('Sending request with body:', requestBody);
+        const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    } catch (error) {
+        console.error('Error updating quantity:', error);
+        // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
+    }
+};
 
     return (
         <section className="list">
-            <TopNav location="My Cart" actionType="bin"/>
+            <TopNav location="My Cart" actionType="bin" />
             {cartItems.length === 0 ? (
-
                 <div className="empty-list">
                     <img src="/empty-cart.svg" alt="cart icon" />
                     <p>Your Cart is empty</p>
                     <button className="total">Start Shopping</button>
                 </div>
-
             ) : (
                 <>
                     {cartItems.map((cartItem, index) => (
-                    <ProductCardLarge key={index} cartItem={cartItem} onUpdateQuantity={(newQuantity) => handleUpdateQuantity(index, newQuantity)} />                      
+                        <ProductCardLarge
+                            key={index}
+                            item={cartItem}
+                            onUpdateQuantity={(newQuantity) => handleUpdateQuantity(index, newQuantity)}
+                            onToggleSelection={() => handleToggleSelection(index)} // Hinzufügen des Handlers für die Auswahl
+                            isSelected={selectedItems[index]} // Übergeben des Auswahlstatus
+                        />
                     ))}
                     <button className="total">Total: ${totalPrice.toFixed(2)}</button>
                 </>
             )}
         </section>
-
     );
 }
 
