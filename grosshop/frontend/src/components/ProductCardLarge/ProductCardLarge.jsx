@@ -12,33 +12,15 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
     onUpdateQuantity(newQuantity);
   };
 
-<<<<<<< Updated upstream
-    return (
-        <article className="product-card-large">
-            <input type="checkbox" className="checkbox-round" name="" id="" />
-            <img src={productImage} alt="Produktbild" /> 
-            <section className="product-card-background">
-                <div className="product-info">
-                    <h2>{productName}</h2>
-                    <p>
-                        {rating} <img src="./star.svg" alt="" /> 
-                    </p>
-                    <h3>${price}</h3> 
-                </div>
-                <Counter count={count} setCount={setCount} onQuantityChange={handleQuantityChange} />
-            </section>
-        </article>
-    );
-}
-=======
-  return (
+  
+   return (
     <article className={`product-card-large ${isSelected ? 'selected' : ''}`}>
-      <input 
-        type="checkbox" 
-        className="checkbox-round" 
-        checked={isSelected} 
-        onChange={() => onToggleSelection()} 
-      />
+    <input 
+      type="checkbox" 
+      className="checkbox-round" 
+      checked={isSelected} 
+      onChange={() => onToggleSelection()} 
+    />
             <img src={productImage} alt="Produktbild" /> 
             <section className="product-card-background">
                 <div className="product-info">
@@ -53,7 +35,12 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
         </article>
     );
 }
+  
+  
+
+
 
 
 
 export default ProductCardLarge;
+
