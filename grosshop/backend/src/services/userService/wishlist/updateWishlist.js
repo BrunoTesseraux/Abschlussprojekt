@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Product, User } from "../../../models/index.js"; // Annahme: Pfad zur Benutzermodell-Datei
+import { User } from "../../../models/index.js"; // Annahme: Pfad zur Benutzermodell-Datei
 import AppError from "../../../utils/AppError.js";
 
 export const updateWishlist = async (userId, wishlistData, next) => {

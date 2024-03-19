@@ -58,8 +58,8 @@ const userSchema = new mongoose.Schema(
     dateOfBirth: { type: String, default: "" },
     address: {
       type: addressSchema,
-      default: {}
-    },    
+      default: {},
+    },
     phoneNumber: { type: String, default: "" },
     profilePicture: {
       type: String,
@@ -95,6 +95,7 @@ const userSchema = new mongoose.Schema(
           required: [true, "A cart must have a quantity of a product"],
           min: 1,
         },
+        inCart: { type: Boolean },
         _id: false,
       },
     ],

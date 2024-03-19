@@ -31,10 +31,9 @@ export const getWishlist = async (userId, next) => {
         category,
         ratio,
         quantity: item.quantity,
-        wishlist,
       };
     });
-
+    console.log(wishlistProducts);
     return wishlistProducts;
   } catch (error) {
     throw error;
