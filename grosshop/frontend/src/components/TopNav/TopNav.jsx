@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import "./TopNav.scss";
+import Searchbar from "../Searchbar/Searchbar";
 
 const TopNav = ({ location, actionType }) => {
   const navigate = useNavigate();
   let actionElement;
+  let actionElementTwo;
 
   switch (actionType) {
     case "bin":
@@ -14,12 +16,21 @@ const TopNav = ({ location, actionType }) => {
       break;
   }
 
+  switch (location) {
+    case "searchbar":
+      actionElementTwo = <Searchbar/>;
+      break;
+    default:
+      actionElementTwo = <p>{location}</p>
+  }
+
+
   const goBack = () => navigate(-1);
 
   return (
     <div className="top-nav">
       <img src="./previous.svg" alt="back button" onClick={goBack} />
-      <p>{location}</p>
+      {actionElementTwo}
       {actionElement}
     </div>
   );

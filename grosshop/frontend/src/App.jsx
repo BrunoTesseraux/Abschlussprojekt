@@ -20,16 +20,28 @@ import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import { useState } from "react";
 import Home from "./pages/Home/Home";
 import { UserContextProvider } from "./contextes/UserContext";
+import Test from "./components/Test/Test";
 
 function App() {
   const [login, setLogin] = useState(null);
+
+  //TEST kann nachher wieder weg
+//   const [user, setUser] = useState({}); // Hier definieren Sie user
+//   const handleChange = (event) => {
+//     const { name, value } = event.target;
+//     setUser(prevUser => ({
+//         ...prevUser,
+//         [name]: value
+//     }));
+// };
+
   return (
-    <Router>
+<Router>
       <UserContextProvider>
         <Routes>
-          <Route path="/" element={<Welcome />} />
+          {/* <Route path="/" element={<Welcome />} /> */}
           <Route
-            path="/login"
+            path="/"
             element={<SignIn login={login} onLogin={setLogin} />}
           />
           <Route path="/signup" element={<Register onLogin={setLogin} />} />
@@ -39,11 +51,11 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/edituser" element={<EditProfile />} />
+          <Route path="/edituser" element={<EditProfile/>} />
+          <Route path="/categorypage" element={<CategoryPage/>} />
         </Routes>
       </UserContextProvider>
       {login ? <Nav /> : null}
-      {/*<CategoryPage/>*/}
       {/* <Filter/> */}
       {/* <Home/> */}
       {/* <ProductListSmall/> */}
