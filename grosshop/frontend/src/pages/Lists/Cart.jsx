@@ -1,41 +1,15 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./List.scss";
 import ProductCardLarge from "../../components/ProductCardLarge/ProductCardLarge";
 import TopNav from "../../components/TopNav/TopNav";
+import { backendUrl } from "../../api/api";
+import { UserContext } from "../../contextes/UserContext";
 
 const Cart = () => {
-    const [cartItems, setCartItems] = useState([
-        {
-            "_id": "60953e3b0b02ff3a44e96104", // Beispiel-Objekt-ID des Eintrags im Warenkorb
-            "product": {
-                "_id": "60953e3b0b02ff3a44e96105", // Beispiel-Objekt-ID des Produkts
-                "name": "Bavarian Beer",
-                "image": "/bier.jpg",
-                "price": 11.00,
-                "rating": 6,
-                "cuisine": "German",
-                "productType": "Beer"
-                // Weitere Produktinformationen...
-            },
-            "quantity": 2 // Beispielanzahl im Warenkorb
-        },
-        {
-            "_id": "60953e3b0b02ff3a44e96104", // Beispiel-Objekt-ID des Eintrags im Warenkorb
-            "product": {
-                "_id": "60953e3b0b02ff3a44e96106", // Beispiel-Objekt-ID des Produkts
-                "name": "Another Product",
-                "image": "/bier.jpg",
-                "price": 12.79,
-                "rating": 8,
-                "cuisine": "Italian",
-                "productType": "Food"
-                // Weitere Produktinformationen...
-            },
-            "quantity": 3 // Beispielanzahl im Warenkorb
-        },
-        // Weitere Einträge im Warenkorb...
-    ]);
+    const [cartItems, setCartItems] = useState([]);
+    const { user } = useContext(UserContext);
 
+console.log(user);
     const calculateTotalPrice = () => {
         return cartItems.reduce((total, cartItem) => {
             return total + (cartItem.product.price * cartItem.quantity);
@@ -51,6 +25,30 @@ const Cart = () => {
         setTotalPrice(calculateTotalPrice());
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const { status, data, error } = await response.json();
+                if (status !== "success") throw new Error(error);
+                else setCartItems(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+
+        // Cleanup function (optional)
+        return () => {
+            // Perform cleanup, if necessary
+        };
+    }, [user._id]);
+
+
     return (
         <section className="list">
             <TopNav location="My Cart" actionType="bin"/>
@@ -65,7 +63,8 @@ const Cart = () => {
             ) : (
                 <>
                     {cartItems.map((cartItem, index) => (
-                    <ProductCardLarge key={index} cartItem={cartItem} onUpdateQuantity={(newQuantity) => handleUpdateQuantity(index, newQuantity)} />                      ))}
+                    <ProductCardLarge key={index} cartItem={cartItem} onUpdateQuantity={(newQuantity) => handleUpdateQuantity(index, newQuantity)} />                      
+                    ))}
                     <button className="total">Total: ${totalPrice.toFixed(2)}</button>
                 </>
             )}

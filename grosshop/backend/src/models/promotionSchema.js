@@ -9,6 +9,7 @@ const promotionSchema = new mongoose.Schema(
     discount: { type: Number, required: true }, // Discount in Prozent
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
+    promotionPicture: { type: String, required: true },
     products: [
       {
         productId: {

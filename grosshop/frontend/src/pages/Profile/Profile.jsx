@@ -8,26 +8,15 @@ import { Link } from "react-router-dom";
 const Profile = () => {
     const [isImageUploadActive, setImageUploadActive] = useState(false);
     const { user } = useContext(UserContext);
-
-    if (user.dateOfBirth) {
-        const parts = user.dateOfBirth.split('.');
-        const day = parseInt(parts[0], 10);
-        const month = parseInt(parts[1], 10) - 1; // Monate in JavaScript beginnen mit 0 für Januar
-        const year = parseInt(parts[2], 10);
-    
-        const formatDate = (date) => {
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}.${month}.${year}`;
-        };
-        // Erstelle ein neues Datumsobjekt
-        const dateOfBirth = new Date(year, month, day);
-        
-        // Formatieren des Datums, falls erforderlich
-        const formattedDateOfBirth = formatDate(dateOfBirth);
-    }
-
+console.log(user);
+const formatDate = (dateString) => {
+    if (!dateString) return ""; // Wenn das Datum nicht vorhanden ist, gibt einen leeren String zurück
+    const parts = dateString.split('-'); // Datum in Teile aufteilen
+    const year = parts[0];
+    const month = parts[1];
+    const day = parts[2];
+    return `${day}.${month}.${year}`; // Datum im richtigen Format zurückgeben
+};
 
     const handleCameraBorderClick = () => {
         setImageUploadActive(true);
@@ -36,8 +25,6 @@ const Profile = () => {
     const handleImageUploadClose = () => {
         setImageUploadActive(false);
     };
-
-    console.log(user);
 
     return (
         <section className="profile">
@@ -61,7 +48,7 @@ const Profile = () => {
                 {user.dateOfBirth && (
                     <>
                         <p className="legend-styling">Date of Birth</p>
-                        <p>{formatDate(dateOfBirth)}</p>
+                        <p>{formatDate(user.dateOfBirth)}</p>
                         <div className="divider"></div>
                     </>
                 )}
@@ -85,7 +72,7 @@ const Profile = () => {
                 <div className="divider"></div>
             </div>
             <Link to="/edituser">
-            <button>Edit Profile</button>
+                <button>Edit Profile</button>
             </Link>
         </section>
     );

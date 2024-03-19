@@ -9,6 +9,11 @@ const EditProfile = () => {
     const { user, setUser } = useContext(UserContext);
     const [isImageUploadActive, setImageUploadActive] = useState(false);
 
+    // Funktion zur Umwandlung des Datums in ISO-Format
+    const formatDateOfBirth = (dateOfBirth) => {
+        return new Date(dateOfBirth).toISOString().substr(0, 10);
+    };
+
     const handleCameraBorderClick = () => {
         setImageUploadActive(true);
     };
@@ -17,21 +22,16 @@ const EditProfile = () => {
         setImageUploadActive(false);
     };
 
+    // Funktion zum Handhaben der Änderungen in den Eingabefeldern
     const handleChange = (event) => {
-        const { name, value, type, checked } = event.target;
+        const { name, value } = event.target;
         setUser(prevUser => ({
             ...prevUser,
-            [name]: type === 'checkbox' ? checked : value,
-            name: (name === 'firstname' || name === 'lastname') 
-                ? `${name === 'firstname' ? value : prevUser.firstname || ''} ${name === 'lastname' ? value : prevUser.lastname || ''}`.trim() 
-                : prevUser.name,
-            address: {
-                ...prevUser.address,
-                [name]: value
-            }
+            [name]: value
         }));
     };
 
+    // Funktion zum Speichern der Benutzerdaten
     const handleSave = async () => {
         try {
             const response = await fetch(backendUrl + `/api/v1/users/${user._id}`, {
@@ -46,23 +46,22 @@ const EditProfile = () => {
                 throw new Error('Failed to update user data');
             }
     
-            // Handle successful response
+            // Erfolgreiche Antwort behandeln
             console.log('User data updated successfully');
         } catch (error) {
-            // Handle error
+            // Fehler behandeln
             console.error('Error updating user data:', error.message);
         }
     };
 
-
     return (
         <section className="profile">
             <div className="gradient-background">
-            <TopNav location="Edit Profile"/>
+                <TopNav location="Edit Profile"/>
                 <div className="profile-picture-container">
-                <img src={user.profilePicture} className="profile-picture" alt="" />
+                    <img src={"/" + user.profilePicture} className="profile-picture" alt="" />
                     <div className={`camera-border ${isImageUploadActive ? "active" : ""}`} onClick={handleCameraBorderClick}>
-                    <img src="./camera-icon.svg" alt="" />
+                        <img src="./camera-icon.svg" alt="" />
                     </div>
                     {isImageUploadActive && <ImageUpload onClose={handleImageUploadClose}/>}
                 </div>
@@ -75,7 +74,12 @@ const EditProfile = () => {
                 <div className="divider"></div>
                 <input type="email" name="email" value={user.email} placeholder="Email adress" onChange={handleChange} />
                 <div className="divider"></div>
-                <input type="date" name="dateOfBirth" value={user.dateOfBirth ? user.dateOfBirth.toISOString().substr(0, 10) : '1990-01-01'} onChange={handleChange}/>
+                <input 
+                    type="date" 
+                    name="dateOfBirth" 
+                    value={user.dateOfBirth ? formatDateOfBirth(user.dateOfBirth) : '1990-01-01'} 
+                    onChange={handleChange}
+                />
                 <div className="divider"></div>
                 <input type="tel" name="phoneNumber" value={user.phoneNumber} placeholder="Phone Number" onChange={handleChange} />
                 <div className="divider"></div>

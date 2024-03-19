@@ -13,10 +13,10 @@ const Home = () => {
         <PromotionSlider/>
         <CategoryList/>
         <h1 className="deal-heading">Todays Grocery Deals</h1>
-        <ProductListSmall maxProducts={6}/>
+        <ProductListSmall maxProducts={6} endpoint={"promotions/todayDeals"}/>
         <img src="./bier.jpg" alt="" className="home-deal-picture" />
         <h1 className="deal-heading">Grocery Member Deals</h1>
-        <ProductListSmall maxProducts={3}/>
+        <ProductListSmall maxProducts={3} endpoint={"promotions/memberDeals"}/>
         <Navigation/>
     </section> 
     );
