@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Searchbar.scss';
 import Filter from '../Filter/Filter';
 
-const Searchbar = () => {
+const Searchbar = ({ onSearchInitiated, onResetSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSortBy, setSelectedSortBy] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState(null);
     const [priceRange, setPriceRange] = useState({ min: 0, max: 999 });
     const [isSearchActive, setIsSearchActive] = useState(false);
-
 
     const onSearch = () => {
         setIsSearchActive(false);
         const searchParams = {
             searchTerm,
             selectedSortBy,
-            selectedCategory,
             priceRange
         };
-        // Hier die Logik für die Suchfunktion einfügen
-        console.log('Search initiated with parameters:', searchParams);
+        // Call the function passed from CategoryPage to initiate search
+        onSearchInitiated(searchParams);
     };
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
+    };
+    const handleResetSearch = () => {
+        setSearchTerm('');
+        setPriceRange({ min: 0, max: 999 });
+        onResetSearch(); // Aufruf der Reset-Funktion
     };
 
     const handleKeyPress = (event) => {
@@ -36,12 +38,6 @@ const Searchbar = () => {
         setIsSearchActive(true);
     };
 
-    const handleResetSearch = () => {
-        setSearchTerm('');
-        setSelectedSortBy(null);
-        setSelectedCategory(null);
-        setPriceRange({ min: 0, max: 999 });
-    };
 
     return (
         <section className="searchbar">
@@ -64,8 +60,6 @@ const Searchbar = () => {
                         searchTerm={searchTerm}
                         selectedSortBy={selectedSortBy}
                         setSelectedSortBy={setSelectedSortBy}
-                        selectedCategory={selectedCategory}
-                        setSelectedCategory={setSelectedCategory}
                         priceRange={priceRange}
                         setPriceRange={setPriceRange}
                         onSearch={onSearch}

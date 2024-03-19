@@ -36,6 +36,7 @@ const Wishlist = () => {
         };
       }, []);
 
+<<<<<<< Updated upstream
     return ( 
 
         <section className="list">
@@ -56,6 +57,31 @@ const Wishlist = () => {
                 <button className="total">Add to Cart</button>
             </>
         )}
+=======
+  return (
+    <section className="list">
+      <TopNav location="Wishlist" actionType="bin" />
+      {wishlistItems.length === 0 ? (
+        <div className="empty-list">
+          <img src="/empty-wishlist.svg" alt="heart icon" />
+          <p>Your Wishlist is empty</p>
+          <button className="total">Start Shopping</button>
+        </div>
+      ) : (
+        <>
+          {wishlistItems.map((wishlistItem, index) => (
+            <ProductCardLarge
+              key={index}
+              item={wishlistItem}
+              onUpdateQuantity={(newQuantity) =>
+                handleUpdateQuantity(newQuantity)
+              }
+            />
+          ))}
+          <button className="total">Add to Cart</button>
+        </>
+      )}
+>>>>>>> Stashed changes
     </section>
 
      );
