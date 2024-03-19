@@ -1,339 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCardSmall from "../../components/ProductCardSmall/ProductCardSmall";
 import "./ProductListSmall.scss";
-import TopNav from "../../components/TopNav/TopNav";
+import { backendUrl } from "../../api/api";
 
-const ProductListSmall = ({ maxProducts }) => {
-    const [products, setProducts] = useState([
-        {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        }, {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        }, {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        },  {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        }, {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        }, {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        },  {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        }, {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        }, {
-            _id: "60953e3b0b02ff3a44e96101",
-            productName: "Bavarian Beer",
-            productImage: "/bier.jpg",
-            price: 11.00,
-            rating: 6,
-            ratio: [
-                { amount: 500, unit: "ml" },
-                { amount: 330, unit: "ml" }
-            ],
-            cuisine: "German",
-            category: "Beer"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96102",
-            productName: "Italian Pizza",
-            productImage: "/bier.jpg",
-            price: 15.00,
-            rating: 8,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "Italian",
-            category: "Food"
-        },
-        {
-            _id: "60953e3b0b02ff3a44e96103",
-            productName: "French Croissant",
-            productImage: "/bier.jpg",
-            price: 5.00,
-            rating: 7,
-            ratio: [
-                { amount: 1, unit: "piece" }
-            ],
-            cuisine: "French",
-            category: "Bakery"
-        },
-    ]);
+const ProductListSmall = ({ maxProducts, endpoint }) => {
+    const [products, setProducts] = useState([]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(backendUrl + `/api/v1/` + endpoint);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const { status, data, error } = await response.json();
+                if (status !== "success") throw new Error(error);
+                else console.log("Data incoming", data);
+
+                if (data.promotions) {
+                    setProducts(extractAllProductsFromPromotions(data.promotions));
+                } else {
+                    setProducts(data.products);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        fetchData();
+    
+        // Cleanup function (optional)
+        return () => {
+            // Perform cleanup, if necessary
+        };
+    }, []);
+
+    const extractAllProductsFromPromotions = (promotions) => {
+        const extractedProducts = promotions.reduce((accumulator, promotion) => {
+            return [...accumulator, ...promotion.products.map(product => product.productId)];
+        }, []);
+        return extractedProducts;
+    };
 
     return (
+ 
         <section className="product-list-small">
         {products.slice(0, maxProducts).map((product, index) => {
             index++; // Zähler inkrementieren
