@@ -12,7 +12,7 @@ const router = express.Router();
 
 // Multer
 const attachmentStorage = multer.diskStorage({
-  destination: "./uploads/",
+  destination: "./data/uploads/",
   filename: (_, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
@@ -24,8 +24,14 @@ const uploadMiddleware = multer({ storage: attachmentStorage });
 router
   .route("/:uid")
   .get(UserController.getOneUserCtrl)
-  .patch(uploadMiddleware.single("attachment"), UserController.patchUpdateProfileCtrl)
+  .patch(UserController.patchUpdateProfileCtrl)
   .delete(UserController.deleteUserCtrl);
+
+router.patch(
+  "/:uid/profilePictureUpload",
+  uploadMiddleware.single("profilePicture"),
+  UserController.uploadProfilePictureCtrl
+);
 
 // remove Item from wishlist or cart route
 
