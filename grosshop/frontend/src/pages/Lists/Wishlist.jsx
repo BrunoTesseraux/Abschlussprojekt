@@ -62,6 +62,7 @@ const Wishlist = () => {
     };
   }, []);
 
+
   return (
     <section className="list">
       <TopNav location="Wishlist" actionType="bin" />
@@ -76,7 +77,9 @@ const Wishlist = () => {
           {wishlistItems.map((wishlistItem, index) => (
             <ProductCardLarge
               key={index}
-              wishlistItem={wishlistItem}
+
+              item={wishlistItem}
+
               onUpdateQuantity={(newQuantity) =>
                 handleUpdateQuantity(newQuantity)
               }

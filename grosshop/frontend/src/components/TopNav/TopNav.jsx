@@ -16,21 +16,13 @@ const TopNav = ({ location, actionType }) => {
       break;
   }
 
-  switch (location) {
-    case "searchbar":
-      actionElementTwo = <Searchbar/>;
-      break;
-    default:
-      actionElementTwo = <p>{location}</p>
-  }
-
 
   const goBack = () => navigate(-1);
 
   return (
     <div className="top-nav">
       <img src="./previous.svg" alt="back button" onClick={goBack} />
-      {actionElementTwo}
+      {location}
       {actionElement}
     </div>
   );
