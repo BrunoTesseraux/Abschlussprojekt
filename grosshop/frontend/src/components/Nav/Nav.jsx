@@ -26,7 +26,7 @@ const Navigation = () => {
           handleClick={handlePageClick}
         />
       </Link>
-      <Link to="/cart" className="cart-link">
+      <Link to="/cart" className={`cart-link ${activePage === "Cart" ? 'active' : ''}`} onClick={() => handlePageClick('Cart')}>
         <img src="/Cart-green.svg" alt="Cart" />
       </Link>
       <Link to="/wishlist">
