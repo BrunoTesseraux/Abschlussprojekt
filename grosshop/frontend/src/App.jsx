@@ -51,7 +51,7 @@ function App() {
           <Route path="/register-success" element={<SuccessNotification />} />
           <Route path="/orders" element={<OrderList />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/wishlist/" element={<Wishlist />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/edituser" element={<EditProfile/>} />
           <Route path="/categorypage" element={<CategoryPage/>} />

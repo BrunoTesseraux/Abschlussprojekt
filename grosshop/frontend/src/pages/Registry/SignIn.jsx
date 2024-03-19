@@ -4,23 +4,21 @@ import "./Registry.scss";
 import { useContext, useEffect, useState } from "react";
 import { backendUrl } from "../../api/api";
 import { UserContext } from "../../contextes/UserContext";
-  
-  
-  const SignIn = ({ login, onLogin }) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-    const [formActive, setFormActive] = useState(false);
-    const { setUser } = useContext(UserContext);
-    
-    useEffect(() => {
-      setTimeout(() => {
-        setFormActive(true);
-      }, 50); 
-    }, []);
-    
-    useEffect(() => {
-      
+
+const SignIn = ({ login, onLogin }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [formActive, setFormActive] = useState(false);
+  const { updateUser } = useContext(UserContext);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFormActive(true);
+    }, 50);
+  }, []);
+
+  useEffect(() => {
     if (login) {
       navigate("/home");
     }
@@ -37,7 +35,7 @@ import { UserContext } from "../../contextes/UserContext";
       const { status, token, error, data } = await res.json();
       if (status !== "success") throw new Error(error);
       else console.log("Login success: ", status, token);
-      setUser(data.user);
+      updateUser(data.user);
       console.log(data.user);
       setEmail("");
       setPassword("");
@@ -54,7 +52,7 @@ import { UserContext } from "../../contextes/UserContext";
 
   return (
     <section className="registry">
-      <article className={`form-container ${formActive ? 'active' : ''}`}>
+      <article className={`form-container ${formActive ? "active" : ""}`}>
         <TopNav />
         <div className="grosshop">
           <img src="/grocery.svg" alt="" />
@@ -87,6 +85,5 @@ import { UserContext } from "../../contextes/UserContext";
     </section>
   );
 };
-
 
 export default SignIn;

@@ -18,13 +18,13 @@ const formatDate = (dateString) => {
     return `${day}.${month}.${year}`; // Datum im richtigen Format zurückgeben
 };
 
-    const handleCameraBorderClick = () => {
-        setImageUploadActive(true);
-    };
 
+  const handleCameraBorderClick = () => {
+    setImageUploadActive(true);
+  };
     const handleImageUploadClose = () => {
-        setImageUploadActive(false);
-    };
+    setImageUploadActive(false);
+  };
 
     return (
         <section className="profile">

@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import TopNav from "../../components/TopNav/TopNav";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import { UserContext } from "../../contextes/UserContext";
 import { backendUrl } from "../../api/api";
 
 const EditProfile = () => {
-    
-    const { user, setUser } = useContext(UserContext);
-    const [isImageUploadActive, setImageUploadActive] = useState(false);
+  const { user, updateUser } = useContext(UserContext);
+  const [isImageUploadActive, setImageUploadActive] = useState(false);
 
     // Funktion zur Umwandlung des Datums in ISO-Format
     const formatDateOfBirth = (dateOfBirth) => {
@@ -18,43 +17,52 @@ const EditProfile = () => {
         setImageUploadActive(true);
     };
 
-    const handleImageUploadClose = () => {
-        setImageUploadActive(false);
-    };
 
-    // Funktion zum Handhaben der Änderungen in den Eingabefeldern
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setUser(prevUser => ({
-            ...prevUser,
-            [name]: value
-        }));
-    };
+  const handleImageUploadClose = () => {
+    setImageUploadActive(false);
+  };
 
-    // Funktion zum Speichern der Benutzerdaten
-    const handleSave = async () => {
-        try {
-            const response = await fetch(backendUrl + `/api/v1/users/${user._id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(user),
-            });
-            
-            if (!response.ok) {
-                throw new Error('Failed to update user data');
-            }
-    
-            // Erfolgreiche Antwort behandeln
-            console.log('User data updated successfully');
-        } catch (error) {
-            // Fehler behandeln
-            console.error('Error updating user data:', error.message);
-        }
-    };
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    updateUser((prevUser) => ({
+      ...prevUser,
+      [name]: type === "checkbox" ? checked : value,
+      name:
+        name === "firstname" || name === "lastname"
+          ? `${name === "firstname" ? value : prevUser.firstname || ""} ${
+              name === "lastname" ? value : prevUser.lastname || ""
+            }`.trim()
+          : prevUser.name,
+      address: {
+        ...prevUser.address,
+        [name]: value,
+      },
+    }));
+  };
 
-    return (
+  const handleSave = async () => {
+    try {
+      const response = await fetch(backendUrl + `/api/v1/users/${user._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update user data");
+      }
+
+      // Handle successful response
+      console.log("User data updated successfully");
+    } catch (error) {
+      // Handle error
+      console.error("Error updating user data:", error.message);
+    }
+  };
+
+      return (
         <section className="profile">
             <div className="gradient-background">
                 <TopNav location="Edit Profile"/>
