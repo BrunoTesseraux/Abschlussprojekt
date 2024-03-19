@@ -38,7 +38,7 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
             </div>
             <section className="product-card-background">
                 <div className="product-info">
-                <h2>{productName.length > 15 ? productName.slice(0, 15) + "..." : productName}</h2>
+                <h2>{productName.length > 13 ? productName.slice(0, 13) + "..." : productName}</h2>
                     <div className="product-amount">
                       <p>
                         {ratio[0].amount}
