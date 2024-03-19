@@ -7,6 +7,18 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
     item;
   const [count, setCount] = useState(quantity);
 
+  const [likeSrc, setLikeSrc] = useState("/like.svg");
+
+    const handleLikeClick = () => {
+        if (likeSrc === "/like.svg") {
+            setLikeSrc("/like2.svg");
+        } else {
+            setLikeSrc("/like.svg");
+        }
+      }
+
+  console.log(item);
+
   const handleQuantityChange = (newQuantity) => {
     setCount(newQuantity);
     onUpdateQuantity(newQuantity);
@@ -21,14 +33,30 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
       checked={isSelected} 
       onChange={() => onToggleSelection()} 
     />
-            <img src={productImage} alt="Produktbild" /> 
+            <div className="product-img"> 
+              <img  src={productImage} alt="Produktbild" />
+            </div>
             <section className="product-card-background">
                 <div className="product-info">
-                    <h2>{productName}</h2>
-                    <p>
-                        {rating} <img src="./star.svg" alt="" /> 
-                    </p>
-                    <h3>${price}</h3> 
+                <h2>{productName.length > 15 ? productName.slice(0, 15) + "..." : productName}</h2>
+                    <div className="product-amount">
+                      <p>
+                        {ratio[0].amount}
+                      </p>
+                      <p>
+                          {rating} <img src="./star.svg" alt="" /> 
+                      </p>
+                    </div>
+                    <div className="product-price">
+                      <h3>${price}</h3>
+                      <h3>${price}</h3>
+                      <img
+                    src={likeSrc}
+                    className="like"
+                    alt=""
+                    onClick={handleLikeClick}
+                />
+                    </div>
                 </div>
                 <Counter count={count} setCount={setCount} onQuantityChange={handleQuantityChange} />
             </section>
