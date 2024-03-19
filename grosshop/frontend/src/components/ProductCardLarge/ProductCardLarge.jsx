@@ -6,13 +6,31 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
   const { productName, quantity, productImage, price, rating, ratio } =
     item;
   const [count, setCount] = useState(quantity);
->>>>>>> Stashed changes
 
-    const handleQuantityChange = (newQuantity) => {
-        setCount(newQuantity);
-        onUpdateQuantity(newQuantity);
-    };
+  const handleQuantityChange = (newQuantity) => {
+    setCount(newQuantity);
+    onUpdateQuantity(newQuantity);
+  };
 
+<<<<<<< Updated upstream
+    return (
+        <article className="product-card-large">
+            <input type="checkbox" className="checkbox-round" name="" id="" />
+            <img src={productImage} alt="Produktbild" /> 
+            <section className="product-card-background">
+                <div className="product-info">
+                    <h2>{productName}</h2>
+                    <p>
+                        {rating} <img src="./star.svg" alt="" /> 
+                    </p>
+                    <h3>${price}</h3> 
+                </div>
+                <Counter count={count} setCount={setCount} onQuantityChange={handleQuantityChange} />
+            </section>
+        </article>
+    );
+}
+=======
   return (
     <article className={`product-card-large ${isSelected ? 'selected' : ''}`}>
       <input 
@@ -21,24 +39,21 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
         checked={isSelected} 
         onChange={() => onToggleSelection()} 
       />
-      <img src={productImage} alt="Produktbild" />
-      <section className="product-card-background">
-        <div className="product-info">
-          <h2>{productName}</h2>
-          <p>
-            {rating} <img src="./star.svg" alt="" />
-          </p>
-          <h3>${price}</h3>
-        </div>
-        <Counter
-          count={count}
-          setCount={setCount}
-          onQuantityChange={handleQuantityChange}
-        />
-      </section>
-    </article>
-  );
-};
->>>>>>> Stashed changes
+            <img src={productImage} alt="Produktbild" /> 
+            <section className="product-card-background">
+                <div className="product-info">
+                    <h2>{productName}</h2>
+                    <p>
+                        {rating} <img src="./star.svg" alt="" /> 
+                    </p>
+                    <h3>${price}</h3> 
+                </div>
+                <Counter count={count} setCount={setCount} onQuantityChange={handleQuantityChange} />
+            </section>
+        </article>
+    );
+}
+
+
 
 export default ProductCardLarge;

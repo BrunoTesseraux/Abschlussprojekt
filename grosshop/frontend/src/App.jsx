@@ -1,6 +1,5 @@
 import "./App.scss";
 
-
 import CategoryCard from "./components/CategoryCard/CategoryCard";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Welcome from "./pages/Welcome/Welcome";
@@ -22,7 +21,6 @@ import { useState } from "react";
 import Home from "./pages/Home/Home";
 import { UserContextProvider } from "./contextes/UserContext";
 import Test from "./components/Test/Test";
-
 
 function App() {
   const [login, setLogin] = useState(null);
@@ -47,7 +45,7 @@ function App() {
             element={<SignIn login={login} onLogin={setLogin} />}
           />
           <Route path="/signup" element={<Register onLogin={setLogin} />} />
-          <Route path="/home" element={<Home/>}/>
+          <Route path="/home" element={<Home />} />
           <Route path="/register-success" element={<SuccessNotification />} />
           <Route path="/orders" element={<OrderList />} />
           <Route path="/cart" element={<Cart />} />
