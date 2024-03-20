@@ -1,5 +1,4 @@
 import "./App.scss";
-
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Welcome from "./pages/Welcome/Welcome";
 import Nav from "./components/Nav/Nav";
@@ -22,7 +21,7 @@ function App() {
   const [login, setLogin] = useState(null);
 
   return (
-<Router>
+    <Router>
       <UserContextProvider>
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -34,9 +33,10 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/edituser" element={<EditProfile/>} />
-          <Route path="/categorypage" element={<CategoryPage/>} />
-          <Route path="/productdetail" element={<ProductDetail/>} />
+          <Route path="/edituser" element={<EditProfile />} />
+          <Route path="/categorypage" element={<CategoryPage />} />
+          <Route path="/categorypage/:category" element={<CategoryPage />} />
+          <Route path="/productdetail/:productId" element={<ProductDetail />} />
         </Routes>
       </UserContextProvider>
       {login ? <Nav /> : null}

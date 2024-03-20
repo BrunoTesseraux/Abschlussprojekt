@@ -5,9 +5,7 @@ import "./CategoryList.scss"
 const CategoryList = () => {
     return ( 
         <div className="category-list">
-            <Link to="/categorypage">
-            <CategoryCard imageUrl="/vegetables.png" title="Vegetables" />
-            </Link>
+            <CategoryCard imageUrl="/vegetables.png" title="Vegetable" />
             <CategoryCard imageUrl="/fruit.png" title="Fruit" />
             <CategoryCard imageUrl="/meat.png" title="Meat" />
             <CategoryCard imageUrl="/ArrowRight.png" title="All" />

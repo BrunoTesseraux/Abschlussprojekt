@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./ProductCardSmall.scss";
 
 const ProductCardSmall = ({ product }) => {
@@ -15,7 +16,9 @@ const ProductCardSmall = ({ product }) => {
     return (
         <article className="product-card-small">
             <div className="pictures">
-                <img src={product.productImage} alt="Produktbild" />
+                <Link to={`/productdetail/${product._id}`}>
+                    <img src={product.productImage} alt="Produktbild" />
+                </Link>
                 <img
                     src={likeSrc}
                     className="like"
@@ -23,7 +26,9 @@ const ProductCardSmall = ({ product }) => {
                     onClick={handleLikeClick}
                 />
             </div>
-            <h2>{product.productName}</h2>
+            <Link to={`/productdetail/${product._id}`}>
+                <h2>{product.productName}</h2>
+            </Link>
             <div className="price-rating">
                 <h3>{product.price}$</h3>
                 <p>
