@@ -30,6 +30,7 @@ const orderSchema = new mongoose.Schema(
       enum: ["pending", "paid", "refunded"],
       default: "peding",
     },
+    totalAmount: { type: Number },
     orderNumber: { type: String, required: true },
     orderTimestamp: { type: Date, required: true },
     shippingAdress: addressSchema,

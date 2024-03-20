@@ -59,7 +59,10 @@ router.patch(
 router
   .route("/:uid/cart")
   .get(CartController.getCartCtrl)
-  .patch(CartController.patchOneCartItemCtrl)
+  .patch(CartController.patchOneCartItemCtrl);
+
+router
+  .route("/:uid/cart/remove")
   .patch(CartController.removeProductsFromCartCtrl);
 
 // router
