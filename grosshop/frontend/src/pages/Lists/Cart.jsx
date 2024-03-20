@@ -10,23 +10,25 @@ const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]); // Zustand für ausgewählte Produkte
     const [selectedProducts, setSelectedProducts] = useState({}); // Objekt für ausgewählte Produkte mit Mengen
-
-
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         const fetchUserCart = async () => {
             try {
                 const response = await fetch(
-                    backendUrl + `/api/v1/users/${user._id}/cart`
+                    `${backendUrl}/api/v1/users/${user._id}/cart`
                 );
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
                 const { status, data, error } = await response.json();
-                if (status !== "success") throw new Error(error);
-                else console.log("Cartdata incomming", data.cart);
-                setCartItems(data.cart);
-                setSelectedItems(new Array(data.cart.length).fill(false)); // Initialisierung der Auswahl mit `false`
+                if (status === "success") {
+                    console.log("Cartdata incoming", data.cart);
+                    setCartItems(data.cart);
+                    setSelectedItems(new Array(data.cart.length).fill(false)); // Initialisierung der Auswahl mit `false`
+                } else {
+                    throw new Error(error);
+                }
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -38,7 +40,22 @@ const Cart = () => {
         return () => {
             // Perform cleanup, if necessary
         };
-    }, []);
+    }, [user]);
+
+    useEffect(() => {
+        setTotalPrice(calculateTotalPrice());
+    }, [cartItems, selectedItems]); // Überwachen von `selectedItems` für Preisaktualisierungen
+
+    const calculateTotalPrice = () => {
+        return cartItems.reduce((total, cartItem, index) => {
+            // Überprüfen, ob cartItem ein vollständiges Produktobjekt hat
+            if (cartItem.product && cartItem.product.price) {
+                return selectedItems[index] ? total + (cartItem.product.price * cartItem.quantity) : total;
+            }
+            // Wenn kein vollständiges Produktobjekt vorhanden ist, direkt auf den Preis zugreifen
+            return selectedItems[index] ? total + (cartItem.price * cartItem.quantity) : total;
+        }, 0);
+    };
 
     const handleToggleSelection = (index) => {
         const updatedSelectedItems = [...selectedItems];
@@ -52,64 +69,47 @@ const Cart = () => {
         const selectedProducts = {};
         cartItems.forEach((cartItem, index) => {
             if (selectedItems[index]) {
-            selectedProducts[cartItem.productId] = {quantity: cartItem.quantity};
+                selectedProducts[cartItem.productId] = {quantity: cartItem.quantity};
             }
         });
         return selectedProducts;
     };
-
-    const calculateTotalPrice = () => {
-        return cartItems.reduce((total, cartItem, index) => {
-            // Überprüfen, ob cartItem ein vollständiges Produktobjekt hat
-            if (cartItem.product && cartItem.product.price) {
-                return selectedItems[index] ? total + (cartItem.product.price * cartItem.quantity) : total;
-            }
-            // Wenn kein vollständiges Produktobjekt vorhanden ist, direkt auf den Preis zugreifen
-            return selectedItems[index] ? total + (cartItem.price * cartItem.quantity) : total;
-        }, 0);
-    };
-
-    const [totalPrice, setTotalPrice] = useState(0);
-
-    useEffect(() => {
-        setTotalPrice(calculateTotalPrice());
-    }, [cartItems, selectedItems]); // Überwachen von `selectedItems` für Preisaktualisierungen
-
+console.log(selectedProducts);
     const handleUpdateQuantity = async (index, newQuantity) => {
-    try {
-        const updatedCartItems = [...cartItems];
-        updatedCartItems[index].quantity = newQuantity;
-        setCartItems(updatedCartItems);
-        setTotalPrice(calculateTotalPrice());
+        try {
+            const updatedCartItems = [...cartItems];
+            updatedCartItems[index].quantity = newQuantity;
+            setCartItems(updatedCartItems);
+            setTotalPrice(calculateTotalPrice());
 
-        // Erstellen Sie das aktualisierte Objekt für den Patch-Request
-        const updatedCartItem = updatedCartItems[index];
+            // Erstellen Sie das aktualisierte Objekt für den Patch-Request
+            const updatedCartItem = updatedCartItems[index];
 
-        const requestBody = {
-            cart: [
-                {
-                    productId: updatedCartItem.productId,
-                    quantity: newQuantity,
-                    inCart: true
-                }
-            ]
-        };
-        console.log('Sending request with body:', requestBody);
-        const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody),
-        });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            const requestBody = {
+                cart: [
+                    {
+                        productId: updatedCartItem.productId,
+                        quantity: newQuantity,
+                        inCart: true
+                    }
+                ]
+            };
+            console.log('Sending request with body:', requestBody);
+            const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+        } catch (error) {
+            console.error('Error updating quantity:', error);
+            // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
         }
-    } catch (error) {
-        console.error('Error updating quantity:', error);
-        // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
-    }
-};
+    };
 
     return (
         <section className="list">
