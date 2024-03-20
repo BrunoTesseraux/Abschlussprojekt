@@ -9,6 +9,7 @@ import { verifyEmail } from "./userService/auth/verifyEmail.js";
 // import { deleteCartItem } from "./userService/cart/deleteCartItems.js";
 import { getCart } from "./userService/cart/getCart.js";
 import { updateCartItem } from "./userService/cart/updateCartItem.js";
+import { removeProductsFromCart } from "./userService/cart/removeProductsFromCart.js";
 
 import { addHistory } from "./userService/orderHistory/addHistory.js";
 import { getHistories } from "./userService/orderHistory/getHistories.js";
@@ -56,7 +57,7 @@ const UserService = {
   resetPassword,
   updatePassword,
   verifyEmail,
-  // deleteCartItem,
+  removeProductsFromCart,
   getCart,
   updateCartItem,
   addHistory,

@@ -14,18 +14,6 @@ const userSchema = new mongoose.Schema(
       maxlength: [200, "A user name must have less or equal 200 charcters"],
       default: "",
     },
-    // firstname: {
-    //   type: String,
-    //   trim: true,
-    //   minlength: [2, "A user username must have more or equal 2 charcters"],
-    //   maxlength: [200, "A user username must have less or equal 200 charcters"],
-    // },
-    // lastname: {
-    //   type: String,
-    //   trim: true,
-    //   minlength: [2, "A user username must have more or equal 2 charcters"],
-    //   maxlength: [200, "A user username must have less or equal 200 charcters"],
-    // },
     email: {
       type: String,
       required: [true, "A user must have an email"],

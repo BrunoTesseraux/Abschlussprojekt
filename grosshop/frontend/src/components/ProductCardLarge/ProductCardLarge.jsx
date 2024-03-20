@@ -4,22 +4,22 @@ import Counter from "../counter/Counter";
 import { useLikeToggle } from "../../assets/helperFunctions/handleLikeClick";
 import { UserContext } from "../../contextes/UserContext";
 
-const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelected }) => {
-  const { productName, quantity, productImage, price, rating, ratio } =
-    item;
+const ProductCardLarge = ({
+  item,
+  onUpdateQuantity,
+  onToggleSelection,
+  isSelected,
+}) => {
+  const { productName, quantity, productImage, price, rating, ratio } = item;
   const [count, setCount] = useState(quantity);
   const [likeSrc, handleLikeClick] = useLikeToggle();
   const { user, updateUser } = useContext(UserContext);
-
-
-
 
 
   const handleQuantityChange = (newQuantity) => {
     setCount(newQuantity);
     onUpdateQuantity(newQuantity);
   };
-
   
    return (
     <article className={`product-card-large ${isSelected ? 'selected' : ''}`}>
@@ -60,11 +60,5 @@ const ProductCardLarge = ({ item, onUpdateQuantity, onToggleSelection, isSelecte
     );
 }
   
-  
-
-
-
-
 
 export default ProductCardLarge;
-
