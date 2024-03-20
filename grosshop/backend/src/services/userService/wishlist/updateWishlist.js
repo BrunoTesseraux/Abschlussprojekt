@@ -8,6 +8,7 @@ export const updateWishlist = async (userId, wishlistData, next) => {
     const user = await User.findById(userId);
 
     if (!user) return next(new AppError("No User Found", 404));
+    console.log(wishlistData);
 
     // Verwende for...of für asynchrone Operationen innerhalb der Schleife
     for (const item of wishlistData) {

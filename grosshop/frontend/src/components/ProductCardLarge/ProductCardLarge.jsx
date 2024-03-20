@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import "./ProductCardLarge.scss";
 import Counter from "../counter/Counter";
-import { useLikeToggle } from "../../assets/helperFunctions/handleLikeClick";
 import { UserContext } from "../../contextes/UserContext";
+import { handleLikeClick } from "../../assets/helperFunctions/handleLikeClick";
 
 const ProductCardLarge = ({
   item,
@@ -12,12 +12,17 @@ const ProductCardLarge = ({
 }) => {
   const { productName, quantity, productImage, price, rating, ratio } = item;
   const [count, setCount] = useState(quantity);
-  const [likeSrc, handleLikeClick] = useLikeToggle();
-  const { user, updateUser } = useContext(UserContext);
+  const [likeSrc, setLikeSrc] = useState("like.svg"); // State for like button
+  const { user } = useContext(UserContext);
 
   const handleQuantityChange = (newQuantity) => {
     setCount(newQuantity);
     onUpdateQuantity(newQuantity);
+  };
+
+  const handleLike = () => {
+    // Toggle like button and update state
+    handleLikeClick(item, user, likeSrc, setLikeSrc);
   };
 
   return (
@@ -51,7 +56,7 @@ const ProductCardLarge = ({
               src={likeSrc}
               className="like"
               alt=""
-              onClick={() => handleLikeClick(item, user)}
+              onClick={handleLike} // Handle like button click
             />
           </div>
         </div>
