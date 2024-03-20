@@ -45,10 +45,16 @@ const Wishlist = () => {
   const handleUpdateQuantity = async (index, newQuantity) => {
     try {
       const updatedWishlistItems = [...wishlistData]; // Eine Kopie der Wishlist-Elemente erstellen
-      updatedWishlistItems[index].quantity = newQuantity; // Die Menge des spezifischen Elements aktualisieren
+      console.log("=================", updatedWishlistItems);
+      const inkrementedUpdatedWishlistItem = await updatedWishlistItems.find(
+        (item) => item.productId === index
+      ); // Die Menge des spezifischen Elements aktualisieren
 
+      inkrementedUpdatedWishlistItem.quantity = newQuantity;
+
+      console.log(inkrementedUpdatedWishlistItem);
       const requestBody = {
-        wishlist: updatedWishlistItems, // Aktualisierte Wishlist-Daten senden
+        wishlist: [inkrementedUpdatedWishlistItem], // Aktualisierte Wishlist-Daten senden
       };
 
       const response = await fetch(
@@ -108,7 +114,7 @@ const Wishlist = () => {
         </div>
       ) : (
         <>
-          {wishlistData.map((wishlistItem, index) => (
+          {wishlistData.map((wishlistItem) => (
             <ProductCardLarge
               key={wishlistItem.productId}
               item={wishlistItem}
