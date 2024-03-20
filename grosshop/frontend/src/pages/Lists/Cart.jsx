@@ -11,7 +11,7 @@ const Cart = () => {
   const [selectedItems, setSelectedItems] = useState([]); // Zustand für ausgewählte Produkte
   const [selectedProducts, setSelectedProducts] = useState({}); // Objekt für ausgewählte Produkte mit Mengen
   const [totalPrice, setTotalPrice] = useState(0);
-  
+
   useEffect(() => {
     const fetchUserCart = async () => {
       try {
@@ -76,47 +76,48 @@ const Cart = () => {
     }, 0);
   };
 
-  const [totalPrice, setTotalPrice] = useState(0);
-
   useEffect(() => {
     setTotalPrice(calculateTotalPrice());
   }, [cartItems, selectedItems]); // Überwachen von `selectedItems` für Preisaktualisierungen
 
- const handleUpdateQuantity = async (index, newQuantity) => {
-        try {
-            const updatedCartItems = [...cartItems];
-            updatedCartItems[index].quantity = newQuantity;
-            setCartItems(updatedCartItems);
-            setTotalPrice(calculateTotalPrice());
+  const handleUpdateQuantity = async (index, newQuantity) => {
+    try {
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[index].quantity = newQuantity;
+      setCartItems(updatedCartItems);
+      setTotalPrice(calculateTotalPrice());
 
-            // Erstellen Sie das aktualisierte Objekt für den Patch-Request
-            const updatedCartItem = updatedCartItems[index];
+      // Erstellen Sie das aktualisierte Objekt für den Patch-Request
+      const updatedCartItem = updatedCartItems[index];
 
-            const requestBody = {
-                cart: [
-                    {
-                        productId: updatedCartItem.productId,
-                        quantity: newQuantity,
-                        inCart: true
-                    }
-                ]
-            };
-            console.log('Sending request with body:', requestBody);
-            const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody),
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-        } catch (error) {
-            console.error('Error updating quantity:', error);
-            // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
+      const requestBody = {
+        cart: [
+          {
+            productId: updatedCartItem.productId,
+            quantity: newQuantity,
+            inCart: true,
+          },
+        ],
+      };
+      console.log("Sending request with body:", requestBody);
+      const response = await fetch(
+        `${backendUrl}/api/v1/users/${user._id}/cart`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
         }
-    };
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+    } catch (error) {
+      console.error("Error updating quantity:", error);
+      // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
+    }
+  };
 
   const handleRemoveSelectedItems = async () => {
     const selectedProductIds = cartItems
@@ -192,6 +193,5 @@ const Cart = () => {
     </section>
   );
 };
-
 
 export default Cart;

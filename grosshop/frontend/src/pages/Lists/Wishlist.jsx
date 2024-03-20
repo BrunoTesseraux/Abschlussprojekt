@@ -45,35 +45,44 @@ const Wishlist = () => {
   const handleUpdateQuantity = async (index, newQuantity) => {
     try {
       const updatedWishlistItems = [...wishlistData]; // Eine Kopie der Wishlist-Elemente erstellen
-      updatedWishlistItems[index].quantity = newQuantity; // Die Menge des spezifischen Elements aktualisieren
+      console.log("=================", updatedWishlistItems);
+      const inkrementedUpdatedWishlistItem = await updatedWishlistItems.find(
+        (item) => item.productId === index
+      ); // Die Menge des spezifischen Elements aktualisieren
 
+      inkrementedUpdatedWishlistItem.quantity = newQuantity;
+
+      console.log(inkrementedUpdatedWishlistItem);
       const requestBody = {
-        wishlist: updatedWishlistItems, // Aktualisierte Wishlist-Daten senden
+        wishlist: [inkrementedUpdatedWishlistItem], // Aktualisierte Wishlist-Daten senden
       };
 
-      const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/wishlist`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-      });
+      const response = await fetch(
+        `${backendUrl}/api/v1/users/${user._id}/wishlist`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
 
       // Wishlist-Daten lokal aktualisieren
       setWishlistData(updatedWishlistItems);
     } catch (error) {
-      console.error('Error updating quantity:', error);
+      console.error("Error updating quantity:", error);
       // Fehlerbehandlung, z.B. Benachrichtigung des Benutzers
     }
   };
 
   // Handler für das Umschalten der Auswahl eines Elements
   const handleToggleSelection = (productId) => {
-    setSelectedItems(prevSelectedItems => {
+    setSelectedItems((prevSelectedItems) => {
       const updatedSelectedItems = { ...prevSelectedItems };
       if (updatedSelectedItems[productId]) {
         delete updatedSelectedItems[productId]; // Wenn das Element bereits ausgewählt ist, entfernen Sie es aus den ausgewählten Elementen
@@ -87,7 +96,9 @@ const Wishlist = () => {
 
   // Handler für das Hinzufügen der ausgewählten Elemente zum Warenkorb
   const handleAddToCart = () => {
-    const selectedItemsArray = Object.keys(selectedItems).filter((index) => selectedItems[index]);
+    const selectedItemsArray = Object.keys(selectedItems).filter(
+      (index) => selectedItems[index]
+    );
     // Fügen Sie hier die Logik zum Hinzufügen der ausgewählten Artikel zum Warenkorb hinzu
     console.log("Selected items:", selectedItemsArray);
   };
@@ -103,18 +114,22 @@ const Wishlist = () => {
         </div>
       ) : (
         <>
-          {wishlistData.map((wishlistItem, index) => (
-           <ProductCardLarge
-           key={wishlistItem.productId}
-           item={wishlistItem}
-           onUpdateQuantity={(newQuantity) =>
-             handleUpdateQuantity(wishlistItem.productId, newQuantity)
-           }
-           onToggleSelection={() => handleToggleSelection(wishlistItem.productId)} // Produkt-ID übergeben
-           isSelected={selectedItems[wishlistItem.productId]} // Übergeben des Auswahlstatus
-         />
+          {wishlistData.map((wishlistItem) => (
+            <ProductCardLarge
+              key={wishlistItem.productId}
+              item={wishlistItem}
+              onUpdateQuantity={(newQuantity) =>
+                handleUpdateQuantity(wishlistItem.productId, newQuantity)
+              }
+              onToggleSelection={() =>
+                handleToggleSelection(wishlistItem.productId)
+              } // Produkt-ID übergeben
+              isSelected={selectedItems[wishlistItem.productId]} // Übergeben des Auswahlstatus
+            />
           ))}
-          <button className="total" onClick={handleAddToCart}>Add to Cart</button>
+          <button className="total" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
         </>
       )}
     </section>
