@@ -8,7 +8,7 @@ export const createOrderAndClearCart = async (userId, orderDetails) => {
   try {
     // Erstelle die neue Order
     const order = await Order.create([orderDetails], { session });
-
+    console.log("$$$$$$$$$$$$$$$$$$$$$", order);
     // Aktualisiere den User: Füge die Order zur Order-History hinzu und leere den Cart
     await User.findByIdAndUpdate(
       userId,

@@ -88,4 +88,10 @@ const OrderService = {
   createOrderAndClearCart,
 };
 
-export { UserService, ShopService, PromotionService, ProductService };
+export {
+  UserService,
+  ShopService,
+  PromotionService,
+  ProductService,
+  OrderService,
+};
