@@ -28,7 +28,7 @@ const ProductCardSmall = ({ product }) => {
             <div className="price-rating">
                 <h3>{product.price}$</h3>
                 <p>
-                    <img src="./star.svg" alt="" />
+                    <img src="/star.svg" alt="" />
                     {product.rating}
                 </p>
             </div>

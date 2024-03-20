@@ -1,34 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { backendUrl } from "../../api/api.js"; // Stelle sicher, dass backendUrl richtig importiert ist
 
 import "./ProductDetail.scss";
 import Counter from "../../components/counter/Counter";
 import TopNav from "../../components/TopNav/TopNav";
 
 const ProductDetail = () => {
-    const [product, setProduct] = useState({
-        productName: "Bavarian Beer",
-        productImage: "/bier.jpg",
-        price: 11.00,
-        rating: 6,
-        ratio: [{
-            amount: 1,
-            unit: "L"
-        }],
-        cuisine: "German",
-        productType: "Beer"
-    });
-    const [count, setCount] = useState(1);
+    const { productId } = useParams(); // Produkt-ID aus der URL-Parameter erhalten
+    const [product, setProduct] = useState(null); // Zustand für das Produkt
+    const [count, setCount] = useState(1); // Zustand für die Anzahl der Produkte im Warenkorb
 
-    const totalPrice = (product.price * count).toFixed(2);
+    // useEffect-Hook verwenden, um die Produktinformationen zu fetchen
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${backendUrl}/api/v1/products/${productId}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const productData = await response.json();
+                setProduct(productData.data.product);
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            }
+        };
+    
+        fetchData();
+    
+        // Cleanup function (optional)
+        return () => {
+            // Perform cleanup, if necessary
+        };
+    }, [productId]); // Füge productId als Abhängigkeit hinzu, um das Fetchen bei Änderungen zu aktualisieren
+
+    // Wenn das Produkt noch geladen wird, zeige "Loading..." an
+    if (!product) {
+        return <div>Loading...</div>;
+    }
+
+    // Produktinformationen aus dem State extrahieren
+    const { productName, productImage, price, rating, ratio } = product;
+
+    // Berechnung des Gesamtpreises basierend auf der Anzahl der Produkte
+    const totalPrice = (price * count).toFixed(2);
 
     return ( 
         <div className="item-details">
-        <TopNav location="Item Details"/>
-            <img src={product.productImage} alt="Produktbild" className="product-picture" />
-            <span className="unit-highlight">{product.ratio[0].amount} {product.ratio[0].unit}</span>
-            <h1>$ {product.price.toFixed(2)}</h1>
-            <h3>{product.productName}</h3>
-            <h2><img src="/star.svg" alt="Star" className="star"/>{product.rating}/5</h2>
+            <TopNav location="Item Details"/>
+            <img src={productImage} alt="Produktbild" className="product-picture" />
+            <span className="unit-highlight">{ratio[0].amount} {ratio[0].unit}</span>
+            <h1>$ {price.toFixed(2)}</h1>
+            <h3>{productName}</h3>
+            <h2><img src="/star.svg" alt="Star" className="star"/>{rating}/5</h2>
             <div className="divider"></div>
             <h2>Quantity</h2>
             <Counter count={count} setCount={setCount} />

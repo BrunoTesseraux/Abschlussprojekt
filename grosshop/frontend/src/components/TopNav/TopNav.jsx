@@ -21,7 +21,7 @@ const TopNav = ({ location, actionType }) => {
 
   return (
     <div className="top-nav">
-      <img src="./previous.svg" alt="back button" onClick={goBack} />
+      <img src="/previous.svg" alt="back button" onClick={goBack} />
       {location}
       {actionElement}
     </div>
