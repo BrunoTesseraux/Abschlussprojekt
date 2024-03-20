@@ -13,7 +13,7 @@ const getCartCtrl = catchAsync(async (req, res, next) => {
 const patchOneCartItemCtrl = catchAsync(async (req, res, next) => {
   const userId = req.params.uid; // Annahme: Benutzer-ID wird aus dem Auth-Token abgerufen
   const cartData = req.body.cart;
-  console.log("Wishlist Data: ", cartData);
+  console.log("Cart Data: ", cartData);
 
   // Annahme: updateWishlist erhält die Benutzer-ID, Produkt-ID und Menge als Argumente
   const updatedCartData = await UserService.updateCartItem(
