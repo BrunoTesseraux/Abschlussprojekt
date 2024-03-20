@@ -1,17 +1,13 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import "./ProductCardSmall.scss";
+import { useLikeToggle } from "../../assets/helperFunctions/handleLikeClick";
+import { UserContext } from "../../contextes/UserContext"; // Keine Verwendung von UserContextProvider hier
 
 const ProductCardSmall = ({ product }) => {
-    const [likeSrc, setLikeSrc] = useState("/like.svg");
+    const [likeSrc, handleLikeClick] = useLikeToggle();
+    const { user, updateUser } = useContext(UserContext);
 
-    const handleLikeClick = () => {
-        if (likeSrc === "/like.svg") {
-            setLikeSrc("/like2.svg");
-        } else {
-            setLikeSrc("/like.svg");
-        }
-    };
 
     return (
         <article className="product-card-small">
@@ -23,7 +19,7 @@ const ProductCardSmall = ({ product }) => {
                     src={likeSrc}
                     className="like"
                     alt=""
-                    onClick={handleLikeClick}
+                    onClick={() => handleLikeClick(product, user)}
                 />
             </div>
             <Link to={`/productdetail/${product._id}`}>
