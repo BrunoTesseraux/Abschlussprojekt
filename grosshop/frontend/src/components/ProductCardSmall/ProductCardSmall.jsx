@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import "./ProductCardSmall.scss";
 import { useLikeToggle } from "../../assets/helperFunctions/handleLikeClick";
@@ -11,7 +12,9 @@ const ProductCardSmall = ({ product }) => {
     return (
         <article className="product-card-small">
             <div className="pictures">
-                <img src={product.productImage} alt="Produktbild" />
+                <Link to={`/productdetail/${product._id}`}>
+                    <img src={product.productImage} alt="Produktbild" />
+                </Link>
                 <img
                     src={likeSrc}
                     className="like"
@@ -19,7 +22,9 @@ const ProductCardSmall = ({ product }) => {
                     onClick={() => handleLikeClick(product, user)}
                 />
             </div>
-            <h2>{product.productName}</h2>
+            <Link to={`/productdetail/${product._id}`}>
+                <h2>{product.productName}</h2>
+            </Link>
             <div className="price-rating">
                 <h3>{product.price}$</h3>
                 <p>

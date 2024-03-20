@@ -3,21 +3,21 @@ import "./CategoryPage.scss";
 import ProductListSmall from "../ProductListSmall/ProductListSmall";
 import TopNav from "../../components/TopNav/TopNav";
 import Searchbar from "../../components/Searchbar/Searchbar";
+import { useParams } from "react-router-dom"; // Importiere useParams, um den Parameter aus der URL zu erhalten
 
 const CategoryPage = () => {
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const { category } = useParams(); // Extrahiere den Parameter "category" aus der URL
+    const [selectedCategory, setSelectedCategory] = useState(category);
     const [searchParams, setSearchParams] = useState(null);
 
     // Verwenden Sie ein Array für die Kategorien
     const [categories, setCategories] = useState([
-        "Obst und Gemüse",
-        "Fleisch und Geflügel",
-        "Milchprodukte",
-        "Getränke",
-        "Backwaren",
-        "Tiefkühlkost",
-        "Haushaltswaren",
-        "Süßigkeiten und Snacks"
+        "All",
+        "Vegetable",
+        "Fruit",
+        "Meat",
+        "Seafood",
+        "Bread"
     ]);
 
     useEffect(() => {
