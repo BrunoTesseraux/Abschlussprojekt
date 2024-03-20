@@ -6,7 +6,7 @@ import { resetPassword } from "./userService/auth/resetPassword.js";
 import { updatePassword } from "./userService/auth/updatePassword.js";
 import { verifyEmail } from "./userService/auth/verifyEmail.js";
 
-import { deleteCartItem } from "./userService/cart/deleteCartItem.js";
+// import { deleteCartItem } from "./userService/cart/deleteCartItems.js";
 import { getCart } from "./userService/cart/getCart.js";
 import { updateCartItem } from "./userService/cart/updateCartItem.js";
 
@@ -38,6 +38,8 @@ import { getTodayDealsProducts } from "./productService/getTodayDealsProducts.js
 import { getMemberDealsProducts } from "./productService/getMemberDealsProducts.js";
 import { getSearchProduct } from "./productService/getSearchProduct.js";
 
+import { createOrderAndClearCart } from "./orderService/createOrderAndClearCart.js";
+
 const UserService = {
   registerUser,
   getOneUser,
@@ -54,7 +56,7 @@ const UserService = {
   resetPassword,
   updatePassword,
   verifyEmail,
-  deleteCartItem,
+  // deleteCartItem,
   getCart,
   updateCartItem,
   addHistory,
@@ -82,4 +84,14 @@ const ProductService = {
   getSearchProduct,
 };
 
-export { UserService, ShopService, PromotionService, ProductService };
+const OrderService = {
+  createOrderAndClearCart,
+};
+
+export {
+  UserService,
+  ShopService,
+  PromotionService,
+  ProductService,
+  OrderService,
+};

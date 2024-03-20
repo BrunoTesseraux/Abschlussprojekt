@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import { addressSchema } from "../models/adressSchema.js";
 
 // Order Schema
 const orderSchema = new mongoose.Schema(
@@ -31,7 +32,7 @@ const orderSchema = new mongoose.Schema(
     },
     orderNumber: { type: String, required: true },
     orderTimestamp: { type: Date, required: true },
-    shippingAdress: { type: String, required: true },
+    shippingAdress: addressSchema,
   },
   { collection: "Orders", timestamps: true }
 );
