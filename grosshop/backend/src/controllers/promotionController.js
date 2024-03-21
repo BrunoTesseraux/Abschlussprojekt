@@ -14,16 +14,6 @@ const getTodayDealsPromotionsCtrl = catchAsync(async (req, res, next) => {
 });
 
 const getMemberDealsPromotionsCtrl = catchAsync(async (req, res, next) => {
-  // const userId = req.verifiedUserClaims.id;
-
-  // const user = await User.findById(userId);
-  // if (!user || !user.member) {
-  //   return res.status(403).json({
-  //     status: "fail",
-  //     message: "Dieser Bereich ist nur für Mitglieder zugänglich.",
-  //   });
-  // }
-
   const promotions = await PromotionService.getMemberDealsPromotions();
   res.status(OK).json({
     status: "success",
@@ -35,7 +25,7 @@ const getMemberDealsPromotionsCtrl = catchAsync(async (req, res, next) => {
 
 const getProductDealsPromotionsCtrl = catchAsync(async (req, res, next) => {
   const promotions = await PromotionService.getProductDealsPromotions();
-  res.status(OK).json({ status: "success", data: promotions });
+  res.status(OK).json({ status: "success", data: { promotions } });
 });
 
 export const PromotionController = {

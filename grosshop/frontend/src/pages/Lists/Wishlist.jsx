@@ -73,7 +73,7 @@ const Wishlist = () => {
   const handleUpdateQuantity = async (index, newQuantity) => {
     try {
       const updatedWishlistItems = [...wishlistData]; // Eine Kopie der Wishlist-Elemente erstellen
-      console.log("=================", updatedWishlistItems);
+      // console.log("=================", updatedWishlistItems);
       const inkrementedUpdatedWishlistItem = await updatedWishlistItems.find(
         (item) => item.productId === index
       ); // Die Menge des spezifischen Elements aktualisieren
