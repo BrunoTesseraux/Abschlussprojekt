@@ -16,6 +16,7 @@ import { useState } from "react";
 import Home from "./pages/Home/Home";
 import { UserContextProvider } from "./contextes/UserContext";
 import Test from "./components/Test/Test";
+import ProductListSmall from "./pages/ProductListSmall/ProductListSmall";
 
 function App() {
   const [login, setLogin] = useState(null);
@@ -36,6 +37,15 @@ function App() {
           <Route path="/edituser" element={<EditProfile />} />
           <Route path="/categorypage" element={<CategoryPage />} />
           <Route path="/categorypage/:category" element={<CategoryPage />} />
+          <Route path="/:deal" element={<CategoryPage />} />
+          {/* <Route
+            path="/:deal"
+            element={<CategoryPage deal={"memberDeals"} />}
+          />
+          <Route
+            path="/:deal"
+            element={<CategoryPage deal={"productDeals"} />}
+          /> */}
           <Route path="/productdetail/:productId" element={<ProductDetail />} />
         </Routes>
       </UserContextProvider>
