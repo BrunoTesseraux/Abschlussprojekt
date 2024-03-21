@@ -19,6 +19,10 @@
         color: #2C3066;
         font-family: "poppins-regular";
         font-size: 22px;
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
         button{
             margin-top: 200px;
         }

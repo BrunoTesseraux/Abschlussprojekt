@@ -4,6 +4,7 @@ import TopNav from "../../components/TopNav/TopNav";
 import ProductCardLarge from "../../components/ProductCardLarge/ProductCardLarge";
 import { backendUrl } from "../../api/api";
 import { UserContext } from "../../contextes/UserContext";
+import { Link } from "react-router-dom";
 
 const Wishlist = () => {
   // Zustände
@@ -131,7 +132,9 @@ const Wishlist = () => {
         <div className="empty-list">
           <img src="/empty-wishlist.svg" alt="heart icon" />
           <p>Your Wishlist is empty</p>
+          <Link to="/home">
           <button className="total">Start Shopping</button>
+          </Link>
         </div>
       ) : (
         <>
