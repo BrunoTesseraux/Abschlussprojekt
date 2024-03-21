@@ -36,6 +36,10 @@
         padding-left: 13px;
         .product-info {
             width: 50%;
+            a{
+                text-decoration: none;
+                color: inherit;
+            }
             h2{
                 font-family: "poppins-regular";
                 color: #2C3066;font-size: .875rem;
