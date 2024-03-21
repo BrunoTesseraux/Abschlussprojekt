@@ -1,0 +1,675 @@
+[
+  {
+    productName: "Organic Apples",
+    productImage: "https://images.unsplash.com/photo-1501925654609-7b41cf395eb8?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 2.49,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 1, unit: "kg" }],
+    category: "Fruit",
+    deal: "product"
+  },
+  {
+    productName: "Organic Bananas",
+    productImage: "https://images.unsplash.com/photo-1527546712175-827fa4321096?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 1.99,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Fruit",
+    deal: "today"
+  },
+  {
+    productName: "Raspberries",
+    productImage: "https://images.unsplash.com/photo-1530983820165-35b7aa38a105?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 3.99,
+    rating: { reviews: 12, rate: 4.6 },
+    ratio: [{ amount: 200, unit: "g" }],
+    category: "Fruit",
+    deal: "product"
+  },
+  {
+    productName: "Organic Oranges",
+    productImage: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 2.99,
+    rating: { reviews: 18, rate: 4.8 },
+    ratio: [{ amount: 1, unit: "kg" }],
+    category: "Fruit",
+    deal: "member"
+  },
+  {
+    productName: "Pineapple",
+    productImage: "https://images.unsplash.com/photo-1490885578174-acda8905c2c6?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 4.49,
+    rating: { reviews: 10, rate: 4.4 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Fruit",
+    deal: "today"
+  },
+  {
+    productName: "Strawberries",
+    productImage: "",
+    price: 2.79,
+    rating: { reviews: 22, rate: 4.7 },
+    ratio: [{ amount: 250, unit: "g" }],
+    category: "Fruit",
+    deal: "product"
+  },
+  {
+    productName: "Kiwis",
+    productImage: "",
+    price: 1.69,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Fruit",
+    deal: "today"
+  },
+  {
+    productName: "Pears",
+    productImage: "",
+    price: 2.29,
+    rating: { reviews: 14, rate: 4.6 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Fruit",
+    deal: "product"
+  },
+  {
+    productName: "Mango",
+    productImage: "",
+    price: 3.99,
+    rating: { reviews: 8, rate: 4.3 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Fruit",
+    deal: "today"
+  },
+  {
+    productName: "Grapes",
+    productImage: "",
+    price: 5.49,
+    rating: { reviews: 18, rate: 4.7 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Fruit",
+    deal: "member"
+  },
+  {
+    productName: "Peaches",
+    productImage: "",
+    price: 2.99,
+    rating: { reviews: 10, rate: 4.4 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Fruit",
+    deal: "product"
+  },
+  {
+    productName: "Blood Oranges",
+    productImage: "",
+    price: 3.49,
+    rating: { reviews: 6, rate: 4.2 },
+    ratio: [{ amount: 1, unit: "kg" }],
+    category: "Fruit",
+    deal: "today"
+  },
+  {
+    productName: "Blueberries",
+    productImage: "",
+    price: 4.99,
+    rating: { reviews: 14, rate: 4.6 },
+    ratio: [{ amount: 150, unit: "g" }],
+    category: "Fruit",
+    deal: "product"
+  },
+  {
+    productName: "Cherries",
+    productImage: "",
+    price: 6.99,
+    rating: { reviews: 10, rate: 4.4 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Fruit",
+    deal: "today"
+  },
+  {
+    productName: "Grapefruit",
+    productImage: "",
+    price: 2.79,
+    rating: { reviews: 8, rate: 4.3 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Fruit",
+    deal: "product"
+  }
+]
+[
+  {
+    productName: "Organic Spinach",
+    productImage: "",
+    price: 2.99,
+    rating: { reviews: 18, rate: 4.6 },
+    ratio: [{ amount: 200, unit: "g" }],
+    category: "Vegetable",
+    deal: "product"
+  },
+  {
+    productName: "Broccoli",
+    productImage: "",
+    price: 1.79,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Vegetable",
+    deal: "today"
+  },
+  {
+    productName: "Carrots",
+    productImage: "",
+    price: 1.49,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Vegetable",
+    deal: "product"
+  },
+  {
+    productName: "Tomatoes",
+    productImage: "",
+    price: 2.29,
+    rating: { reviews: 22, rate: 4.8 },
+    ratio: [{ amount: 1, unit: "kg" }],
+    category: "Vegetable",
+    deal: "member"
+  },
+  {
+    productName: "Bell Peppers",
+    productImage: "",
+    price: 1.99,
+    rating: { reviews: 16, rate: 4.6 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Vegetable",
+    deal: "today"
+  },
+  {
+    productName: "Cucumbers",
+    productImage: "",
+    price: 1.69,
+    rating: { reviews: 18, rate: 4.7 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Vegetable",
+    deal: "product"
+  },
+  {
+    productName: "Zucchini",
+    productImage: "",
+    price: 1.99,
+    rating: { reviews: 14, rate: 4.5 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Vegetable",
+    deal: "today"
+  },
+  {
+    productName: "Asparagus",
+    productImage: "",
+    price: 3.49,
+    rating: { reviews: 12, rate: 4.4 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Vegetable",
+    deal: "product"
+  },
+  {
+    productName: "Cherry Tomatoes",
+    productImage: "",
+    price: 2.79,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 250, unit: "g" }],
+    category: "Vegetable",
+    deal: "today"
+  },
+  {
+    productName: "Beets",
+    productImage: "",
+    price: 1.99,
+    rating: { reviews: 10, rate: 4.3 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Vegetable",
+    deal: "product"
+  },
+  {
+    productName: "Garlic",
+    productImage: "",
+    price: 0.99,
+    rating: { reviews: 25, rate: 4.9 },
+    ratio: [{ amount: 100, unit: "g" }],
+    category: "Vegetable",
+    deal: "today"
+  },
+  {
+    productName: "Celery",
+    productImage: "",
+    price: 1.49,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Vegetable",
+    deal: "product"
+  },
+  {
+    productName: "Leeks",
+    productImage: "",
+    price: 1.29,
+    rating: { reviews: 18, rate: 4.6 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Vegetable",
+    deal: "today"
+  },
+  {
+    productName: "Potatoes",
+    productImage: "",
+    price: 1.99,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 1, unit: "kg" }],
+    category: "Vegetable",
+    deal: "product"
+  },
+  {
+    productName: "Green Beans",
+    productImage: "",
+    price: 2.49,
+    rating: { reviews: 14, rate: 4.4 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Vegetable",
+    deal: "today"
+  }
+]
+[
+  // Meat Products
+  {
+    productName: "Beef Steak",
+    productImage: "",
+    price: 9.99,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 400, unit: "g" }],
+    category: "Meat",
+    deal: "today"
+  },
+  {
+    productName: "Chicken Breast",
+    productImage: "",
+    price: 6.49,
+    rating: { reviews: 18, rate: 4.6 },
+    ratio: [{ amount: 350, unit: "g" }],
+    category: "Meat",
+    deal: "product"
+  },
+  {
+    productName: "Pork Chops",
+    productImage: "",
+    price: 8.99,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Meat",
+    deal: "today"
+  },
+  {
+    productName: "Lamb Leg",
+    productImage: "",
+    price: 14.99,
+    rating: { reviews: 25, rate: 4.8 },
+    ratio: [{ amount: 700, unit: "g" }],
+    category: "Meat",
+    deal: "member"
+  },
+  {
+    productName: "Ground Turkey",
+    productImage: "",
+    price: 5.99,
+    rating: { reviews: 16, rate: 4.6 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Meat",
+    deal: "product"
+  },
+
+  // Sausages and Spread Products
+  {
+    productName: "Chicken Sausages",
+    productImage: "",
+    price: 4.99,
+    rating: { reviews: 12, rate: 4.3 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Meat",
+    deal: "today"
+  },
+  {
+    productName: "Beef Salami",
+    productImage: "",
+    price: 3.49,
+    rating: { reviews: 15, rate: 4.4 },
+    ratio: [{ amount: 200, unit: "g" }],
+    category: "Meat",
+    deal: "product"
+  },
+  {
+    productName: "Turkey Breast Slices",
+    productImage: "",
+    price: 6.99,
+    rating: { reviews: 18, rate: 4.6 },
+    ratio: [{ amount: 250, unit: "g" }],
+    category: "Meat",
+    deal: "today"
+  },
+  {
+    productName: "Pork Liver Pate",
+    productImage: "",
+    price: 2.99,
+    rating: { reviews: 10, rate: 4.2 },
+    ratio: [{ amount: 150, unit: "g" }],
+    category: "Meat",
+    deal: "product"
+  },
+  {
+    productName: "Chicken Liver Pate",
+    productImage: "",
+    price: 2.79,
+    rating: { reviews: 8, rate: 4.1 },
+    ratio: [{ amount: 150, unit: "g" }],
+    category: "Meat",
+    deal: "today"
+  },
+  {
+    productName: "Smoked Beef Sausage",
+    productImage: "",
+    price: 5.49,
+    rating: { reviews: 14, rate: 4.5 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Meat",
+    deal: "product"
+  },
+  {
+    productName: "Chicken Spread",
+    productImage: "",
+    price: 3.29,
+    rating: { reviews: 11, rate: 4.3 },
+    ratio: [{ amount: 200, unit: "g" }],
+    category: "Meat",
+    deal: "today"
+  },
+  {
+    productName: "Turkey Ham",
+    productImage: "",
+    price: 4.79,
+    rating: { reviews: 13, rate: 4.4 },
+    ratio: [{ amount: 250, unit: "g" }],
+    category: "Meat",
+    deal: "product"
+  },
+  {
+    productName: "Pork Bratwurst",
+    productImage: "",
+    price: 3.99,
+    rating: { reviews: 16, rate: 4.5 },
+    ratio: [{ amount: 350, unit: "g" }],
+    category: "Meat",
+    deal: "today"
+  }
+]
+[
+  {
+    productName: "Salmon Fillet",
+    productImage: "",
+    price: 12.99,
+    rating: { reviews: 25, rate: 4.8 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Seafood",
+    deal: "today"
+  },
+  {
+    productName: "Shrimp",
+    productImage: "",
+    price: 9.99,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 400, unit: "g" }],
+    category: "Seafood",
+    deal: "product"
+  },
+  {
+    productName: "Tuna Steak",
+    productImage: "",
+    price: 10.49,
+    rating: { reviews: 18, rate: 4.6 },
+    ratio: [{ amount: 250, unit: "g" }],
+    category: "Seafood",
+    deal: "today"
+  },
+  {
+    productName: "Cod Fillet",
+    productImage: "",
+    price: 8.99,
+    rating: { reviews: 22, rate: 4.8 },
+    ratio: [{ amount: 350, unit: "g" }],
+    category: "Seafood",
+    deal: "member"
+  },
+  {
+    productName: "Scallops",
+    productImage: "",
+    price: 15.99,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 200, unit: "g" }],
+    category: "Seafood",
+    deal: "today"
+  },
+  {
+    productName: "Crab Legs",
+    productImage: "",
+    price: 18.99,
+    rating: { reviews: 12, rate: 4.4 },
+    ratio: [{ amount: 500, unit: "g" }],
+    category: "Seafood",
+    deal: "product"
+  },
+  {
+    productName: "Mussels",
+    productImage: "",
+    price: 6.99,
+    rating: { reviews: 14, rate: 4.6 },
+    ratio: [{ amount: 1, unit: "kg" }],
+    category: "Seafood",
+    deal: "today"
+  },
+  {
+    productName: "Sardines",
+    productImage: "",
+    price: 4.49,
+    rating: { reviews: 18, rate: 4.7 },
+    ratio: [{ amount: 250, unit: "g" }],
+    category: "Seafood",
+    deal: "product"
+  },
+  {
+    productName: "Halibut Steak",
+    productImage: "",
+    price: 13.49,
+    rating: { reviews: 10, rate: 4.3 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Seafood",
+    deal: "today"
+  },
+  {
+    productName: "Octopus",
+    productImage: "",
+    price: 16.99,
+    rating: { reviews: 8, rate: 4.1 },
+    ratio: [{ amount: 400, unit: "g" }],
+    category: "Seafood",
+    deal: "product"
+  },
+  {
+    productName: "Lobster Tail",
+    productImage: "",
+    price: 29.99,
+    rating: { reviews: 20, rate: 4.8 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Seafood",
+    deal: "today"
+  },
+  {
+    productName: "Anchovies",
+    productImage: "",
+    price: 3.99,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 200, unit: "g" }],
+    category: "Seafood",
+    deal: "product"
+  },
+  {
+    productName: "Trout Fillet",
+    productImage: "",
+    price: 11.99,
+    rating: { reviews: 12, rate: 4.4 },
+    ratio: [{ amount: 350, unit: "g" }],
+    category: "Seafood",
+    deal: "today"
+  },
+  {
+    productName: "Calamari Rings",
+    productImage: "",
+    price: 7.99,
+    rating: { reviews: 16, rate: 4.6 },
+    ratio: [{ amount: 300, unit: "g" }],
+    category: "Seafood",
+    deal: "product"
+  },
+  {
+    productName: "King Prawns",
+    productImage: "",
+    price: 17.99,
+    rating: { reviews: 10, rate: 4.3 },
+    ratio: [{ amount: 400, unit: "g" }],
+    category: "Seafood",
+    deal: "today"
+  }
+]
+[
+  {
+    productName: "Whole Wheat Bread",
+    productImage: "",
+    price: 2.49,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "today"
+  },
+  {
+    productName: "Multigrain Bread",
+    productImage: "",
+    price: 2.99,
+    rating: { reviews: 18, rate: 4.6 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "product"
+  },
+  {
+    productName: "Baguette",
+    productImage: "",
+    price: 1.79,
+    rating: { reviews: 15, rate: 4.5 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Bread",
+    deal: "today"
+  },
+  {
+    productName: "Sourdough Bread",
+    productImage: "",
+    price: 3.49,
+    rating: { reviews: 22, rate: 4.8 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "member"
+  },
+  {
+    productName: "Rye Bread",
+    productImage: "",
+    price: 2.29,
+    rating: { reviews: 16, rate: 4.6 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "today"
+  },
+  {
+    productName: "Ciabatta",
+    productImage: "",
+    price: 2.99,
+    rating: { reviews: 14, rate: 4.5 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Bread",
+    deal: "product"
+  },
+  {
+    productName: "Pumpernickel Bread",
+    productImage: "",
+    price: 2.79,
+    rating: { reviews: 18, rate: 4.7 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "today"
+  },
+  {
+    productName: "Focaccia",
+    productImage: "",
+    price: 3.99,
+    rating: { reviews: 20, rate: 4.8 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Bread",
+    deal: "product"
+  },
+  {
+    productName: "Whole Grain Bagel",
+    productImage: "",
+    price: 1.99,
+    rating: { reviews: 15, rate: 4.6 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Bread",
+    deal: "today"
+  },
+  {
+    productName: "Brioche",
+    productImage: "",
+    price: 3.49,
+    rating: { reviews: 17, rate: 4.7 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "product"
+  },
+  {
+    productName: "Challah Bread",
+    productImage: "",
+    price: 3.79,
+    rating: { reviews: 12, rate: 4.4 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "today"
+  },
+  {
+    productName: "English Muffins",
+    price: 2.49,
+    rating: { reviews: 18, rate: 4.6 },
+    ratio: [{ amount: 1, unit: "pack" }],
+    category: "Bread",
+    deal: "product"
+  },
+  {
+    productName: "Cinnamon Swirl Bread",
+    price: 3.99,
+    rating: { reviews: 16, rate: 4.5 },
+    ratio: [{ amount: 1, unit: "loaf" }],
+    category: "Bread",
+    deal: "today"
+  },
+  {
+    productName: "Bagels (Assorted)",
+    price: 2.79,
+    rating: { reviews: 14, rate: 4.3 },
+    ratio: [{ amount: 1, unit: "pack" }],
+    category: "Bread",
+    deal: "product"
+  },
+  {
+    productName: "Kaiser Roll",
+    price: 1.29,
+    rating: { reviews: 20, rate: 4.7 },
+    ratio: [{ amount: 1, unit: "piece" }],
+    category: "Bread",
+    deal: "today"
+  }
+]
