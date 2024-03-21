@@ -1,0 +1,8 @@
+//ToDo
+
+// handle like toggle 
+// wishlist add to cart 
+// cart create order 
+// order list map function fix 
+// Bild (fake (evtl uselocation))
+// product card large logig anpassen mit product card small 
