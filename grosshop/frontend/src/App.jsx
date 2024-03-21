@@ -25,11 +25,8 @@ function App() {
     <Router>
       <UserContextProvider>
         <Routes>
-          {/* <Route path="/" element={<Welcome />} /> */}
-          <Route
-            path="/"
-            element={<SignIn login={login} onLogin={setLogin} />}
-          />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<SignIn login={login} onLogin={setLogin} />} />
           <Route path="/signup" element={<Register onLogin={setLogin} />} />
           <Route path="/home" element={<Home />} />
           <Route path="/register-success" element={<SuccessNotification />} />

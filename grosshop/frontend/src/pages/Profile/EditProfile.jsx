@@ -3,6 +3,7 @@ import TopNav from "../../components/TopNav/TopNav";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import { UserContext } from "../../contextes/UserContext";
 import { backendUrl } from "../../api/api";
+import { Link } from "react-router-dom";
 
 const EditProfile = () => {
   const { user, updateUser } = useContext(UserContext);
@@ -98,7 +99,9 @@ const EditProfile = () => {
                 <input type="text" name="zip" value={user.address.zip} placeholder="Zip" onChange={handleChange} />
                 <div className="divider"></div>
             </div>
+            <Link to="/profile">
             <button onClick={handleSave}>Save</button>
+            </Link>
         </section>
     );
 };

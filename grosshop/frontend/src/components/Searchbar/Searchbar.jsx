@@ -2,42 +2,39 @@ import React, { useState } from 'react';
 import './Searchbar.scss';
 import Filter from '../Filter/Filter';
 
-const Searchbar = ({ onSearchInitiated, onResetSearch }) => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedSortBy, setSelectedSortBy] = useState(null);
-    const [priceRange, setPriceRange] = useState({ min: 0, max: 999 });
+const Searchbar = ({ 
+    searchTerm, 
+    setSearchTerm, 
+    selectedSortBy, 
+    setSelectedSortBy, 
+    priceRange, 
+    setPriceRange, 
+    onSearch, 
+    onResetSearch 
+}) => {
     const [isSearchActive, setIsSearchActive] = useState(false);
-
-    const onSearch = () => {
-        setIsSearchActive(false);
-        const searchParams = {
-            searchTerm,
-            selectedSortBy,
-            priceRange
-        };
-        // Call the function passed from CategoryPage to initiate search
-        onSearchInitiated(searchParams);
-    };
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
     };
+
     const handleResetSearch = () => {
         setSearchTerm('');
         setPriceRange({ min: 0, max: 999 });
+        setIsSearchActive(false);
+
         onResetSearch(); // Aufruf der Reset-Funktion
     };
 
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            onSearch();
+            setIsSearchActive(false);
         }
     };
 
     const handleFocus = () => {
         setIsSearchActive(true);
     };
-
 
     return (
         <section className="searchbar">
@@ -55,7 +52,7 @@ const Searchbar = ({ onSearchInitiated, onResetSearch }) => {
             </div>
             {isSearchActive && (
                 <div className="filtercontainer">
-                    <Filter
+                  <Filter
                         resetSearch={handleResetSearch}
                         searchTerm={searchTerm}
                         selectedSortBy={selectedSortBy}
@@ -63,6 +60,7 @@ const Searchbar = ({ onSearchInitiated, onResetSearch }) => {
                         priceRange={priceRange}
                         setPriceRange={setPriceRange}
                         onSearch={onSearch}
+                        setIsSearchActive={setIsSearchActive} // Weitergabe des Setters für isSearchActive
                     />
                 </div>
             )}
