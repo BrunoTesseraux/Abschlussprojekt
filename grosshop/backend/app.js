@@ -43,7 +43,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json());
-app.use(express.static(`./public`));
+app.use("/data/uploads", express.static(`data/uploads`));
+
+
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
