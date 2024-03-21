@@ -4,6 +4,7 @@ import TopNav from "../../components/TopNav/TopNav";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import { UserContext } from "../../contextes/UserContext";
 import { Link } from "react-router-dom";
+import { backendUrl } from "../../api/api";
 
 const Profile = () => {
     const [isImageUploadActive, setImageUploadActive] = useState(false);
@@ -32,7 +33,7 @@ const formatDate = (dateString) => {
                 <TopNav location="Profile"/>
                 <div className="profile-picture-container">
                     {/* <img src={user.profilePicture || ''}  className="profile-picture" alt="" /> */}
-                    <img src="./../../../../backend/data/uploads/1710922398802-bier.jpg"  className="profile-picture" alt="" />
+                    <img src={`${backendUrl}/${user.profilePicture}`}  className="profile-picture" alt="" />
                     <div className={`camera-border ${isImageUploadActive ? "active" : ""}`} onClick={handleCameraBorderClick}>
                         <img src="./camera-icon.svg" alt="" />
                     </div>

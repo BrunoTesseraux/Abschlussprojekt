@@ -7,6 +7,7 @@ const ImageUpload = ({ onClose }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { user, updateUser } = useContext(UserContext);
   const [file, setFile] = useState();
+  const [imagePrev, setImagePrev] = useState("");
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -17,12 +18,18 @@ const ImageUpload = ({ onClose }) => {
     }
   };
 
-  useEffect(() => {}, [user]);
+  useEffect(() => {
+    if (!file) return
+    convertBase64(file).then((imageBase64) => {
+      setImagePrev(imageBase64);
+    })
+  }, [file]);
 
   //   const handleImageUpload = () => {
   //     //upload logic
   //     onClose();
   //   };
+  
 
   const handleImageUpload = async () => {
     if (!file) return;
@@ -44,7 +51,7 @@ const ImageUpload = ({ onClose }) => {
         // Aktualisiere den User im Context mit den neuen Daten
         updateUser({
           ...user,
-          profilePicture: `${backendUrl}/${data.data.filePath}`,
+          profilePicture: `${data.data.filePath}`,
         });
       }
       onClose();
@@ -57,7 +64,7 @@ const ImageUpload = ({ onClose }) => {
     <div className="upload-popup">
       {selectedImage && (
         <img
-          src={`${backendUrl}/${user.profilePicture}`}
+          src={imagePrev}
           alt="Selected"
           className="preview-image"
         />
@@ -69,3 +76,18 @@ const ImageUpload = ({ onClose }) => {
 };
 
 export default ImageUpload;
+
+const convertBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+};
