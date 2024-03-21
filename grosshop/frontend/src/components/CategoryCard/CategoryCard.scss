@@ -1,7 +1,10 @@
 .category-card{
     width: 100px;
     flex-shrink: 0;
-
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
     img{
         width: 85px;
         height: 85px;
