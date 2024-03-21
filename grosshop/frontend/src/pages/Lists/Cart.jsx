@@ -4,6 +4,7 @@ import ProductCardLarge from "../../components/ProductCardLarge/ProductCardLarge
 import TopNav from "../../components/TopNav/TopNav";
 import { UserContext } from "../../contextes/UserContext";
 import { backendUrl } from "../../api/api";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { user } = useContext(UserContext);
@@ -170,7 +171,9 @@ const Cart = () => {
         <div className="empty-list">
           <img src="/empty-cart.svg" alt="cart icon" />
           <p>Your Cart is empty</p>
+          <Link to="/home">
           <button className="total">Start Shopping</button>
+          </Link>
         </div>
       ) : (
         <>

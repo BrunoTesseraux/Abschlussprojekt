@@ -4,6 +4,7 @@ import TopNav from "../../components/TopNav/TopNav";
 import "./List.scss";
 import { UserContext } from "../../contextes/UserContext";
 import { backendUrl } from "../../api/api";
+import { Link } from "react-router-dom";
 
 const OrderList = () => {
   const [orderHistory, setOrderHistory] = useState([]);
@@ -40,7 +41,9 @@ const OrderList = () => {
          <div className="empty-list">
          <img src="/empty-cart.svg" alt="cart icon" />
          <p>No Orders yet</p>
-         <button className="total">Start Shopping</button>
+         <Link to="/home">
+          <button className="total">Start Shopping</button>
+          </Link>
      </div>
       ) : (
         orderHistory.orderHistory.map((order) => (
