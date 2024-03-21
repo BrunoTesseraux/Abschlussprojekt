@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 import MultiRangeSlider from './MultiRangeSlider';
 import './Filter.scss';
 
-const Filter = ({ resetSearch, searchTerm, selectedSortBy, setSelectedSortBy, priceRange, setPriceRange, onSearch }) => {
+const Filter = ({ resetSearch, searchTerm, selectedSortBy, setSelectedSortBy, priceRange, setPriceRange, setIsSearchActive, isSearchActive }) => {
     const [formActive, setFormActive] = useState(false);
 
-    // const uniqueCategories = Array.from(new Set(products.map((product) => product.category)));
-    
-    
     useEffect(() => {
         setTimeout(() => {
           setFormActive(true);
@@ -56,7 +53,7 @@ const Filter = ({ resetSearch, searchTerm, selectedSortBy, setSelectedSortBy, pr
                     onChange={setPriceRange}
                 />
             </div>
-            <button className='search' onClick={onSearch} >Search</button>
+            <button className='search' onClick={() => setIsSearchActive(false)}>Search</button>
         </section>
     );
 };

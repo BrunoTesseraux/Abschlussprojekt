@@ -1,11 +1,15 @@
 .product-card-small{
     width: 100%;
     text-align: center;
-background-color: white;
+    background-color: white;
     padding-top: 8px;
     padding-bottom: 8px;
     height: 85px;
     font-family: "poppins-regular";
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
     .pictures{
         position: relative;
         justify-content: center;
@@ -39,6 +43,7 @@ background-color: white;
             font-size: 13px;
             color: #2C3066;
             text-align: left;
+            font-family: "poppins-regular";
         }
         p{
             color: #777777;
