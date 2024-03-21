@@ -31,7 +31,8 @@ const formatDate = (dateString) => {
             <div className="gradient-background">
                 <TopNav location="Profile"/>
                 <div className="profile-picture-container">
-                    <img src={user.profilePicture || ''}  className="profile-picture" alt="" />
+                    {/* <img src={user.profilePicture || ''}  className="profile-picture" alt="" /> */}
+                    <img src="./../../../../backend/data/uploads/1710922398802-bier.jpg"  className="profile-picture" alt="" />
                     <div className={`camera-border ${isImageUploadActive ? "active" : ""}`} onClick={handleCameraBorderClick}>
                         <img src="./camera-icon.svg" alt="" />
                     </div>

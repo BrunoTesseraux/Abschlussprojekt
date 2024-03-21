@@ -3,14 +3,16 @@ import "./CategoryPage.scss";
 import ProductListSmall from "../ProductListSmall/ProductListSmall";
 import TopNav from "../../components/TopNav/TopNav";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import { useParams } from "react-router-dom"; // Importiere useParams, um den Parameter aus der URL zu erhalten
+import { useParams } from "react-router-dom";
 
 const CategoryPage = () => {
-    const { category } = useParams(); // Extrahiere den Parameter "category" aus der URL
+    const { category } = useParams();
     const [selectedCategory, setSelectedCategory] = useState(category);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedSortBy, setSelectedSortBy] = useState(null);
+    const [priceRange, setPriceRange] = useState({ min: 0, max: 999 });
     const [searchParams, setSearchParams] = useState(null);
 
-    // Verwenden Sie ein Array für die Kategorien
     const [categories, setCategories] = useState([
         "All",
         "Vegetable",
@@ -21,32 +23,43 @@ const CategoryPage = () => {
     ]);
 
     useEffect(() => {
-        // Filterlogik hier implementieren, abhängig von selectedCategory und searchParams
         const filteredParams = {
             category: selectedCategory,
-            ...searchParams
+            searchTerm,
+            selectedSortBy,
+            priceRange
         };
+        setSearchParams(filteredParams);
         console.log("Filtered parameters:", filteredParams);
-        // Hier könntest du den gefilterten Parameter an die ProductListSmall-Komponente weitergeben
-    }, [selectedCategory, searchParams]);
+    }, [selectedCategory, searchTerm, selectedSortBy, priceRange]);
 
     const handleResetSearch = () => {
-        setSearchParams(null); // Suchparameter zurücksetzen
-        setSelectedCategory(null); // Kategorie zurücksetzen
-    };
-
-    const handleCategorySelect = (category) => {
+        setSearchTerm('');
+        setSelectedSortBy(null);
+        setPriceRange({ min: 0, max: 999 });
         setSelectedCategory(category);
     };
 
-    const handleSearchInitiated = (params) => {
-        setSearchParams(params);
+    const handleCategorySelect = (category) => {
+        if (category === "All"){
+            setSelectedCategory(null)
+            return
+        }
+        setSelectedCategory(category);
     };
 
     return ( 
         <section className="category-page">
             <TopNav location="All Products"/>
-            <Searchbar onSearchInitiated={handleSearchInitiated} onResetSearch={handleResetSearch}/>
+            <Searchbar 
+                searchTerm={searchTerm} 
+                setSearchTerm={setSearchTerm} 
+                selectedSortBy={selectedSortBy} 
+                setSelectedSortBy={setSelectedSortBy} 
+                priceRange={priceRange} 
+                setPriceRange={setPriceRange} 
+                onResetSearch={handleResetSearch} 
+            />
             <div className="category-select">
                 {categories.map((category, index) => (
                      <button 
