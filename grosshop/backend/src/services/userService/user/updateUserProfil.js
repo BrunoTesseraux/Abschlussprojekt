@@ -20,7 +20,7 @@ export const updateUserProfil = async (userId, updatedProfileData, next) => {
   // };
   const user = User.findById(userId);
   if (!user) return next(new AppError("No user found", NOT_FOUND));
-  console.log("===============", user);
+  // console.log("===============", user);
   if (user.profilePicture) {
     const oldImagePath = path.join(__dirname, user.profilePicture); // Pfad ggf. anpassen
     fs.unlink(oldImagePath, (err) => {

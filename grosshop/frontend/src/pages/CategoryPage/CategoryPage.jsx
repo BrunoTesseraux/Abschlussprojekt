@@ -3,7 +3,9 @@ import "./CategoryPage.scss";
 import ProductListSmall from "../ProductListSmall/ProductListSmall";
 import TopNav from "../../components/TopNav/TopNav";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import { useParams } from "react-router-dom";
+
+import { useParams } from "react-router-dom"; // Importiere useParams, um den Parameter aus der URL zu erhalten
+import { backendUrl } from "../../api/api";
 
 const CategoryPage = () => {
     const { category } = useParams();
@@ -12,7 +14,10 @@ const CategoryPage = () => {
     const [selectedSortBy, setSelectedSortBy] = useState(null);
     const [priceRange, setPriceRange] = useState({ min: 0, max: 999 });
     const [searchParams, setSearchParams] = useState(null);
-
+    const [promotionProducts, setPromotionProducts] = useState();
+    const { deal } = useParams();
+  
+  
     const [categories, setCategories] = useState([
         "All",
         "Vegetable",
@@ -21,14 +26,27 @@ const CategoryPage = () => {
         "Seafood",
         "Bread"
     ]);
+  
+   const fetchProducts = async () => {
+    try {
+      const response = await fetch(backendUrl + `/api/v1/promotions/${deal}`);
+      const { status, data, error } = await response.json();
+      if (status !== "success") throw new Error(error);
+      else console.log(data.promotions[0].products);
+      setPromotionProducts(data.promotions[0].products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    useEffect(() => {
+   useEffect(() => {
         const filteredParams = {
             category: selectedCategory,
             searchTerm,
             selectedSortBy,
             priceRange
         };
+     fetchProducts();
         setSearchParams(filteredParams);
         console.log("Filtered parameters:", filteredParams);
     }, [selectedCategory, searchTerm, selectedSortBy, priceRange]);
@@ -40,6 +58,12 @@ const CategoryPage = () => {
         setSelectedCategory(category);
     };
 
+
+  const handleSearchInitiated = (params) => {
+    setSearchParams(params);
+  };
+
+ 
     const handleCategorySelect = (category) => {
         if (category === "All"){
             setSelectedCategory(null)
@@ -71,9 +95,15 @@ const CategoryPage = () => {
                      </button>
                 ))}
             </div>
-            <ProductListSmall endpoint="products" filters={searchParams}/>
+            <ProductListSmall
+        deal={deal}
+        endpoint="products"
+        filters={searchParams}
+        promotionProducts={promotionProducts}
+      />
         </section> 
     );
 }
+
 
 export default CategoryPage;

@@ -52,7 +52,7 @@ const removeProductsFromWishlistCtrl = catchAsync(async (req, res, next) => {
 export const moveItemsToCartCtrl = catchAsync(async (req, res, next) => {
   const userId = req.params.uid;
   const { itemIds } = req.body; // Die IDs der Artikel, die verschoben werden sollen
-  console.log("================", itemIds);
+  // console.log("================", itemIds);
   const result = await UserService.moveItemsToCart(userId, itemIds, next);
 
   res.status(200).json({

@@ -123,7 +123,7 @@ const Cart = () => {
     const selectedProductIds = cartItems
       .filter((_, index) => selectedItems[index])
       .map((item) => item.productId);
-    console.log("=========================", selectedItems);
+    // console.log("=========================", selectedItems);
     // Sende eine Anfrage an das Backend, um die ausgewählten Produkte zu entfernen
     try {
       const response = await fetch(
