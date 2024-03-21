@@ -60,8 +60,11 @@ const ProductListSmall = ({
           if (!response.ok) throw new Error("Network response was not ok");
           const { status, data, error } = await response.json();
           if (status !== "success") throw new Error(error);
-
-          setProducts(data.products || []);
+          if (data.promotions) {
+            setProducts(extractAllProductsFromPromotions(data.promotions));
+          } else {
+            setProducts(data.products || []);
+          }
         } catch (error) {
           console.error("Error fetching data:", error);
         }
