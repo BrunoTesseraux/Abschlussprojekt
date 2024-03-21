@@ -43,11 +43,9 @@ const OrderList = () => {
          <button className="total">Start Shopping</button>
      </div>
       ) : (
-        
-        <p>is da</p>
-        // orderHistory.map((order) => (
-        //   <OrderCard key={order._id} order={order} />
-        // ))
+        orderHistory.map((order) => (
+          <OrderCard key={order._id} order={order} />
+        ))
       )}
     </section>
   );
