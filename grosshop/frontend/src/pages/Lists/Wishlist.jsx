@@ -10,6 +10,34 @@ const Wishlist = () => {
   const { user } = useContext(UserContext);
   const [wishlistData, setWishlistData] = useState([]);
   const [selectedItems, setSelectedItems] = useState({}); // Zustand für ausgewählte Produkte
+  const [cartUpdated, setCartUpdated] = useState(false); // Zustand zur Aktualisierung des Warenkorbs
+
+  const handleAddToCart = async () => {
+    const selectedItemsArray = Object.keys(selectedItems).filter(
+      (index) => selectedItems[index]
+    );
+    console.log(selectedItemsArray);
+    try {
+      const response = await fetch(
+        `${backendUrl}/api/v1/users/${user._id}/wishlist/moveToCart`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ itemIds: selectedItemsArray }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      // Setze cartUpdated auf true, um die Seite neu zu rendern
+      setCartUpdated(true);
+    } catch (error) {
+      console.error("Error updating quantity:", error);
+      // Behandeln Sie den Fehler entsprechend, z.B. Benachrichtigung des Benutzers
+    }
+  };
 
   // Effekt für das Abrufen der Wunschliste des Benutzers
   useEffect(() => {
@@ -39,7 +67,7 @@ const Wishlist = () => {
     return () => {
       // Perform cleanup, if necessary
     };
-  }, [user]);
+  }, [cartUpdated]); // Überwachen Sie cartUpdated, um die Seite neu zu rendern, wenn der Warenkorb aktualisiert wurde
 
   // Handler für die Aktualisierung der Menge eines Elements
   const handleUpdateQuantity = async (index, newQuantity) => {
@@ -95,13 +123,6 @@ const Wishlist = () => {
   };
 
   // Handler für das Hinzufügen der ausgewählten Elemente zum Warenkorb
-  const handleAddToCart = () => {
-    const selectedItemsArray = Object.keys(selectedItems).filter(
-      (index) => selectedItems[index]
-    );
-    // Fügen Sie hier die Logik zum Hinzufügen der ausgewählten Artikel zum Warenkorb hinzu
-    console.log("Selected items:", selectedItemsArray);
-  };
 
   return (
     <section className="list">
