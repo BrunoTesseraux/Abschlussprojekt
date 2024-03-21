@@ -24,6 +24,7 @@ const ProductCardSmall = ({ product }) => {
 
     return (
         <article className="product-card-small">
+        {/* <article className="product-card-small" style={{ backgroundImage: `url(${product.productImage})` }}> */}
             <div className="pictures">
                 <Link to={`/productdetail/${product._id}`}>
                     <img src={product.productImage} alt="Produktbild" />
@@ -39,10 +40,10 @@ const ProductCardSmall = ({ product }) => {
                 <h2>{product.productName}</h2>
             </Link>
             <div className="price-rating">
-                <h3>{product.price}$</h3>
+                <h3>$ {product.price}</h3>
                 <p>
                     <img src="/star.svg" alt="" />
-                    {product.rating}
+                    {"  " + product.rating}
                 </p>
             </div>
         </article>

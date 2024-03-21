@@ -1,8 +1,8 @@
 .product-list-small{
-    margin-top: 1px;
+    margin: 5px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
+    grid-template-columns: 1fr 1fr ;
+    gap: 5px;
     .separation-picture{
         grid-column: 1/4;
         height: 85px;
