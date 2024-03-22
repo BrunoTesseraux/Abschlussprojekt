@@ -45,14 +45,16 @@ const ProductDetail = () => {
     // Berechnung des Gesamtpreises basierend auf der Anzahl der Produkte
     const totalPrice = (price * count).toFixed(2);
 
+    const productDetailClass = productName === "Tomatoes" ? "item-details tomatoes-background" : "item-details";
+
     return ( 
-        <div className="item-details">
+        <div className={productDetailClass}>
             <TopNav location="Item Details"/>
             <img src={productImage} alt="Produktbild" className="product-picture" />
             <span className="unit-highlight">{ratio[0].amount} {ratio[0].unit}</span>
             <h1>$ {price.toFixed(2)}</h1>
             <h3>{productName}</h3>
-            <h2><img src="/star.svg" alt="Star" className="star"/>{rating}/5</h2>
+            <h2><img src="/star.svg" alt="Star" className="star"/>{rating.rate}/5 {rating.reviews} reviews</h2>
             <div className="divider"></div>
             <h2>Quantity</h2>
             <Counter count={count} setCount={setCount} />

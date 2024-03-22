@@ -48,7 +48,7 @@ const Filter = ({ resetSearch, searchTerm, selectedSortBy, setSelectedSortBy, pr
                 <legend>Price range</legend>
                 <MultiRangeSlider
                     min={0}
-                    max={999}
+                    max={30}
                     value={priceRange}
                     onChange={setPriceRange}
                 />

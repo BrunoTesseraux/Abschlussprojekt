@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Searchbar.scss';
 import Filter from '../Filter/Filter';
+import { useNavigate } from 'react-router-dom';
 
 const Searchbar = ({ 
     searchTerm, 
@@ -13,6 +14,8 @@ const Searchbar = ({
     onResetSearch 
 }) => {
     const [isSearchActive, setIsSearchActive] = useState(false);
+    const navigate = useNavigate();
+
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -33,6 +36,7 @@ const Searchbar = ({
     };
 
     const handleFocus = () => {
+        navigate("/categorypage");
         setIsSearchActive(true);
     };
 

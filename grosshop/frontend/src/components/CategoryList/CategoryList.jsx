@@ -8,7 +8,9 @@ const CategoryList = () => {
             <CategoryCard imageUrl="/vegetables.png" title="Vegetable" />
             <CategoryCard imageUrl="/fruit.png" title="Fruit" />
             <CategoryCard imageUrl="/meat.png" title="Meat" />
-            <CategoryCard imageUrl="/ArrowRight.png" title="All" />
+            <CategoryCard imageUrl="/seafood.png" title="Seafood" />
+            <CategoryCard imageUrl="/bread.png" title="bread" />
+
         </div>
      );
 }

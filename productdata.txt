@@ -46,7 +46,7 @@
   },
   {
     productName: "Strawberries",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1622921491193-345ffb510f6f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.79,
     rating: { reviews: 22, rate: 4.7 },
     ratio: [{ amount: 250, unit: "g" }],
@@ -55,7 +55,7 @@
   },
   {
     productName: "Kiwis",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1616684000067-36952fde56ec?q=80&w=1828&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.69,
     rating: { reviews: 15, rate: 4.5 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -64,7 +64,7 @@
   },
   {
     productName: "Pears",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1601876814226-443511d81ddc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.29,
     rating: { reviews: 14, rate: 4.6 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -73,7 +73,7 @@
   },
   {
     productName: "Mango",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1675715402966-627154aa4ab2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.99,
     rating: { reviews: 8, rate: 4.3 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -82,7 +82,7 @@
   },
   {
     productName: "Grapes",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1603186741833-4a7cf699a8eb?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 5.49,
     rating: { reviews: 18, rate: 4.7 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -91,7 +91,7 @@
   },
   {
     productName: "Peaches",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1602813812581-0713dae489da?q=80&w=1630&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.99,
     rating: { reviews: 10, rate: 4.4 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -100,7 +100,7 @@
   },
   {
     productName: "Blood Oranges",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1597986935464-52e8620b7aa8?q=80&w=1671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.49,
     rating: { reviews: 6, rate: 4.2 },
     ratio: [{ amount: 1, unit: "kg" }],
@@ -109,7 +109,7 @@
   },
   {
     productName: "Blueberries",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1498557850523-fd3d118b962e?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 4.99,
     rating: { reviews: 14, rate: 4.6 },
     ratio: [{ amount: 150, unit: "g" }],
@@ -118,27 +118,18 @@
   },
   {
     productName: "Cherries",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?q=80&w=1664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 6.99,
     rating: { reviews: 10, rate: 4.4 },
     ratio: [{ amount: 500, unit: "g" }],
     category: "Fruit",
     deal: "today"
   },
-  {
-    productName: "Grapefruit",
-    productImage: "",
-    price: 2.79,
-    rating: { reviews: 8, rate: 4.3 },
-    ratio: [{ amount: 1, unit: "piece" }],
-    category: "Fruit",
-    deal: "product"
-  }
 ]
 [
   {
     productName: "Organic Spinach",
-    productImage: "",
+    productImage: https://images.unsplash.com/photo-1576045057995-568f588f82fb?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.99,
     rating: { reviews: 18, rate: 4.6 },
     ratio: [{ amount: 200, unit: "g" }],
@@ -147,7 +138,7 @@
   },
   {
     productName: "Broccoli",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.79,
     rating: { reviews: 15, rate: 4.5 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -156,7 +147,7 @@
   },
   {
     productName: "Carrots",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1522184216316-3c25379f9760?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.49,
     rating: { reviews: 20, rate: 4.7 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -165,7 +156,7 @@
   },
   {
     productName: "Tomatoes",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.29,
     rating: { reviews: 22, rate: 4.8 },
     ratio: [{ amount: 1, unit: "kg" }],
@@ -174,7 +165,7 @@
   },
   {
     productName: "Bell Peppers",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1506365069540-904bcc762636?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.99,
     rating: { reviews: 16, rate: 4.6 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -183,7 +174,7 @@
   },
   {
     productName: "Cucumbers",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.69,
     rating: { reviews: 18, rate: 4.7 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -192,7 +183,7 @@
   },
   {
     productName: "Zucchini",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1615485499978-1279c3d6302f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.99,
     rating: { reviews: 14, rate: 4.5 },
     ratio: [{ amount: 300, unit: "g" }],
@@ -201,7 +192,7 @@
   },
   {
     productName: "Asparagus",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1603309288666-421bc2a729db?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.49,
     rating: { reviews: 12, rate: 4.4 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -210,7 +201,7 @@
   },
   {
     productName: "Cherry Tomatoes",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1570543375343-63fe3d67761b?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.79,
     rating: { reviews: 20, rate: 4.7 },
     ratio: [{ amount: 250, unit: "g" }],
@@ -219,7 +210,7 @@
   },
   {
     productName: "Beets",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1573426667638-18ccdd988a39?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.99,
     rating: { reviews: 10, rate: 4.3 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -228,7 +219,7 @@
   },
   {
     productName: "Garlic",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1579705744772-f26014b5e084?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 0.99,
     rating: { reviews: 25, rate: 4.9 },
     ratio: [{ amount: 100, unit: "g" }],
@@ -237,7 +228,7 @@
   },
   {
     productName: "Celery",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1633653745758-7ef9d5b95f0f?q=80&w=1546&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.49,
     rating: { reviews: 15, rate: 4.5 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -246,7 +237,7 @@
   },
   {
     productName: "Leeks",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1549913468-0ddc24a4a1bf?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.29,
     rating: { reviews: 18, rate: 4.6 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -255,7 +246,7 @@
   },
   {
     productName: "Potatoes",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1508313880080-c4bef0730395?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.99,
     rating: { reviews: 20, rate: 4.7 },
     ratio: [{ amount: 1, unit: "kg" }],
@@ -264,7 +255,7 @@
   },
   {
     productName: "Green Beans",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1603431777007-61db54157a3b?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.49,
     rating: { reviews: 14, rate: 4.4 },
     ratio: [{ amount: 300, unit: "g" }],
@@ -276,7 +267,7 @@
   // Meat Products
   {
     productName: "Beef Steak",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1606677661991-446cea8ee182?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 9.99,
     rating: { reviews: 20, rate: 4.7 },
     ratio: [{ amount: 400, unit: "g" }],
@@ -285,7 +276,7 @@
   },
   {
     productName: "Chicken Breast",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 6.49,
     rating: { reviews: 18, rate: 4.6 },
     ratio: [{ amount: 350, unit: "g" }],
@@ -294,7 +285,7 @@
   },
   {
     productName: "Pork Chops",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1622052073730-04bbc497be48?q=80&w=1514&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 8.99,
     rating: { reviews: 15, rate: 4.5 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -303,27 +294,18 @@
   },
   {
     productName: "Lamb Leg",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1448907503123-67254d59ca4f?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 14.99,
     rating: { reviews: 25, rate: 4.8 },
     ratio: [{ amount: 700, unit: "g" }],
     category: "Meat",
     deal: "member"
   },
-  {
-    productName: "Ground Turkey",
-    productImage: "",
-    price: 5.99,
-    rating: { reviews: 16, rate: 4.6 },
-    ratio: [{ amount: 500, unit: "g" }],
-    category: "Meat",
-    deal: "product"
-  },
 
   // Sausages and Spread Products
   {
     productName: "Chicken Sausages",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 4.99,
     rating: { reviews: 12, rate: 4.3 },
     ratio: [{ amount: 300, unit: "g" }],
@@ -332,7 +314,7 @@
   },
   {
     productName: "Beef Salami",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1460122109654-7e46ab4fc9b9?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.49,
     rating: { reviews: 15, rate: 4.4 },
     ratio: [{ amount: 200, unit: "g" }],
@@ -340,53 +322,18 @@
     deal: "product"
   },
   {
-    productName: "Turkey Breast Slices",
-    productImage: "",
-    price: 6.99,
-    rating: { reviews: 18, rate: 4.6 },
-    ratio: [{ amount: 250, unit: "g" }],
-    category: "Meat",
-    deal: "today"
-  },
-  {
-    productName: "Pork Liver Pate",
-    productImage: "",
-    price: 2.99,
-    rating: { reviews: 10, rate: 4.2 },
-    ratio: [{ amount: 150, unit: "g" }],
-    category: "Meat",
-    deal: "product"
-  },
-  {
-    productName: "Chicken Liver Pate",
-    productImage: "",
-    price: 2.79,
-    rating: { reviews: 8, rate: 4.1 },
-    ratio: [{ amount: 150, unit: "g" }],
-    category: "Meat",
-    deal: "today"
-  },
-  {
     productName: "Smoked Beef Sausage",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1529241160658-a8a2a0d86620?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 5.49,
     rating: { reviews: 14, rate: 4.5 },
     ratio: [{ amount: 300, unit: "g" }],
     category: "Meat",
     deal: "product"
   },
-  {
-    productName: "Chicken Spread",
-    productImage: "",
-    price: 3.29,
-    rating: { reviews: 11, rate: 4.3 },
-    ratio: [{ amount: 200, unit: "g" }],
-    category: "Meat",
-    deal: "today"
-  },
+ 
   {
     productName: "Turkey Ham",
-    productImage: "",
+    productImage: "https://images.unsplash.com/reserve/jCCsCae7RwCDOKTCA2Ji_reggeli%20-%20sonkás%20szendvics.JPG?q=80&w=1465&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 4.79,
     rating: { reviews: 13, rate: 4.4 },
     ratio: [{ amount: 250, unit: "g" }],
@@ -395,7 +342,7 @@
   },
   {
     productName: "Pork Bratwurst",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1547424450-75ec164925ad?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.99,
     rating: { reviews: 16, rate: 4.5 },
     ratio: [{ amount: 350, unit: "g" }],
@@ -406,7 +353,7 @@
 [
   {
     productName: "Salmon Fillet",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1499125562588-29fb8a56b5d5?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 12.99,
     rating: { reviews: 25, rate: 4.8 },
     ratio: [{ amount: 300, unit: "g" }],
@@ -415,7 +362,7 @@
   },
   {
     productName: "Shrimp",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1548587468-971ebe4c8c3b?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 9.99,
     rating: { reviews: 20, rate: 4.7 },
     ratio: [{ amount: 400, unit: "g" }],
@@ -424,7 +371,7 @@
   },
   {
     productName: "Tuna Steak",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1695399566146-ed0214b5b883?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 10.49,
     rating: { reviews: 18, rate: 4.6 },
     ratio: [{ amount: 250, unit: "g" }],
@@ -433,7 +380,7 @@
   },
   {
     productName: "Cod Fillet",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 8.99,
     rating: { reviews: 22, rate: 4.8 },
     ratio: [{ amount: 350, unit: "g" }],
@@ -442,7 +389,7 @@
   },
   {
     productName: "Scallops",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1619082737911-1119bc3167ec?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 15.99,
     rating: { reviews: 15, rate: 4.5 },
     ratio: [{ amount: 200, unit: "g" }],
@@ -451,7 +398,7 @@
   },
   {
     productName: "Crab Legs",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1511543865714-5a5a5ce51a94?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 18.99,
     rating: { reviews: 12, rate: 4.4 },
     ratio: [{ amount: 500, unit: "g" }],
@@ -460,7 +407,7 @@
   },
   {
     productName: "Mussels",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1600265721436-734abbfe2137?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 6.99,
     rating: { reviews: 14, rate: 4.6 },
     ratio: [{ amount: 1, unit: "kg" }],
@@ -469,7 +416,7 @@
   },
   {
     productName: "Sardines",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1600699899970-b1c9fadd8f9e?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 4.49,
     rating: { reviews: 18, rate: 4.7 },
     ratio: [{ amount: 250, unit: "g" }],
@@ -478,7 +425,7 @@
   },
   {
     productName: "Halibut Steak",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1517800140676-e7e8312bc02d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 13.49,
     rating: { reviews: 10, rate: 4.3 },
     ratio: [{ amount: 300, unit: "g" }],
@@ -487,7 +434,7 @@
   },
   {
     productName: "Octopus",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1572542150708-9ff7fb0e1514?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 16.99,
     rating: { reviews: 8, rate: 4.1 },
     ratio: [{ amount: 400, unit: "g" }],
@@ -496,7 +443,7 @@
   },
   {
     productName: "Lobster Tail",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1664475931376-82ac86b4ae58?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 29.99,
     rating: { reviews: 20, rate: 4.8 },
     ratio: [{ amount: 300, unit: "g" }],
@@ -505,7 +452,7 @@
   },
   {
     productName: "Anchovies",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1576437293196-fc3080b75964?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.99,
     rating: { reviews: 15, rate: 4.5 },
     ratio: [{ amount: 200, unit: "g" }],
@@ -514,7 +461,7 @@
   },
   {
     productName: "Trout Fillet",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1516847082403-c9f3e844dc53?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 11.99,
     rating: { reviews: 12, rate: 4.4 },
     ratio: [{ amount: 350, unit: "g" }],
@@ -523,7 +470,7 @@
   },
   {
     productName: "Calamari Rings",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1668995975042-6344a48aef90?q=80&w=1633&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 7.99,
     rating: { reviews: 16, rate: 4.6 },
     ratio: [{ amount: 300, unit: "g" }],
@@ -532,7 +479,7 @@
   },
   {
     productName: "King Prawns",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1674066621842-8c830e392618?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 17.99,
     rating: { reviews: 10, rate: 4.3 },
     ratio: [{ amount: 400, unit: "g" }],
@@ -543,7 +490,7 @@
 [
   {
     productName: "Whole Wheat Bread",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.49,
     rating: { reviews: 20, rate: 4.7 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -552,7 +499,7 @@
   },
   {
     productName: "Multigrain Bread",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.99,
     rating: { reviews: 18, rate: 4.6 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -561,7 +508,7 @@
   },
   {
     productName: "Baguette",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1677686707023-9ac1e4f75a87?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.79,
     rating: { reviews: 15, rate: 4.5 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -570,7 +517,7 @@
   },
   {
     productName: "Sourdough Bread",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.49,
     rating: { reviews: 22, rate: 4.8 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -579,7 +526,7 @@
   },
   {
     productName: "Rye Bread",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1675788939191-713c2abf3da6?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.29,
     rating: { reviews: 16, rate: 4.6 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -588,7 +535,7 @@
   },
   {
     productName: "Ciabatta",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1647198529344-99a4db906e9d?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.99,
     rating: { reviews: 14, rate: 4.5 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -597,7 +544,7 @@
   },
   {
     productName: "Pumpernickel Bread",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1675788939043-3ca1e947ee8d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.79,
     rating: { reviews: 18, rate: 4.7 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -606,7 +553,7 @@
   },
   {
     productName: "Focaccia",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1675788938976-c63f45b355e2?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.99,
     rating: { reviews: 20, rate: 4.8 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -615,7 +562,7 @@
   },
   {
     productName: "Whole Grain Bagel",
-    productImage: "",
+    productImage: "https://plus.unsplash.com/premium_photo-1675788938970-e2716f23b1f9?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.99,
     rating: { reviews: 15, rate: 4.6 },
     ratio: [{ amount: 1, unit: "piece" }],
@@ -624,7 +571,7 @@
   },
   {
     productName: "Brioche",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1605690258824-d3ececd2741d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.49,
     rating: { reviews: 17, rate: 4.7 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -633,7 +580,7 @@
   },
   {
     productName: "Challah Bread",
-    productImage: "",
+    productImage: "https://images.unsplash.com/photo-1612382064786-b3ad827e6293?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.79,
     rating: { reviews: 12, rate: 4.4 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -642,6 +589,7 @@
   },
   {
     productName: "English Muffins",
+    productImage: "https://plus.unsplash.com/premium_photo-1672639601872-eeceb0c5c522?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.49,
     rating: { reviews: 18, rate: 4.6 },
     ratio: [{ amount: 1, unit: "pack" }],
@@ -650,6 +598,7 @@
   },
   {
     productName: "Cinnamon Swirl Bread",
+    productImage: "https://images.unsplash.com/photo-1623375477581-eac701d0eebf?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 3.99,
     rating: { reviews: 16, rate: 4.5 },
     ratio: [{ amount: 1, unit: "loaf" }],
@@ -658,6 +607,7 @@
   },
   {
     productName: "Bagels (Assorted)",
+    productImage: "https://images.unsplash.com/photo-1627308595260-6fad84c40413?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 2.79,
     rating: { reviews: 14, rate: 4.3 },
     ratio: [{ amount: 1, unit: "pack" }],
@@ -666,6 +616,7 @@
   },
   {
     productName: "Kaiser Roll",
+    productImage: "https://images.unsplash.com/photo-1620327087153-6e9091133ea7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 1.29,
     rating: { reviews: 20, rate: 4.7 },
     ratio: [{ amount: 1, unit: "piece" }],

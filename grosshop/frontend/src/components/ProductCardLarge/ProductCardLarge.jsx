@@ -49,20 +49,13 @@ console.log(item);
           </h2>
           </Link>
           <div className="product-amount">
-            <p>{ratio[0].amount}</p>
+            <p>{ratio[0].amount} {ratio[0].unit}</p>
             <p>
-              {rating} <img src="./star.svg" alt="" />
+              {rating.rate} <img src="./star.svg" alt="" /> {rating.review} reviews
             </p>
           </div>
           <div className="product-price">
             <h3>${price}</h3>
-            <h3>${price}</h3>
-            <img
-              src={likeSrc}
-              className="like"
-              alt=""
-              onClick={handleLike} // Handle like button click
-            />
           </div>
         </div>
         <Counter
