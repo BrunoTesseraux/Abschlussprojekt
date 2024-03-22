@@ -118,7 +118,7 @@ const ProductListSmall = ({
         index++; // Zähler inkrementieren
 
         // Überprüfen, ob der Index durch 10 teilbar ist und ob es nicht das letzte Produkt ist
-        if (index % 7 === 0 && index !== maxProducts) {
+        if (index % 11 === 0 && index !== maxProducts) {
           return (
             <img
               key={`img-${index}`}
