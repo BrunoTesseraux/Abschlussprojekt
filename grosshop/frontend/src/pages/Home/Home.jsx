@@ -19,7 +19,7 @@ const Home = () => {
         <ProductListSmall maxProducts={6} endpoint={"promotions/todayDeals"}/>
         <img src="./bier.jpg" alt="" className="home-deal-picture" />
         <h1 className="deal-heading">Grocery Member Deals</h1>
-        <ProductListSmall maxProducts={3} endpoint={"promotions/memberDeals"}/>
+        <ProductListSmall maxProducts={4} endpoint={"promotions/memberDeals"}/>
         <Navigation/>
     </section> 
     );

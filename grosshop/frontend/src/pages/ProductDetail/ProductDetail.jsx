@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { backendUrl } from "../../api/api.js"; // Stelle sicher, dass backendUrl richtig importiert ist
+import { backendUrl } from "../../api/api.js"; 
 
 import "./ProductDetail.scss";
 import Counter from "../../components/counter/Counter";
 import TopNav from "../../components/TopNav/TopNav";
+import { UserContext } from "../../contextes/UserContext.jsx";
 
 const ProductDetail = () => {
-    const { productId } = useParams(); // Produkt-ID aus der URL-Parameter erhalten
-    const [product, setProduct] = useState(null); // Zustand für das Produkt
-    const [count, setCount] = useState(1); // Zustand für die Anzahl der Produkte im Warenkorb
+    const { productId } = useParams(); 
+    const { user } = useContext(UserContext); // Zugriff auf den UserContext
+    const [product, setProduct] = useState(null); 
+    const [count, setCount] = useState(1); 
+    const [loading, setLoading] = useState(true); 
 
-    // useEffect-Hook verwenden, um die Produktinformationen zu fetchen
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -21,28 +23,51 @@ const ProductDetail = () => {
                 }
                 const productData = await response.json();
                 setProduct(productData.data.product);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching product data:', error);
+                setLoading(false);
             }
         };
     
         fetchData();
-    
-        // Cleanup function (optional)
-        return () => {
-            // Perform cleanup, if necessary
-        };
-    }, [productId]); // Füge productId als Abhängigkeit hinzu, um das Fetchen bei Änderungen zu aktualisieren
+    }, [productId]); 
 
-    // Wenn das Produkt noch geladen wird, zeige "Loading..." an
-    if (!product) {
+    const handleAddToCart = async () => {
+        try {
+            const response = await fetch(`${backendUrl}/api/v1/users/${user._id}/cart`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    cart: [{
+                        productId: productId,
+                        quantity: count,
+                        inCart: true
+                    }]
+                })
+            });
+            if (!response.ok) {
+                throw new Error('Failed to add item to cart');
+            }
+            // Handle success response here, e.g., show a success message
+        } catch (error) {
+            console.error('Error adding item to cart:', error);
+            // Handle error here, e.g., show an error message to the user
+        }
+    };
+
+    if (loading) {
         return <div>Loading...</div>;
     }
 
-    // Produktinformationen aus dem State extrahieren
+    if (!product) {
+        return <div>Product not found</div>;
+    }
+
     const { productName, productImage, price, rating, ratio } = product;
 
-    // Berechnung des Gesamtpreises basierend auf der Anzahl der Produkte
     const totalPrice = (price * count).toFixed(2);
 
     const productDetailClass = productName === "Tomatoes" ? "item-details tomatoes-background" : "item-details";
@@ -50,7 +75,7 @@ const ProductDetail = () => {
     return ( 
         <div className={productDetailClass}>
             <TopNav location="Item Details"/>
-            <img src={productImage} alt="Produktbild" className="product-picture" />
+            <img src={productImage} alt="Product" className="product-picture" />
             <span className="unit-highlight">{ratio[0].amount} {ratio[0].unit}</span>
             <h1>$ {price.toFixed(2)}</h1>
             <h3>{productName}</h3>
@@ -60,7 +85,7 @@ const ProductDetail = () => {
             <Counter count={count} setCount={setCount} />
             <h2>Total Price: $ {totalPrice}</h2>
             <img src="/cart.svg" alt="Cart icon" className="cart-icon product-picture" />
-            <button className="add-to-cart">Add to Cart</button>
+            <button className="add-to-cart" onClick={handleAddToCart}>Add to Cart</button>
         </div>
     );
 };
