@@ -17,12 +17,14 @@ import Home from "./pages/Home/Home";
 import { UserContextProvider } from "./contextes/UserContext";
 import Test from "./components/Test/Test";
 import ProductListSmall from "./pages/ProductListSmall/ProductListSmall";
+import { OrderProvider } from "./contextes/OderContext";
 
 function App() {
   const [login, setLogin] = useState(null);
 
   return (
     <Router>
+          <OrderProvider>
       <UserContextProvider>
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -49,6 +51,7 @@ function App() {
           <Route path="/productdetail/:productId" element={<ProductDetail />} />
         </Routes>
       </UserContextProvider>
+      </OrderProvider>
       {login ? <Nav /> : null}
     </Router>
   );

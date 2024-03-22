@@ -5,6 +5,7 @@ import TopNav from "../../components/TopNav/TopNav";
 import { UserContext } from "../../contextes/UserContext";
 import { backendUrl } from "../../api/api";
 import { Link } from "react-router-dom";
+import { useOrder } from "../../contextes/OderContext";
 
 const Cart = () => {
   const { user } = useContext(UserContext);
@@ -12,6 +13,8 @@ const Cart = () => {
   const [selectedItems, setSelectedItems] = useState([]); // Zustand für ausgewählte Produkte
   const [selectedProducts, setSelectedProducts] = useState({}); // Objekt für ausgewählte Produkte mit Mengen
   const [totalPrice, setTotalPrice] = useState(0);
+  const { order, setOrder } = useOrder(); // Verwenden Sie den useOrder-Hook, um auf den order-Zustand zuzugreifen und ihn zu setzen
+
 
   useEffect(() => {
     const fetchUserCart = async () => {
@@ -124,7 +127,15 @@ const Cart = () => {
     const selectedProductIds = cartItems
       .filter((_, index) => selectedItems[index])
       .map((item) => item.productId);
-    // console.log("=========================", selectedItems);
+  
+    // Erstellen Sie ein Objekt aus den gelöschten Daten
+    const deletedItemsObject = cartItems.reduce((acc, item) => {
+      if (selectedProductIds.includes(item.productId)) {
+        acc[item.productId] = item;
+      }
+      return acc;
+    }, {});
+  
     // Sende eine Anfrage an das Backend, um die ausgewählten Produkte zu entfernen
     try {
       const response = await fetch(
@@ -137,9 +148,9 @@ const Cart = () => {
           body: JSON.stringify({ productIds: selectedProductIds }),
         }
       );
-
+  
       const data = await response.json();
-
+  
       if (data.status === "success") {
         // Aktualisiere den Warenkorb im Frontend, um die entfernten Produkte zu reflektieren
         setCartItems(
@@ -147,22 +158,59 @@ const Cart = () => {
             (item) => !selectedProductIds.includes(item.productId)
           )
         );
+  
         setSelectedItems(
           selectedItems.filter(
             (_, index) =>
               !selectedProductIds.includes(cartItems[index].productId)
           )
         );
+  
+        // Verwenden Sie das erstellte Objekt der gelöschten Daten, um es anderswo zu verwenden
+        console.log("Gelöschte Daten:", deletedItemsObject);
+
+  const totalPriceDeletedItems = Object.values(deletedItemsObject).reduce((total, item) => {
+    return total + item.quantity * item.price; // Annahme: Jedes gelöschte Produkt enthält ein price Attribut
+  }, 0);
+  
+  const generateOrderNumber = () => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const length = 8;
+    let orderNumber = '';
+    for (let i = 0; i < length; i++) {
+      orderNumber += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return orderNumber;
+  };
+  // Erstellen Sie das orderSchema-Objekt
+  const order = {
+    userId: user._id,
+    products: Object.values(deletedItemsObject).map((item) => ({
+      productId: item.productId,
+      quantity: item.quantity,
+    })),
+    orderStatus: "pending", // Setzen Sie den Bestellstatus entsprechend Ihren Anforderungen
+    paymentStatus: "pending", // Setzen Sie den Zahlungsstatus entsprechend Ihren Anforderungen
+    totalAmount: totalPriceDeletedItems, // Setzen Sie den Gesamtpreis basierend auf der berechneten Gesamtsumme
+    orderNumber: generateOrderNumber(), // Generieren Sie eine Bestellnummer entsprechend Ihren Anforderungen
+    orderTimestamp: new Date(), // Setzen Sie das Bestelldatum und die Zeit
+    shippingAddress: user.shippingAddress, // Annahme: Die Versandadresse des Benutzers wird aus dem User-Objekt genommen
+  };
+  setOrder(order);
+
+  // Verwenden Sie das orderSchema-Objekt für weitere Verarbeitung, z.B. Speichern in der Datenbank
+
+
+
+
       } else {
         throw new Error(data.message);
       }
     } catch (error) {
-      console.error(
-        "Fehler beim Entfernen von Produkten aus dem Warenkorb:",
-        error
-      );
+      console.error("Fehler beim Entfernen von Produkten aus dem Warenkorb:", error);
     }
   };
+
 
   return (
     <section className="list">

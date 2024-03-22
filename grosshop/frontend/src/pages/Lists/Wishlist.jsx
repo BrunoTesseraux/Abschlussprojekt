@@ -127,7 +127,7 @@ const Wishlist = () => {
 
   return (
     <section className="list">
-      <TopNav location="Wishlist" actionType="bin" />
+      <TopNav location="Wishlist" actionType="bin" onAddToCartClick={handleAddToCart}/>
       {wishlistData.length === 0 ? (
         <div className="empty-list">
           <img src="/empty-wishlist.svg" alt="heart icon" />

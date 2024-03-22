@@ -12,12 +12,10 @@ const CategoryPage = () => {
     const [selectedCategory, setSelectedCategory] = useState(category);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSortBy, setSelectedSortBy] = useState(null);
-    const [priceRange, setPriceRange] = useState({ min: 0, max: 999 });
+    const [priceRange, setPriceRange] = useState({ min: 0, max: 30 });
     const [searchParams, setSearchParams] = useState(null);
-    const [promotionProducts, setPromotionProducts] = useState();
     const { deal } = useParams();
-  
-  
+
     const [categories, setCategories] = useState([
         "All",
         "Vegetable",
@@ -26,18 +24,7 @@ const CategoryPage = () => {
         "Seafood",
         "Bread"
     ]);
-  
-   const fetchProducts = async () => {
-    try {
-      const response = await fetch(backendUrl + `/api/v1/promotions/${deal}`);
-      const { status, data, error } = await response.json();
-      if (status !== "success") throw new Error(error);
-      else console.log(data.promotions[0].products);
-      setPromotionProducts(data.promotions[0].products);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    
 
    useEffect(() => {
         const filteredParams = {
@@ -46,7 +33,7 @@ const CategoryPage = () => {
             selectedSortBy,
             priceRange
         };
-     fetchProducts();
+
         setSearchParams(filteredParams);
         console.log("Filtered parameters:", filteredParams);
     }, [selectedCategory, searchTerm, selectedSortBy, priceRange]);
@@ -54,7 +41,7 @@ const CategoryPage = () => {
     const handleResetSearch = () => {
         setSearchTerm('');
         setSelectedSortBy(null);
-        setPriceRange({ min: 0, max: 999 });
+        setPriceRange({ min: 0, max: 50 });
         setSelectedCategory(category);
     };
 
@@ -74,7 +61,7 @@ const CategoryPage = () => {
 
     return ( 
         <section className="category-page">
-            <TopNav location="All Products"/>
+            <TopNav location="Browse our Products"/>
             <Searchbar 
                 searchTerm={searchTerm} 
                 setSearchTerm={setSearchTerm} 
@@ -99,7 +86,6 @@ const CategoryPage = () => {
         deal={deal}
         endpoint="products"
         filters={searchParams}
-        promotionProducts={promotionProducts}
       />
         </section> 
     );

@@ -21,7 +21,7 @@
     .product-img {
         img {
             width: 90px;
-            height: 90px;
+            height: 110px;
             object-fit: cover;
             border-radius: 5px 0;
             margin-left: 15px;
@@ -46,7 +46,7 @@
                 padding-top: 12px;
             }
             div {
-                display: flex;
+                // display: flex;
                 gap: 20px;
 
                 p{
@@ -60,16 +60,16 @@
                         display: inline;
                     }
             }
-            .product-price {
-                
-                img {
-                    margin-top: 10px;
-                    width: 15px;
-                    height: 15px;
-                    margin: 0;
-                }
+        }
+        .product-price {
+            display: flex;
+            img {
+                margin-top: 10px;
+                width: 15px;
+                height: 15px;
+                margin: 0;
             }
-            }
+        }
             h3{
                 font-family: "poppins-regular";
                 font-size: .8125rem;

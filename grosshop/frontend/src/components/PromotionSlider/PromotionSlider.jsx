@@ -25,8 +25,11 @@ const PromotionSlider = () => {
     fetchPromotions();
   }, []);
 
-  const deal = promotions.find((promotion) => deals.includes(promotion.deal));
-  console.log(deal);
+  const deal = promotions?.find((promotion) => deals.includes(promotion.deal));
+  if( !deal){
+    return
+  }
+  console.log("bin ich ein deal", deal);
   return (
     <section className="promotion-slider">
       {promotions.map((promotion) => (
