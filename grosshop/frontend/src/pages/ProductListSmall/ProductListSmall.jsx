@@ -53,61 +53,7 @@ const ProductListSmall = ({
   fetchData();
 }, [endpoint]);
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await fetch(backendUrl + `/api/v1/` + endpoint);
-  //         if (!response.ok) {
-  //           throw new Error("Network response was not ok");
-  //         }
-  //         const { status, data, error } = await response.json();
-  //         if (status !== "success") throw new Error(error);
-  //         else console.log("Data incoming", data);
-
-  //         if (data.promotions) {
-  //           //   setProducts(extractAllProductsFromPromotions(data.promotions));
-  //         } else {
-  //           setProducts(data.products);
-  //         }
-  //       } catch (error) {
-  //         console.error("Error fetching data:", error);
-  //       }
-  //     };
-
-  //     fetchData();
-
-  //     // Cleanup function (optional)
-  //     return () => {
-  //       // Perform cleanup, if necessary
-  //     };
-  //   }, []);
-
-  //useEffect(() => {
-    //const restructurePromotionProducts = () => {
-      // Extrahieren der Produktinformationen aus den Promotion-Produktdaten
-     // return promotionProducts.map(({ productId }) => productId);
-    //};
-
-   // if (promotionProducts && promotionProducts.length > 0) {
-      // Verwende die restrukturierten Promotion-Produkte direkt
-    //  setProducts(restructurePromotionProducts());
-   // } else {
-      // Fetch-Daten vom Backend, wenn keine Promotion-Produkte vorhanden sind
-     // const fetchData = async () => {
-       // try {
-        //  const response = await fetch(backendUrl + `/api/v1/` + endpoint);
-         // if (!response.ok) throw new Error("Network response was not ok");
-         // const { status, data, error } = await response.json();
-       //   if (status !== "success") throw new Error(error);
-         // if (data.promotions) {
-          //  setProducts(extractAllProductsFromPromotions(data.promotions));
-          //} else {
-            //setProducts(data.products || []);
-        //  }
-      //  } catch (error) {
-        //  console.error("Error fetching data:", error);
-      //  }
-     // };
+ 
 
 
 
