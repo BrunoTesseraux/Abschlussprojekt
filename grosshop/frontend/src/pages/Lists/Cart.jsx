@@ -4,7 +4,7 @@ import ProductCardLarge from "../../components/ProductCardLarge/ProductCardLarge
 import TopNav from "../../components/TopNav/TopNav";
 import { UserContext } from "../../contextes/UserContext";
 import { backendUrl } from "../../api/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useOrder } from "../../contextes/OderContext";
 
 const Cart = () => {
@@ -14,6 +14,7 @@ const Cart = () => {
   const [selectedProducts, setSelectedProducts] = useState({}); // Objekt für ausgewählte Produkte mit Mengen
   const [totalPrice, setTotalPrice] = useState(0);
   const { order, setOrder } = useOrder(); // Verwenden Sie den useOrder-Hook, um auf den order-Zustand zuzugreifen und ihn zu setzen
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -200,7 +201,7 @@ const Cart = () => {
 
   // Verwenden Sie das orderSchema-Objekt für weitere Verarbeitung, z.B. Speichern in der Datenbank
 
-
+    navigate("/orders")
 
 
       } else {
